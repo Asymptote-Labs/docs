@@ -1,0 +1,84 @@
+---
+title: "MCP Server"
+description: "Configure Asymptote's MCP server for secure AI coding workflows."
+---
+
+## What can Asymptote's MCP Server do?
+
+Asymptote's MCP Server sits between your AI coding agent and your engineering systems to detect risk, enforce policy, and gate high-risk actions.
+
+- Scan code changes for vulnerabilities
+- Flag risky patterns in diffs and patches
+- Detect suspicious dependency changes
+- Catch secrets and sensitive data leaks
+- Enforce org policies on every tool call
+- Require approval for high-blast-radius actions
+- Block unsafe commands and scripts
+- Propose safer fixes and remediations
+- Produce audit logs and change provenance
+
+## MCP Client Integrations
+
+### Cursor
+
+<Steps>
+  <Step title="Open Cursor Settings">
+    Open the command palette (<kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>p</kbd> on macOS or <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>p</kbd> on Windows) and choose **Cursor Settings**.
+  </Step>
+  <Step title="Add the MCP server">
+    Select **MCP** from the left sidebar and click **Add new global MCP server** and add the following config:
+
+    ```json
+    {
+      "mcpServers": {
+        "asymptote-security-mcp": {
+          "command": "npx",
+          "args": ["-y", "@asymptote-labs/asymptote-security-mcp"],
+          "env": {
+            "ASYMPTOTE_API_KEY": "your-api-key-here"
+          }
+        }
+      }
+    }
+    ```
+
+    You can get the absolute path to your build script by right-clicking on the `/build/index.js` file in Cursor and selecting `Copy Path`.
+
+    **Possible arguments**
+
+    - `--key`: Your Asymptote API key (required)
+
+    <Info>
+      Adding the MCP server to Cursor's global settings will let you use Asymptote's security scanning from any project on your machine using Cursor's Agent mode.
+    </Info>
+  </Step>
+</Steps>
+
+### Claude Desktop
+
+<Steps>
+  <Step title="Open Claude Desktop settings">
+    Open Claude Desktop settings and navigate to the "Developer" tab. Click `Edit Config`.
+  </Step>
+  <Step title="Add the MCP server">
+    Add the following config:
+
+    ```json
+    {
+      "mcpServers": {
+        "asymptote-security-mcp": {
+          "command": "npx",
+          "args": ["-y", "@asymptote-labs/asymptote-security-mcp"],
+          "env": {
+            "ASYMPTOTE_API_KEY": "your-api-key-here"
+          }
+        }
+      }
+    }
+    ```
+
+    **Possible environment variables**
+
+    - `ASYMPTOTE_API_KEY`: Your Asymptote API key (required)
+  </Step>
+</Steps>
