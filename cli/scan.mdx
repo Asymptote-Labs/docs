@@ -1,0 +1,116 @@
+---
+title: "asymptote scan"
+description: "Scan code for security vulnerabilities"
+---
+
+# asymptote scan
+
+Scan code for security vulnerabilities and policy violations.
+
+```bash
+asymptote scan [path] [flags]
+```
+
+## Usage
+
+Scan the current directory:
+
+```bash
+asymptote scan
+```
+
+Scan a specific path:
+
+```bash
+asymptote scan ./src
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote scan ./src
+
+Scanning ./src...
+
+✓ Scanned 142 files
+
+Results
+─────────────────────────────────────────────────────
+
+ Severity  Rule                    File              Line
+─────────────────────────────────────────────────────────────
+ HIGH      hardcoded-secret        src/config.ts     23
+ MEDIUM    sql-injection           src/db/query.ts   45
+ LOW       console-log             src/utils.ts      12
+
+Found 3 issues (1 high, 1 medium, 1 low)
+
+View full report: https://asymptotelabs.ai/scans/scan-abc123
+```
+</Accordion>
+
+## Flags
+
+| Flag | Type | Description |
+|------|------|-------------|
+| `--path <path>` | string | Path to scan (default: current directory) |
+| `--rules <rules>` | string[] | Specific rules to check |
+| `--exclude <patterns>` | string[] | Glob patterns to exclude |
+| `--severity <level>` | string | Minimum severity to report (low, medium, high, critical) |
+| `--fix` | bool | Automatically fix issues where possible |
+| `--format <format>` | string | Output format (text, json, sarif) |
+
+## Examples
+
+### Filter by severity
+
+Only show high and critical issues:
+
+```bash
+asymptote scan --severity high
+```
+
+### Exclude patterns
+
+Exclude test files and node_modules:
+
+```bash
+asymptote scan --exclude "**/*.test.ts" --exclude "**/node_modules/**"
+```
+
+### Output as JSON
+
+```bash
+asymptote scan --format json > results.json
+```
+
+### SARIF output for CI/CD
+
+```bash
+asymptote scan --format sarif > results.sarif
+```
+
+### Auto-fix issues
+
+```bash
+asymptote scan --fix
+```
+
+<Note>
+Not all issues can be auto-fixed. The CLI will report which issues were fixed and which require manual intervention.
+</Note>
+
+## Exit Codes
+
+| Code | Meaning |
+|------|---------|
+| 0 | No issues found |
+| 1 | Issues found |
+| 2 | Error during scan |
+
+<Card
+  title="Next: Watch mode"
+  icon="arrow-right"
+  href="/cli/watch"
+>
+  Enable continuous scanning with watch mode.
+</Card>

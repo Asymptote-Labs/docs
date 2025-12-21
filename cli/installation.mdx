@@ -1,0 +1,91 @@
+---
+title: "Installation"
+description: "Install the Asymptote CLI on your system"
+---
+
+# Installation
+
+Installing Asymptote is easy! Choose your platform below.
+
+## Mac & Linux
+
+Run the command below to install the latest version:
+
+```bash
+curl -s -L https://api.asymptotelabs.ai/install.sh | sh
+```
+
+<Accordion title="Example output">
+```bash
+$ curl -s -L https://api.asymptotelabs.ai/install.sh | sh
+
+Installing Asymptote...
+
+Downloading binary for Darwin arm64... Done!
+
+Version:    v0.1.0
+Platform:   darwin/arm64
+Build Time: 2025-01-15T10:30:00+00:00
+
+Asymptote was installed successfully to /Users/you/.asymptote/bin/asymptote
+
+Run 'asymptote --help' to get started.
+
+You may need to open a new terminal window for these changes to take effect.
+```
+</Accordion>
+
+## Windows
+
+Download the latest version of the executable:
+
+```
+https://releases.asymptotelabs.ai/latest/asymptote-windows-amd64.exe
+https://releases.asymptotelabs.ai/latest/asymptote-windows-386.exe
+```
+
+## Updating
+
+Subsequent updates can be installed using:
+
+```bash
+asymptote update
+```
+
+After installing, you may need to restart your terminal, or source your shell's rc file (e.g. `~/.bashrc`, `~/.zshrc`, etc.)
+
+## Verify Installation
+
+Check that the CLI is installed correctly:
+
+```bash
+$ asymptote version
+
+Version:    v0.1.0
+Platform:   darwin/arm64
+Hash:       a9297a32e5d2e6507f27d2ea98b831fbcb775e21
+Build Time: 2025-01-15T10:30:00+00:00
+```
+
+## Initialize a Project
+
+Set up Asymptote in your project:
+
+```bash
+$ asymptote init
+
+Created project config file .asymptote.yml
+```
+
+| Flag | Type | Description |
+|------|------|-------------|
+| `--preset <preset>` | string | Use a preset configuration (strict, standard, minimal) |
+| `--force` | bool | Overwrite existing configuration |
+
+<Card
+  title="Next: Authentication"
+  icon="arrow-right"
+  href="/cli/authentication"
+>
+  Connect the CLI to your Asymptote account.
+</Card>

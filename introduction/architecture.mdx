@@ -1,0 +1,43 @@
+---
+title: "Platform Architecture"
+description: "Explore the end-to-end system that makes safer code generation possible."
+---
+
+## Overview
+
+Asymptote integrates with your favorite AI coding tools to detect vulnerabilities as code is generated, and delivers automatic remediation with clear, actionable fixes before anything ships.
+
+Asymptote is architected to:
+
+- **Intercept code at generation time:** Catch vulnerabilities as AI tools produce code, before changes ever reach a pull request.
+- **Bring the right context:** Use nearby code, dependencies, configuration, and organization rules across repositories and languages to evaluate each suggestion correctly.
+- **Detect issues inline:** Combine static checks, semantic analysis, policy enforcement, and model-assisted reasoning in the coding flow without slowing developers down.
+- **Respond with fixes immediately:** Provide clear guidance on what is wrong, why it matters, and how to fix it right where the code is written.
+- **Operate safely at scale:** Enforce strict access controls, run analysis in a sandbox, and keep complete traceability for every decision.
+
+## How Asymptote Works in the Coding Loop
+
+Let's walk through how Asymptote evaluates code as it's generated in Claude Code and Cursor, then flags vulnerabilities before the change reaches a pull request.
+
+<img src="/public/system_architecture.png" alt="Asymptote System Architecture" />
+
+1. **Codegen-time invocation:** As your AI coding agents draft or edit code, Asymptote is invoked through a mix of rules and hooks in Claude Code and Cursor. This means analysis happens while code is being produced, not after the PR is opened.
+
+2. **MCP request creation:** The client sends an MCP request containing the proposed change. The request can include the generated diff, files touched, repository metadata, and the active security policy profile.
+
+3. **Change understanding and context collection:** Asymptote expands the change into the context needed to judge risk. Asymptote identifies the functions and endpoints affected, tracks dependency and configuration changes, and pulls surrounding code needed to understand intent and data flow.
+
+4. **Planning and routing:** Asymptote selects an analysis plan based on language, framework, risk level, and latency budget. Small changes get fast inline checks. Higher-risk changes trigger deeper analysis.
+
+5. **Layered vulnerability detection:** Asymptote runs multiple signals in parallel and in sequence:
+   - Fast pattern checks for obvious unsafe constructs, insecure defaults, and auth boundary changes
+   - Semantic analysis to reason about tainted data, privilege transitions, and cross-file impact
+   - Tool-backed signals such as linters, SAST, and dependency vulnerability checks, plus organization-specific rules
+   - Model-assisted review that explains likely exploit paths, reduces false positives, and generates concrete remediation steps
+
+6. **Inline feedback and gating:** Asymptote returns structured findings immediately to the AI tool. Claude Code or Cursor can surface warnings inline, block unsafe suggestions, require a justification, or prompt the model to regenerate a safer alternative.
+
+7. **Downstream enforcement:** The same policies and detectors can run again in CI when a PR is opened, ensuring consistency between what was allowed during code generation and what is allowed to merge.
+
+8. **Traceability and logging:** Asymptote records what was analyzed and why decisions were made, including the signals used, key evidence, and outcomes. This supports debugging, incident response, and compliance without slowing down the developer loop.
+

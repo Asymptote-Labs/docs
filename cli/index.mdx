@@ -1,0 +1,74 @@
+---
+title: "CLI Reference"
+description: "Commands, examples & usage guide for the Asymptote CLI"
+---
+
+# Asymptote CLI Reference
+
+This reference documents every command and flag available in Asymptote's command-line interface.
+
+<Card
+  title="Install the CLI"
+  icon="download"
+  href="/cli/installation"
+  horizontal
+>
+  Get started by installing the Asymptote CLI.
+</Card>
+
+## What you can do
+
+With the Asymptote CLI, you can:
+
+- Scan code for security vulnerabilities in real-time
+- Monitor AI coding sessions for policy violations
+- Configure security guardrails and rules
+- View detailed reports about detected issues
+
+## Command Overview
+
+<Columns cols={2}>
+  <Card
+    title="Getting Started"
+    icon="rocket"
+    href="/cli/installation"
+  >
+    Installation and authentication setup.
+  </Card>
+  <Card
+    title="Scanning"
+    icon="magnifying-glass"
+    href="/cli/scan"
+  >
+    Scan code for vulnerabilities.
+  </Card>
+  <Card
+    title="Monitoring"
+    icon="eye"
+    href="/cli/monitor"
+  >
+    Real-time AI coding session monitoring.
+  </Card>
+  <Card
+    title="Configuration"
+    icon="gear"
+    href="/cli/policies"
+  >
+    Policies and allowlist management.
+  </Card>
+</Columns>
+
+## Global Flags
+
+The Asymptote CLI supports these flags for every command:
+
+| Flag | Type | Description |
+|------|------|-------------|
+| `--api-host <host>` | string | Override the API host |
+| `--api-key <key>` | string | Override the API key |
+| `--config <path>` | string | Path to config file (default: `~/.asymptote/config.yml`) |
+| `--json` | bool | Output in JSON format |
+| `--no-color` | bool | Disable colored output |
+| `-v, --verbose` | bool | Enable verbose logging |
+| `--quiet` | bool | Suppress non-essential output |
+| `-h, --help` | bool | Show help for any command |

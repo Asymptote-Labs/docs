@@ -1,0 +1,154 @@
+---
+title: "Fraud Detection Pipeline"
+description: "Build a security scanning pipeline for fraud detection applications."
+---
+
+# Fraud Detection Pipeline
+
+Learn how to set up a comprehensive security scanning pipeline for fraud detection applications.
+
+## Overview
+
+Fraud detection systems handle sensitive financial data and require robust security measures. This guide walks through setting up Asymptote to scan a fraud detection pipeline.
+
+## Architecture
+
+A typical fraud detection system includes:
+
+- Data ingestion from payment processors
+- Feature engineering for ML models
+- Real-time scoring APIs
+- Database storage for transactions
+
+## Configuration
+
+### Step 1: Define Policies
+
+Create policies specific to financial applications:
+
+```yaml
+# asymptote.yaml
+policies:
+  - name: pci-dss
+    description: PCI-DSS compliance checks
+    severity: critical
+    enabled: true
+    
+  - name: sensitive-data
+    description: Detect exposed PII and financial data
+    severity: critical
+    rules:
+      - credit-card-numbers
+      - ssn-exposure
+      - account-numbers
+
+  - name: sql-injection
+    description: SQL injection prevention
+    severity: critical
+    enabled: true
+    
+  - name: authentication
+    description: Authentication security
+    severity: high
+    rules:
+      - weak-passwords
+      - missing-mfa
+      - session-management
+```
+
+### Step 2: Configure Scanning
+
+Set up scanning for your fraud detection codebase:
+
+```yaml
+# asymptote.yaml
+scan:
+  paths:
+    - ./src/
+    - ./api/
+    - ./models/
+  exclude:
+    - ./tests/
+    - ./data/samples/
+    
+  languages:
+    - python
+    - sql
+    - yaml
+```
+
+### Step 3: CI/CD Integration
+
+Add to your GitHub Actions workflow:
+
+```yaml
+name: Security Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  asymptote-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Asymptote
+        uses: asymptote/scan-action@v1
+        with:
+          api-key: ${{ secrets.ASYMPTOTE_API_KEY }}
+          policies: pci-dss,sensitive-data,sql-injection
+          fail-on: critical
+```
+
+## Common Findings
+
+### Exposed API Keys
+
+```python
+# ❌ Bad: Hardcoded API key
+stripe_key = "sk_live_abc123..."
+
+# ✅ Good: Use environment variables
+stripe_key = os.environ.get("STRIPE_API_KEY")
+```
+
+### SQL Injection
+
+```python
+# ❌ Bad: String interpolation
+query = f"SELECT * FROM transactions WHERE user_id = {user_id}"
+
+# ✅ Good: Parameterized queries
+query = "SELECT * FROM transactions WHERE user_id = %s"
+cursor.execute(query, (user_id,))
+```
+
+### Sensitive Data Logging
+
+```python
+# ❌ Bad: Logging sensitive data
+logger.info(f"Processing card: {card_number}")
+
+# ✅ Good: Mask sensitive data
+logger.info(f"Processing card: ****{card_number[-4:]}")
+```
+
+## Results
+
+After running the scan, review findings in the Asymptote dashboard:
+
+| Finding | Severity | File | Line |
+|---------|----------|------|------|
+| Hardcoded API key | Critical | config.py | 15 |
+| SQL injection risk | Critical | queries.py | 42 |
+| Missing input validation | High | api/handlers.py | 88 |
+
+## Next Steps
+
+1. Remediate critical findings
+2. Enable continuous monitoring
+3. Set up alerts for new vulnerabilities
+

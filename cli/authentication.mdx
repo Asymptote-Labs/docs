@@ -1,0 +1,107 @@
+---
+title: "Authentication"
+description: "Connect the CLI to your Asymptote account"
+---
+
+# Authentication
+
+Connect the CLI to your Asymptote account to enable full functionality.
+
+## Login
+
+```bash
+asymptote login
+```
+
+You'll be redirected to the dashboard to confirm access.
+
+<Accordion title="Example output">
+```bash
+$ asymptote login
+
+✓ Created session
+
+  Open the authorization page in your browser?  Yes
+
+Complete authorization at https://asymptotelabs.ai/cli/authorize/abc123
+
+✓ Opened login window in browser
+
+⡿  Waiting...
+
+✓ Successfully authenticated!
+```
+</Accordion>
+
+| Flag | Type | Description |
+|------|------|-------------|
+| `--no-prompt` | bool | Open the authorization window without asking |
+
+All configurations are stored in `~/.asymptote/config.yml`.
+
+## View Configuration
+
+Check your current CLI configuration:
+
+```bash
+asymptote config
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote config
+
+ Name             Value                                    Source
+─────────────────────────────────────────────────────────────────────────
+ API Key          ak-392c737aa1e467e42e85ae3e8417****      config file
+ Organization     Acme Corp                                config file
+ API Server       https://api.asymptotelabs.ai             default
+```
+</Accordion>
+
+## API Key Authentication
+
+You can also authenticate using an API key directly:
+
+```bash
+asymptote config set api-key <your-api-key>
+```
+
+Or set via environment variable:
+
+```bash
+export ASYMPTOTE_API_KEY=<your-api-key>
+```
+
+## Troubleshooting
+
+If you're having authentication issues, run:
+
+```bash
+asymptote doctor
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote doctor
+
+Checking configuration...
+
+ Check                  Status
+─────────────────────────────────────
+ Config file            ✓ Found
+ API key                ✓ Valid
+ API connection         ✓ Connected
+ Latest version         ⚠ Update available (v0.2.0)
+
+All checks passed!
+```
+</Accordion>
+
+<Card
+  title="Next: Scan your code"
+  icon="arrow-right"
+  href="/cli/scan"
+>
+  Start scanning your code for vulnerabilities.
+</Card>

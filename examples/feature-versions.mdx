@@ -1,0 +1,166 @@
+---
+title: "Feature Versions"
+description: "Manage and track different versions of your security configurations."
+---
+
+# Feature Versions
+
+Learn how to manage different versions of your security configurations and policies.
+
+## Overview
+
+As your security requirements evolve, you'll need to version your configurations to:
+
+- Track changes over time
+- Roll back to previous configurations
+- Test new policies before deployment
+- Maintain compliance audit trails
+
+## Versioning Strategies
+
+### Git-Based Versioning
+
+Store your Asymptote configuration in version control:
+
+```
+project/
+├── asymptote.yaml           # Current configuration
+├── .asymptote/
+│   ├── policies/
+│   │   ├── v1.0/
+│   │   │   └── policies.yaml
+│   │   ├── v1.1/
+│   │   │   └── policies.yaml
+│   │   └── v2.0/
+│   │       └── policies.yaml
+│   └── history.json
+```
+
+### Explicit Versioning
+
+Add version metadata to your configuration:
+
+```yaml
+# asymptote.yaml
+version: "2.0"
+metadata:
+  created: "2024-01-15"
+  author: "security-team"
+  changelog: "Added PCI-DSS policies"
+
+policies:
+  # ... policy definitions
+```
+
+## Creating a New Version
+
+### Step 1: Create Version Branch
+
+```bash
+git checkout -b config/v2.1
+```
+
+### Step 2: Update Configuration
+
+```yaml
+# asymptote.yaml
+version: "2.1"
+metadata:
+  created: "2024-02-01"
+  author: "security-team"
+  changelog: "Enhanced SQL injection detection"
+
+policies:
+  - name: sql-injection-v2
+    description: Enhanced SQL injection detection
+    severity: critical
+    rules:
+      - prepared-statements
+      - orm-usage
+      - input-sanitization
+```
+
+### Step 3: Test New Version
+
+```bash
+asymptote scan --branch config-v2.1
+```
+
+### Step 4: Review Results
+
+Compare results between versions:
+
+```bash
+asymptote diff --version 2.0 --version 2.1
+```
+
+Output:
+
+```
+Version Comparison: 2.0 → 2.1
+
+New Rules Added:
+  + orm-usage (sql-injection-v2)
+  + input-sanitization (sql-injection-v2)
+
+Rules Removed:
+  - legacy-sql-check
+
+Findings Difference:
+  v2.0: 15 findings
+  v2.1: 23 findings (+8)
+  
+  New Findings:
+  - 5 x orm-usage violations
+  - 3 x input-sanitization warnings
+```
+
+### Step 5: Deploy Version
+
+```bash
+git checkout main
+git merge config/v2.1
+asymptote deploy --version 2.1
+```
+
+## Rollback
+
+If issues arise, rollback to a previous version:
+
+```bash
+asymptote rollback --version 2.0
+```
+
+## Version History
+
+View version history:
+
+```bash
+asymptote versions list
+```
+
+```
+VERSION  DATE        AUTHOR          CHANGELOG
+2.1      2024-02-01  security-team   Enhanced SQL injection detection
+2.0      2024-01-15  security-team   Added PCI-DSS policies
+1.1      2023-12-01  security-team   Bug fixes
+1.0      2023-11-01  security-team   Initial release
+```
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Semantic Versioning" icon="code-branch">
+    Use semantic versioning (MAJOR.MINOR.PATCH) for configurations.
+  </Card>
+  <Card title="Changelog" icon="scroll">
+    Document changes in each version for audit purposes.
+  </Card>
+  <Card title="Test Before Deploy" icon="flask">
+    Always test new versions in a branch before deploying.
+  </Card>
+  <Card title="Automate Rollbacks" icon="rotate-left">
+    Set up automated rollbacks for failed deployments.
+  </Card>
+</CardGroup>
+

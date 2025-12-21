@@ -1,0 +1,75 @@
+---
+title: "What is Asymptote?"
+description: "The security layer for coding, built for agentic development."
+---
+
+## How it Works
+
+Asymptote is a security layer that protects the modern software development workflow: human developers and AI coding agents. It sits between code generation and real-world execution (repos, dependencies, CI/CD, terminals, cloud, databases) to enforce best security practices, prevent risky changes, and make every action auditable.
+
+Asymptote eliminates the core security and governance gaps that appear when code can be authored and executed at machine speed by providing an end-to-end layer for:
+
+- **Enforcing secure-by-default workflows:** Guardrails for code changes, dependency updates, secret handling, and deployment actions so teams ship faster without bypassing security basics.
+
+- **Detecting and preventing traditional software attacks:** Coverage for common real-world threats such as supply chain attacks (malicious packages, typosquatting, dependency confusion) and application-layer issues like SQL injection and other insecure patterns before they reach production.
+
+- **Securing AI coding agents against AI-enabled attacks:** Protections for new failure modes unique to agents where prompts, tool calls, or external content can steer agents into unsafe behavior (for example, data exfiltration, malicious code changes, unauthorized actions, or policy bypass).
+
+- **Policy-driven access control for tools and environments:** Least-privilege permissions and scoped credentials for repos, CI, cloud, and databases, limiting blast radius when something goes wrong.
+
+- **Safe execution and high-risk action gating:** Sandboxing and approval gates for sensitive operations (running scripts, touching prod, modifying auth, changing dependencies, releasing).
+
+- **Auditability and provenance across the entire agent workflow:** Traceable logs and attribution for what changed, why, and how, supporting incident response and compliance.
+
+## Key capabilities
+
+<CardGroup cols={2}>
+  <Card title="AI-first SDLC guardrails beyond SAST" icon="shield-halved">
+    Detect agent-native failure modes like prompt injection, unsafe tool wiring, over-privileged actions, and agent chains that route around RBAC and policy.
+  </Card>
+  <Card title="Natural-language security policies to enforceable guardrails" icon="language">
+    Security leaders describe requirements in plain English; Asymptote enforces them consistently across repos, tools, and agent workflows.
+  </Card>
+  <Card title="Inspect every AI-generated change before it lands" icon="magnifying-glass-chart">
+    Review code diffs and the context that produced them to catch risky behavior early, before merge, release, or deploy.
+  </Card>
+  <Card title="Controls for agent access and blast radius" icon="lock">
+    Lock down what agents can touch such as repos, CI, internal APIs, cloud, and databases, and gate high-impact actions.
+  </Card>
+  <Card title="Covers traditional attacks too" icon="bug-slash">
+    Catch common security issues like supply chain risks such as malicious or typosquatted dependencies and insecure patterns such as SQL injection.
+  </Card>
+  <Card title="Full observability and provenance for audit and incident response" icon="clipboard-list">
+    Log exactly what each agent did and why, including prompts, tool calls, decisions, and triggered guardrails.
+  </Card>
+</CardGroup>
+
+## Implementation Overview
+
+Asymptote plugs into your SDLC and agent tooling to apply real-time guardrails, capture end-to-end provenance, and **detect and remediate vulnerabilities at the source**. It evaluates both the code changes and the agent behavior that produced them, then enforces your organization's policies before changes merge, release, or deploy.
+
+1. **Connect:** Link your repos, CI/CD, and agent tooling so Asymptote can observe changes and tool activity.
+
+2. **Define:** Write security requirements in natural language. Asymptote turns them into enforceable guardrails and access controls.
+
+3. **Inspect:** Analyze AI-generated diffs, dependency updates, and risky patterns. Flag issues like supply chain threats and injection-prone code before merge.
+
+4. **Enforce:** Block or gate high-risk actions, restrict agent access to sensitive systems, and require approvals when needed.
+
+5. **Observe:** Generate full audit trails and provenance so security and platform teams can review what happened, why, and what guardrails fired.
+
+## Use Cases
+
+- **Safe adoption of AI coding agents:** Roll out agents with guardrails, scoped access, and gates for sensitive actions.
+
+- **PR and code review hardening:** Catch risky diffs and dependency updates before merge with clear, policy-linked explanations.
+
+- **Supply chain defense:** Detect malicious packages, typosquatting, and dependency confusion early in the workflow.
+
+- **Injection and insecure pattern prevention:** Flag patterns that lead to issues like SQL injection and other common insecure changes before they ship.
+
+- **Security standards enforcement:** Apply guardrails aligned to common guidance such as OWASP Top 10 and CWE Top 25 across teams and repos.
+
+- **Audit, compliance, and incident response:** Reconstruct agent activity end-to-end with provenance across prompts, tool calls, and resulting code changes.
+
+

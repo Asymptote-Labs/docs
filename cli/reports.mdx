@@ -1,0 +1,134 @@
+---
+title: "Reports"
+description: "Generate security reports and view scan history"
+---
+
+# Reports
+
+Generate detailed security reports and view your scan history.
+
+## Generate a Report
+
+Create a security report for your project:
+
+```bash
+asymptote report [flags]
+```
+
+| Flag | Type | Description |
+|------|------|-------------|
+| `--format <format>` | string | Output format (html, pdf, json, markdown) |
+| `--output <path>` | string | Output file path |
+| `--period <period>` | string | Time period (7d, 30d, 90d) |
+| `--include-fixed` | bool | Include resolved issues |
+
+### Examples
+
+Generate a PDF report:
+
+```bash
+asymptote report --format pdf --output ./security-report.pdf
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote report --format pdf --output ./security-report.pdf
+
+Generating report...
+
+Collecting scan data from last 30 days...
+Analyzing 47 scans...
+
+✓ Report generated: ./security-report.pdf
+
+Summary:
+ - Total scans: 47
+ - Issues found: 23
+ - Issues fixed: 19
+ - Open issues: 4
+```
+</Accordion>
+
+Generate a JSON report for CI/CD:
+
+```bash
+asymptote report --format json --output ./report.json
+```
+
+Generate a markdown report:
+
+```bash
+asymptote report --format markdown --output ./SECURITY.md
+```
+
+## View Scan History
+
+View recent scans for your project:
+
+```bash
+asymptote history [flags]
+```
+
+| Flag | Type | Description |
+|------|------|-------------|
+| `--limit <n>` | number | Number of results to show (default: 10) |
+| `--status <status>` | string | Filter by status (completed, failed, running) |
+
+<Accordion title="Example output">
+```bash
+$ asymptote history
+
+ Scan ID         Date                  Issues  Duration  Status
+─────────────────────────────────────────────────────────────────
+ scan-abc123     2025-01-15 14:32:15   3       2.3s      completed
+ scan-def456     2025-01-15 10:15:42   0       1.8s      completed
+ scan-ghi789     2025-01-14 16:45:00   1       2.1s      completed
+ scan-jkl012     2025-01-14 12:30:18   0       1.9s      completed
+ scan-mno345     2025-01-13 09:22:45   5       2.5s      completed
+```
+</Accordion>
+
+## View Scan Details
+
+Get details about a specific scan:
+
+```bash
+asymptote history show <scan-id>
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote history show scan-abc123
+
+Scan: scan-abc123
+Date: 2025-01-15 14:32:15
+Duration: 2.3s
+Files scanned: 142
+Status: completed
+
+Issues (3):
+─────────────────────────────────────────────────────────────
+ Severity  Rule                    File              Line
+ HIGH      hardcoded-secret        src/config.ts     23
+ MEDIUM    sql-injection           src/db/query.ts   45
+ LOW       console-log             src/utils.ts      12
+
+View online: https://asymptotelabs.ai/scans/scan-abc123
+```
+</Accordion>
+
+## Export History
+
+Export scan history to CSV:
+
+```bash
+asymptote history export --format csv --output ./history.csv
+```
+
+<Card
+  title="Next: Get support"
+  icon="arrow-right"
+  href="/cli/support"
+>
+  Get help and contact the Asymptote team.
+</Card>

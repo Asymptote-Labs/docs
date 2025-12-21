@@ -1,0 +1,178 @@
+---
+title: "Jupyter Notebook Integration"
+description: "Scan Jupyter notebooks for security vulnerabilities."
+---
+
+# Jupyter Notebook Integration
+
+Learn how to scan Jupyter notebooks for security vulnerabilities and sensitive data exposure.
+
+## Overview
+
+Jupyter notebooks are commonly used in data science workflows but can pose security risks:
+
+- Hardcoded credentials and API keys
+- Sensitive data in output cells
+- Insecure code patterns
+- Dependencies with vulnerabilities
+
+## Configuration
+
+### Enable Notebook Scanning
+
+```yaml
+# asymptote.yaml
+scan:
+  paths:
+    - ./notebooks/
+  languages:
+    - python
+    - jupyter
+  
+notebook:
+  scan_outputs: true
+  scan_markdown: true
+  max_output_size: 1000  # lines
+```
+
+### Notebook-Specific Policies
+
+```yaml
+policies:
+  - name: notebook-security
+    description: Security checks for Jupyter notebooks
+    severity: high
+    rules:
+      - credentials-in-cells
+      - sensitive-output
+      - pip-install-insecure
+      
+  - name: data-exposure
+    description: Detect exposed sensitive data
+    severity: critical
+    rules:
+      - pii-in-output
+      - financial-data-display
+```
+
+## Scanning Notebooks
+
+### CLI Scan
+
+```bash
+asymptote scan ./notebooks/
+```
+
+### Scan Specific Notebook
+
+```bash
+asymptote scan ./notebooks/analysis.ipynb
+```
+
+## Common Findings
+
+### Credentials in Cells
+
+```python
+# ❌ Bad: Hardcoded credentials
+api_key = "sk_live_abc123..."
+db_password = "supersecret"
+
+# ✅ Good: Use environment variables or secrets
+import os
+api_key = os.environ.get("API_KEY")
+```
+
+### Sensitive Data in Output
+
+```python
+# ❌ Bad: Displaying full dataset with PII
+df.head(100)  # May contain names, emails, SSNs
+
+# ✅ Good: Mask or exclude sensitive columns
+df[['id', 'category', 'amount']].head(100)
+```
+
+### Insecure pip install
+
+```python
+# ❌ Bad: Installing from untrusted sources
+!pip install http://sketchy-site.com/package.tar.gz
+
+# ✅ Good: Use official package index
+!pip install pandas==2.0.0
+```
+
+## Pre-commit Hook
+
+Set up automatic scanning before commits:
+
+```yaml
+# .pre-commit-config.yaml
+repos:
+  - repo: local
+    hooks:
+      - id: asymptote-notebook
+        name: Asymptote Notebook Scan
+        entry: asymptote scan --type notebook
+        language: system
+        files: \.ipynb$
+```
+
+## CI/CD Integration
+
+```yaml
+name: Notebook Security Scan
+
+on:
+  push:
+    paths:
+      - '**.ipynb'
+  pull_request:
+    paths:
+      - '**.ipynb'
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Scan Notebooks
+        uses: asymptote/scan-action@v1
+        with:
+          api-key: ${{ secrets.ASYMPTOTE_API_KEY }}
+          paths: ./notebooks/
+          policies: notebook-security,data-exposure
+```
+
+## Clearing Outputs
+
+Before committing, clear sensitive outputs:
+
+```bash
+# Using nbstripout
+pip install nbstripout
+nbstripout notebook.ipynb
+
+# Or use Asymptote
+asymptote notebook clean --remove-outputs ./notebooks/
+```
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Use Environment Variables">
+    Never hardcode credentials in notebooks. Use `os.environ` or a secrets manager.
+  </Accordion>
+  <Accordion title="Clear Outputs Before Commit">
+    Remove cell outputs before committing to avoid exposing sensitive data.
+  </Accordion>
+  <Accordion title="Review Markdown Cells">
+    Ensure markdown cells don't contain sensitive information or internal URLs.
+  </Accordion>
+  <Accordion title="Pin Dependencies">
+    Pin package versions to avoid supply chain attacks.
+  </Accordion>
+</AccordionGroup>
+

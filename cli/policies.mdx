@@ -1,0 +1,130 @@
+---
+title: "Policies"
+description: "Manage security policies from the CLI"
+---
+
+# Policies
+
+Security policies define the rules that Asymptote uses to scan and monitor your code.
+
+## List Policies
+
+View all policies configured for your organization:
+
+```bash
+asymptote policy list
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote policy list
+
+ Name                    Status    Rules  Last Updated
+───────────────────────────────────────────────────────────
+ Default Policy          active    24     2d ago
+ PCI Compliance          active    42     1w ago
+ HIPAA Security          active    38     2w ago
+ Custom Rules            draft     8      3h ago
+```
+</Accordion>
+
+## Apply a Policy
+
+Apply a policy to your current project:
+
+```bash
+asymptote policy apply <policy-name>
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote policy apply "PCI Compliance"
+
+✓ Applied policy "PCI Compliance" to project
+
+Active rules:
+ - no-hardcoded-secrets
+ - no-sql-injection
+ - secure-random
+ - ... and 39 more
+```
+</Accordion>
+
+| Flag | Type | Description |
+|------|------|-------------|
+| `--dry-run` | bool | Show what would change without applying |
+
+## View Policy Details
+
+See the rules in a specific policy:
+
+```bash
+asymptote policy show <policy-name>
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote policy show "Default Policy"
+
+Policy: Default Policy
+Status: active
+Rules:  24
+
+ Rule                     Severity  Category
+────────────────────────────────────────────────────
+ no-hardcoded-secrets     critical  secrets
+ no-sql-injection         high      injection
+ no-xss                   high      injection
+ no-eval                  high      code-execution
+ no-console-log           low       best-practices
+ ...
+```
+</Accordion>
+
+## Create a Policy
+
+Create a new policy from a YAML file:
+
+```bash
+asymptote policy create --file policy.yml
+```
+
+Example `policy.yml`:
+
+```yaml
+name: My Custom Policy
+rules:
+  - id: no-hardcoded-secrets
+    severity: critical
+    enabled: true
+  - id: no-sql-injection
+    severity: high
+    enabled: true
+  - id: no-console-log
+    severity: low
+    enabled: false
+```
+
+## Update a Policy
+
+```bash
+asymptote policy update <policy-name> --file policy.yml
+```
+
+## Delete a Policy
+
+```bash
+asymptote policy delete <policy-name>
+```
+
+<Warning>
+Deleting a policy is permanent. Projects using this policy will fall back to the default policy.
+</Warning>
+
+<Card
+  title="Next: Manage allowlist"
+  icon="arrow-right"
+  href="/cli/allowlist"
+>
+  Configure exceptions and allowlisted patterns.
+</Card>
