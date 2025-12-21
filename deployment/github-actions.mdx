@@ -1,0 +1,98 @@
+---
+title: "GitHub Actions"
+description: "Integrate Asymptote with GitHub Actions for automated security scanning."
+---
+
+# GitHub Actions
+
+Integrate Asymptote with GitHub Actions to automatically scan your code on every push and pull request.
+
+## Quick Start
+
+Add the following workflow to your repository at `.github/workflows/asymptote.yml`:
+
+```yaml
+name: Asymptote Security Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Asymptote Scan
+        uses: asymptote/scan-action@v1
+        with:
+          api-key: ${{ secrets.ASYMPTOTE_API_KEY }}
+```
+
+## Configuration Options
+
+### Full Configuration
+
+```yaml
+name: Asymptote Security Scan
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Asymptote Scan
+        uses: asymptote/scan-action@v1
+        with:
+          api-key: ${{ secrets.ASYMPTOTE_API_KEY }}
+          severity: critical,high
+          fail-on: critical
+          output-format: sarif
+          output-file: results.sarif
+      
+      - name: Upload SARIF results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results.sarif
+```
+
+### Input Parameters
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `api-key` | Asymptote API key | Required |
+| `severity` | Severity levels to scan | `critical,high,medium` |
+| `fail-on` | Fail the build on these severities | `critical` |
+| `output-format` | Output format (json, sarif, text) | `sarif` |
+| `config` | Path to config file | `asymptote.yaml` |
+
+## Pull Request Comments
+
+Enable automatic comments on pull requests:
+
+```yaml
+- name: Run Asymptote Scan
+  uses: asymptote/scan-action@v1
+  with:
+    api-key: ${{ secrets.ASYMPTOTE_API_KEY }}
+    comment-on-pr: true
+```
+
+## Branch Protection
+
+Configure branch protection rules to require Asymptote checks to pass before merging.
+
+1. Go to **Settings** → **Branches**
+2. Add a branch protection rule
+3. Enable **Require status checks to pass**
+4. Select **Asymptote Security Scan**
+

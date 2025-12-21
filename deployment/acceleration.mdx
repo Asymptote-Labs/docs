@@ -1,0 +1,89 @@
+---
+title: "Scan Acceleration"
+description: "Optimize scan performance for large codebases."
+---
+
+# Scan Acceleration
+
+Asymptote provides several mechanisms to accelerate scanning for large codebases.
+
+## Overview
+
+When working with large codebases, scan times can become significant. Asymptote offers several optimization techniques to improve performance.
+
+## Caching
+
+Asymptote caches analysis results to avoid re-scanning unchanged files.
+
+```bash
+asymptote scan --cache enabled
+```
+
+### Cache Configuration
+
+Configure caching behavior in your `asymptote.yaml`:
+
+```yaml
+cache:
+  enabled: true
+  ttl: 3600  # Cache TTL in seconds
+  strategy: incremental
+```
+
+## Incremental Scanning
+
+Only scan files that have changed since the last scan:
+
+```bash
+asymptote scan --incremental
+```
+
+This is especially useful in CI/CD pipelines where you want to scan only the changes in a pull request.
+
+## Parallel Processing
+
+Asymptote can parallelize scanning across multiple cores:
+
+```bash
+asymptote scan --parallel 4
+```
+
+### Auto-detection
+
+By default, Asymptote will auto-detect the optimal number of parallel workers:
+
+```yaml
+performance:
+  parallel: auto
+  max_workers: 8
+```
+
+## Exclusions
+
+Exclude files and directories that don't need scanning:
+
+```yaml
+exclude:
+  - node_modules/
+  - vendor/
+  - "*.test.js"
+  - "*.spec.ts"
+```
+
+## Performance Tips
+
+<CardGroup cols={2}>
+  <Card title="Use Incremental Scans" icon="bolt">
+    In CI/CD, only scan changed files.
+  </Card>
+  <Card title="Configure Exclusions" icon="filter">
+    Exclude test files and dependencies.
+  </Card>
+  <Card title="Enable Caching" icon="database">
+    Cache results between scans.
+  </Card>
+  <Card title="Tune Parallelism" icon="gauge">
+    Match workers to available cores.
+  </Card>
+</CardGroup>
+

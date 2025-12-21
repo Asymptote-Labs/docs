@@ -1,0 +1,65 @@
+---
+title: "Working with Branches"
+description: "Make rapid changes and explore features with branches."
+---
+
+# Working with Branches
+
+Branch deployments allow users to quickly iterate on features and configurations. When working in a branch users have a number of useful capabilities, including:
+
+- Asymptote can automatically watch your files and deploy any changes
+- Updates to your project are deployed in seconds
+- Quickly test policy changes to see the effects
+- Branches have a consistent name across deployments
+
+<Note>
+Branch deployments do not pick up changes to environment variables or secrets, so these changes would require a new non-branch deployment to take effect.
+</Note>
+
+## Create a Branch Deployment
+
+To create a branch, simply run:
+
+```bash
+asymptote scan --branch <branch_name>
+```
+
+Asymptote will create a new branch in the environment that you can interact with.
+
+## Continuously Deploy Changes
+
+You can ask the Asymptote CLI to continuously deploy changes to your branch using the watch flag:
+
+```bash
+asymptote watch --branch <branch_name>
+```
+
+Asymptote will automatically keep the branch up to date as you make changes locally.
+
+## Develop Locally
+
+One of the major advantages of branch deployments is the flexibility they offer when working locally. Once you've deployed a branch, you can iteratively edit policies and configurations and see the effects immediately.
+
+## Example
+
+In the following example we add a new security policy to an existing configuration:
+
+```yaml
+# asymptote.yaml
+policies:
+  - name: sql-injection
+    severity: critical
+    enabled: true
+  - name: xss-prevention  # New policy
+    severity: high
+    enabled: true
+```
+
+Deploy the branch to test:
+
+```bash
+asymptote scan --branch test-xss-policy
+```
+
+Review the results and iterate as needed.
+

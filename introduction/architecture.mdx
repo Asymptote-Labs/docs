@@ -1,0 +1,53 @@
+---
+title: "Platform Architecture"
+description: "Understand the architecture and components of the Asymptote platform."
+---
+
+# Platform Architecture
+
+Asymptote is built on a modern, scalable architecture designed to handle codebases of any size.
+
+## Overview
+
+<Frame>
+  <img src="/images/architecture-overview.png" alt="Asymptote Architecture" />
+</Frame>
+
+## Core Components
+
+### Scanner Engine
+
+The scanner engine is the heart of Asymptote. It performs static analysis on your code to identify security vulnerabilities.
+
+- **Language Support** - Supports multiple programming languages
+- **Pattern Matching** - Uses advanced pattern matching algorithms
+- **Context Awareness** - Understands code context for accurate results
+
+### Policy Engine
+
+The policy engine allows you to define and enforce security policies across your organization.
+
+- **Custom Rules** - Create rules specific to your organization
+- **Industry Standards** - Built-in support for OWASP, CWE, and more
+- **Severity Levels** - Categorize issues by severity
+
+### Integration Layer
+
+Seamlessly connect Asymptote with your existing tools and workflows.
+
+- **Version Control** - GitHub, GitLab, Bitbucket
+- **CI/CD** - GitHub Actions, GitLab CI, Jenkins
+- **Communication** - Slack, Teams, Email
+
+## Data Flow
+
+1. Code is submitted for analysis via CLI, CI/CD, or API
+2. Scanner engine analyzes the code against policies
+3. Results are processed and stored
+4. Notifications are sent based on configuration
+5. Reports are generated and made available
+
+## Security
+
+All data is encrypted in transit and at rest. We follow industry best practices for security and compliance.
+

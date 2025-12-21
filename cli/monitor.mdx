@@ -1,0 +1,101 @@
+---
+title: "asymptote monitor"
+description: "Monitor AI coding sessions for security violations"
+---
+
+# asymptote monitor
+
+Monitor AI coding sessions for security violations in real-time. This command intercepts AI-generated code suggestions and scans them before they're applied.
+
+```bash
+asymptote monitor [flags]
+```
+
+## Usage
+
+Start monitoring your IDE:
+
+```bash
+asymptote monitor --ide cursor
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote monitor --ide cursor
+
+Monitoring Cursor IDE...
+
+✓ Connected to Cursor
+
+[14:32:15] AI suggestion scanned - ✓ Safe
+[14:33:42] AI suggestion scanned - ⚠ Blocked (hardcoded credential detected)
+[14:35:18] AI suggestion scanned - ✓ Safe
+[14:36:01] AI suggestion scanned - ✓ Safe
+[14:37:22] AI suggestion scanned - ⚠ Warning (console.log in production code)
+```
+</Accordion>
+
+## Flags
+
+| Flag | Type | Description |
+|------|------|-------------|
+| `--ide <ide>` | string | IDE to monitor (cursor, vscode, windsurf) |
+| `--block` | bool | Block code that violates policies (default: warn only) |
+| `--severity <level>` | string | Minimum severity to act on |
+| `--notify` | bool | Send desktop notifications |
+
+## Blocking Mode
+
+By default, monitor mode only warns about issues. Enable blocking to prevent violations:
+
+```bash
+asymptote monitor --ide cursor --block
+```
+
+<Warning>
+Blocking mode will prevent AI suggestions that violate your policies from being applied. Make sure your policies are configured correctly before enabling.
+</Warning>
+
+## Supported IDEs
+
+| IDE | Status | Notes |
+|-----|--------|-------|
+| Cursor | ✓ Supported | Full integration |
+| VS Code | ✓ Supported | Requires extension |
+| Windsurf | ✓ Supported | Full integration |
+| JetBrains | Coming soon | — |
+
+## What gets monitored
+
+- AI-generated code suggestions
+- Code completions
+- Chat-based code generation
+- Multi-file edits
+
+## Examples
+
+### Block high-severity issues only
+
+```bash
+asymptote monitor --ide cursor --block --severity high
+```
+
+### Monitor with notifications
+
+```bash
+asymptote monitor --ide cursor --notify
+```
+
+### Run in background
+
+```bash
+asymptote monitor --ide cursor &
+```
+
+<Card
+  title="Next: Configure policies"
+  icon="arrow-right"
+  href="/cli/policies"
+>
+  Set up security policies for your organization.
+</Card>

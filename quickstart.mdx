@@ -1,50 +1,57 @@
 ---
 title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+description: "Get started with Asymptote by connecting your GitHub repositories and configuring our security MCP server with your favorite AI coding tools."
 ---
 
-## Get started in three steps
+## Prerequisites
 
-Get your documentation site running locally and make your first customization.
+Before installing Asymptote, you must have:
+- A GitHub account with admin access to the repositories you plan to connect
+- One or more GitHub repositories where you want Asymptote to help detect and prevent code vulnerabilities
 
-### Step 1: Set up your local environment
+## Installing Asymptote
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
+### Step 1: Sign up for Asymptote
 
-### Step 2: Deploy your changes
+Visit [Asymptote](https://asymptotelabs.ai/login) to create a new account. You can sign up with Google or GitHub, or use your email address and set a password.
 
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+Your account gives you access to the Asymptote dashboard, where you can:
+- Configure custom security policies
+- See vulnerabilities we've detected (and the ones we've already remediated)
+- Track security and remediation metrics over time
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+### Step 2: Connect Your GitHub Account
 
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
+<Steps>
+  <Step title="Sign into GitHub">
+    <img src="/public/asymptote_github_connection.png" alt="Asymptote GitHub Connection" style={{ maxWidth: '400px' }} />
+  </Step>
+  <Step title="Authorize GitHub Integration">
+    You'll be redirected to GitHub to authorize Asymptote's access to your repositories. Asymptote requires the following permissions:
 
-### Step 3: Go live
+    - **Read access** to repository code and metadata
+    - **Webhook access** to receive real-time repository updates
+    - **Read and write access** to checks and commit statuses, issues and pull requests, and repository webhooks
+
+    <img src="/public/asymptote_permissions.png" alt="Asymptote Permissions" style={{ maxWidth: '400px' }} />
+  </Step>
+  <Step title="Select Repositories">
+    Select which repositories you want Asymptote to connect to. You can:
+
+    - Grant access to all repositories in your organization, or
+    - Select specific repositories now
+
+    You can add more repositories later from the Asymptote dashboard if needed.
+  </Step>
+</Steps>
+
+### Step 3: Create an Asymptote Secret key
+
+In the Asymptote Dashboard, navigate to the API Keys tab. Create a new secret key, apply the relevant scopes, and set a desired expiration (optional).
+
+<img src="/public/secret_key_tab.png" alt="Asymptote Secret Key Tab" style={{ maxWidth: '700px' }} />
+
+### Step 4: Go live
 
 <Accordion icon="rocket" title="Publish your docs">
   1. Commit and push your changes.

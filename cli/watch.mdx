@@ -1,0 +1,98 @@
+---
+title: "asymptote watch"
+description: "Watch for code changes and scan in real-time"
+---
+
+# asymptote watch
+
+Watch for code changes and scan in real-time. This is useful during development to catch issues as you write code.
+
+```bash
+asymptote watch [path] [flags]
+```
+
+## Usage
+
+Watch the current directory:
+
+```bash
+asymptote watch
+```
+
+Watch a specific path:
+
+```bash
+asymptote watch ./src
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote watch ./src
+
+Watching ./src for changes...
+
+✓ Initial scan complete - 0 issues found
+
+⡿  Waiting for changes...
+
+[14:32:15] Change detected: src/api/auth.ts
+[14:32:15] ✓ No issues found
+
+[14:33:42] Change detected: src/db/users.ts
+[14:33:42] ⚠ 1 issue found
+           HIGH: Potential SQL injection at line 28
+
+[14:35:18] Change detected: src/db/users.ts
+[14:35:18] ✓ No issues found
+```
+</Accordion>
+
+## Flags
+
+| Flag | Type | Description |
+|------|------|-------------|
+| `--path <path>` | string | Path to watch (default: current directory) |
+| `--debounce <ms>` | number | Debounce time in milliseconds (default: 500) |
+| `--exclude <patterns>` | string[] | Glob patterns to exclude from watching |
+| `--severity <level>` | string | Minimum severity to report |
+| `--notify` | bool | Send desktop notifications for issues |
+
+## Examples
+
+### With desktop notifications
+
+Get notified when issues are found:
+
+```bash
+asymptote watch --notify
+```
+
+### Custom debounce
+
+Increase debounce for large projects:
+
+```bash
+asymptote watch --debounce 1000
+```
+
+### Exclude directories
+
+```bash
+asymptote watch --exclude "**/node_modules/**" --exclude "**/dist/**"
+```
+
+## IDE Integration
+
+Watch mode works great alongside your IDE. Run it in a separate terminal while you code to get instant feedback on security issues.
+
+<Tip>
+For deeper IDE integration, check out our plugins for [Cursor](/ai-tools/cursor), [Claude Code](/ai-tools/claude-code), and [Windsurf](/ai-tools/windsurf).
+</Tip>
+
+<Card
+  title="Next: Monitor AI sessions"
+  icon="arrow-right"
+  href="/cli/monitor"
+>
+  Monitor AI coding sessions for policy violations.
+</Card>

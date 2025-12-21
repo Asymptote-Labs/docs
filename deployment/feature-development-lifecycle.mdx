@@ -1,0 +1,69 @@
+---
+title: "Feature Development Lifecycle"
+description: "Learn about the development lifecycle for Asymptote features and integrations."
+---
+
+# Feature Development Lifecycle
+
+Understand the lifecycle of developing, testing, and deploying features with Asymptote.
+
+## Overview
+
+The feature development lifecycle in Asymptote follows a structured approach to ensure quality and reliability.
+
+## Stages
+
+### 1. Development
+
+During development, you can use local scanning to test your policies and configurations.
+
+```bash
+asymptote scan --local ./src
+```
+
+### 2. Testing
+
+Use branch deployments to test changes in an isolated environment.
+
+```bash
+asymptote scan --branch feature-branch
+```
+
+### 3. Staging
+
+Deploy to a staging environment to validate changes before production.
+
+```bash
+asymptote deploy --env staging
+```
+
+### 4. Production
+
+Once validated, deploy changes to production.
+
+```bash
+asymptote deploy --env production
+```
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Use Branch Deployments">
+    Always test changes in a branch deployment before merging to main.
+  </Accordion>
+  <Accordion title="Incremental Changes">
+    Make small, incremental changes to minimize risk.
+  </Accordion>
+  <Accordion title="Monitor Results">
+    Keep an eye on scan results after deploying changes.
+  </Accordion>
+</AccordionGroup>
+
+## Rollback
+
+If issues are discovered, you can quickly rollback to a previous configuration:
+
+```bash
+asymptote rollback --version previous
+```
+

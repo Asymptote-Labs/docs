@@ -1,0 +1,117 @@
+---
+title: "Allowlist"
+description: "Manage exceptions and allowlisted patterns"
+---
+
+# Allowlist
+
+The allowlist lets you create exceptions for specific patterns, files, or rules that you don't want flagged as violations.
+
+## List Allowlist Entries
+
+View all allowlisted patterns:
+
+```bash
+asymptote allowlist list
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote allowlist list
+
+ Pattern              Rule                  Reason              Expires
+─────────────────────────────────────────────────────────────────────────
+ TEST_API_KEY         no-hardcoded-secrets  Test fixture        never
+ **/*.test.ts         no-console-log        Test files          never
+ src/legacy/**        *                     Legacy code         2025-06-01
+```
+</Accordion>
+
+## Add to Allowlist
+
+Add a pattern to the allowlist:
+
+```bash
+asymptote allowlist add <pattern> [flags]
+```
+
+| Flag | Type | Description |
+|------|------|-------------|
+| `--reason <reason>` | string | Reason for allowlisting (required) |
+| `--rule <rule>` | string | Specific rule to allowlist (default: all rules) |
+| `--expires <date>` | string | Expiration date (ISO 8601 format) |
+| `--file <path>` | string | Allowlist in a specific file only |
+
+### Examples
+
+Allowlist a test API key:
+
+```bash
+asymptote allowlist add "TEST_API_KEY" --reason "Test fixture" --rule no-hardcoded-secrets
+```
+
+Allowlist console.log in test files:
+
+```bash
+asymptote allowlist add "**/*.test.ts" --reason "Test files" --rule no-console-log
+```
+
+Temporary allowlist with expiration:
+
+```bash
+asymptote allowlist add "src/legacy/**" --reason "Legacy code cleanup" --expires "2025-06-01"
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote allowlist add "TEST_API_KEY" --reason "Test fixture"
+
+✓ Added "TEST_API_KEY" to allowlist
+```
+</Accordion>
+
+## Remove from Allowlist
+
+Remove a pattern from the allowlist:
+
+```bash
+asymptote allowlist remove <pattern>
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote allowlist remove "TEST_API_KEY"
+
+✓ Removed "TEST_API_KEY" from allowlist
+```
+</Accordion>
+
+## Inline Allowlist Comments
+
+You can also allowlist specific lines using inline comments:
+
+```javascript
+// asymptote-ignore-next-line no-hardcoded-secrets
+const TEST_KEY = "test-api-key-12345";
+```
+
+Or for multiple lines:
+
+```javascript
+// asymptote-ignore-start no-console-log
+console.log("Debug info");
+console.log("More debug");
+// asymptote-ignore-end
+```
+
+<Warning>
+Use allowlists sparingly. Each exception is a potential security gap. Always document why something is allowlisted.
+</Warning>
+
+<Card
+  title="Next: Generate reports"
+  icon="arrow-right"
+  href="/cli/reports"
+>
+  Generate security reports for your project.
+</Card>

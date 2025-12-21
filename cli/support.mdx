@@ -1,0 +1,168 @@
+---
+title: "Support"
+description: "Get help and contact the Asymptote team"
+---
+
+# Support
+
+Get help with the Asymptote CLI and contact our team.
+
+## Version Information
+
+Check your CLI version:
+
+```bash
+asymptote version
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote version
+
+Version:    v0.1.0
+Platform:   darwin/arm64
+Hash:       a9297a32e5d2e6507f27d2ea98b831fbcb775e21
+Build Time: 2025-01-15T10:30:00+00:00
+```
+</Accordion>
+
+| Flag | Type | Description |
+|------|------|-------------|
+| `--tag-only` | bool | Output only the version tag |
+| `--check` | bool | Check for available updates |
+
+## Update the CLI
+
+Update to the latest version:
+
+```bash
+asymptote update
+```
+
+Install a specific version:
+
+```bash
+asymptote update --version v0.2.0
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote update
+
+Checking for updates...
+
+Current version: v0.1.0
+Latest version:  v0.2.0
+
+Downloading binary... Done!
+
+✓ Updated to v0.2.0
+
+Changelog:
+ - Added support for Windsurf IDE
+ - Improved scan performance
+ - Fixed false positives in SQL injection detection
+```
+</Accordion>
+
+## Diagnostics
+
+Run diagnostics to troubleshoot issues:
+
+```bash
+asymptote doctor
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote doctor
+
+Checking configuration...
+
+ Check                  Status
+─────────────────────────────────────
+ Config file            ✓ Found
+ API key                ✓ Valid
+ API connection         ✓ Connected
+ Latest version         ✓ Up to date
+ Disk space             ✓ OK (5.2GB free)
+
+All checks passed!
+```
+</Accordion>
+
+## Submit Feedback
+
+Send feedback directly to our team:
+
+```bash
+asymptote feedback
+```
+
+<Accordion title="Example output">
+```bash
+$ asymptote feedback
+
+We'd love to hear from you!
+
+Enter your feedback (Ctrl+D to submit):
+> The new watch mode is great! Would love to see Vim integration next.
+> ^D
+
+✓ Feedback submitted. Thank you!
+```
+</Accordion>
+
+## Contact Support
+
+Open a support ticket:
+
+```bash
+asymptote support
+```
+
+Or reach us directly:
+
+<Columns cols={2}>
+  <Card
+    title="Email Support"
+    icon="envelope"
+    href="mailto:founders@asymptotelabs.ai"
+  >
+    founders@asymptotelabs.ai
+  </Card>
+  <Card
+    title="Book a Call"
+    icon="calendar"
+    href="https://calendly.com/justin-asymptotelabs/30min"
+  >
+    Schedule a demo or support call.
+  </Card>
+</Columns>
+
+## Debug Logs
+
+Enable verbose logging for troubleshooting:
+
+```bash
+asymptote scan --verbose
+```
+
+Or set the environment variable:
+
+```bash
+export ASYMPTOTE_DEBUG=1
+asymptote scan
+```
+
+## Reset Configuration
+
+If you're having issues, you can reset the CLI:
+
+```bash
+asymptote doctor --reset
+```
+
+<Warning>
+This will remove your local configuration and require re-authentication.
+</Warning>
