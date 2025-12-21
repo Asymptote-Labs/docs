@@ -22,6 +22,18 @@
               "introduction/architecture",
               "quickstart"
             ]
+          },
+          {
+            "group": "AI Tools",
+            "pages": [
+              "ai-tools/mcp-server"
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "pages": [
+              "troubleshooting"
+            ]
           }
         ]
       },
@@ -29,7 +41,7 @@
         "tab": "CLI",
         "groups": [
           {
-            "group": "CLI Reference",
+            "group": "CLI Reference (Under Development)",
             "pages": [
               "cli/index"
             ]
