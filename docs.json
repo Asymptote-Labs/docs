@@ -22,26 +22,6 @@
               "introduction/architecture",
               "quickstart"
             ]
-          },
-          {
-            "group": "Deployment",
-            "pages": [
-              "deployment/feature-development-lifecycle",
-              "deployment/branches",
-              "deployment/acceleration",
-              "deployment/tasks",
-              "deployment/github-actions",
-              "deployment/gitlab-cicd"
-            ]
-          },
-          {
-            "group": "Security",
-            "pages": [
-              "security/overview",
-              "security/okta-sso",
-              "security/okta-saml",
-              "security/okta-scim"
-            ]
           }
         ]
       },
@@ -102,6 +82,11 @@
           "anchor": "Status",
           "href": "https://status.asymptotelabs.ai/",
           "icon": "signal"
+        },
+        {
+          "anchor": "Trust Center",
+          "href": "https://trust.asymptotelabs.ai/",
+          "icon": "shield-check"
         }
       ]
     }
