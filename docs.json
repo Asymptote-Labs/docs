@@ -26,7 +26,27 @@
           {
             "group": "AI Tools",
             "pages": [
-              "ai-tools/mcp-server"
+              {
+                "group": "MCP Server",
+                "pages": [
+                  "ai-tools/mcp-server",
+                  "ai-tools/tools"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Deployment",
+            "pages": [
+              "deployment/overview",
+              "deployment/ci-github-actions"
+            ]
+          },
+          {
+            "group": "Self-hosting",
+            "pages": [
+              "self-hosting/overview",
+              "self-hosting/docker-compose"
             ]
           },
           {
