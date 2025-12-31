@@ -16,6 +16,7 @@
         "groups": [
           {
             "group": "Introduction",
+            "icon": "book-open",
             "pages": [
               "index",
               "introduction/what-is-asymptote",
@@ -25,6 +26,7 @@
           },
           {
             "group": "MCP Server",
+            "icon": "server",
             "pages": [
               "ai-tools/mcp-server",
               "ai-tools/tools"
@@ -32,6 +34,7 @@
           },
           {
             "group": "Deployment",
+            "icon": "rocket",
             "pages": [
               "deployment/overview",
               "deployment/ci-github-actions"
@@ -39,6 +42,7 @@
           },
           {
             "group": "Self-hosting",
+            "icon": "cloud",
             "pages": [
               "self-hosting/overview",
               "self-hosting/docker-compose"
@@ -46,6 +50,7 @@
           },
           {
             "group": "Troubleshooting",
+            "icon": "wrench",
             "pages": [
               "troubleshooting"
             ]
@@ -57,12 +62,14 @@
         "groups": [
           {
             "group": "CLI Reference",
+            "icon": "terminal",
             "pages": [
               "cli/index"
             ]
           },
           {
             "group": "Getting Started",
+            "icon": "play",
             "pages": [
               "cli/installation",
               "cli/authentication"
@@ -70,6 +77,7 @@
           },
           {
             "group": "Commands",
+            "icon": "code",
             "pages": [
               "cli/scan",
               "cli/watch",
@@ -78,6 +86,7 @@
           },
           {
             "group": "Configuration",
+            "icon": "gear",
             "pages": [
               "cli/policies",
               "cli/allowlist"
@@ -85,48 +94,42 @@
           },
           {
             "group": "Reports & Info",
+            "icon": "chart-bar",
             "pages": [
               "cli/reports",
               "cli/support"
             ]
           }
         ]
+      },
+      {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Changelog",
+            "icon": "clock",
+            "pages": [
+              "changelog"
+            ]
+          }
+        ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Asymptote Homepage",
-          "href": "https://asymptotelabs.ai/",
-          "icon": "globe"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://asymptotelabs.ai/blog",
-          "icon": "newspaper"
-        },
-        {
-          "anchor": "Status",
-          "href": "https://status.asymptotelabs.ai/",
-          "icon": "signal"
-        },
-        {
-          "anchor": "Trust Center",
-          "href": "https://trust.asymptotelabs.ai/",
-          "icon": "shield-check"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
-    "light": "/logo/logo.png",
-    "dark": "/logo/logo.png"
+    "light": "/logo/logo_with_text.png",
+    "dark": "/logo/logo_with_text_dark.png",
+    "height": 32
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:founders@asymptotelabs.ai"
+        "label": "Status",
+        "href": "https://status.asymptotelabs.ai/"
+      },
+      {
+        "label": "Trust Center",
+        "href": "https://trust.asymptotelabs.ai/"
       },
       {
         "label": "Book Demo",
