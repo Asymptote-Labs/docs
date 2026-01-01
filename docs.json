@@ -119,7 +119,8 @@
   "logo": {
     "light": "/logo/logo_with_text.png",
     "dark": "/logo/logo_with_text_dark.png",
-    "height": 32
+    "href": "https://asymptotelabs.ai/",
+    "height": 100
   },
   "navbar": {
     "links": [
@@ -160,7 +161,35 @@
       "github": "https://github.com/Asymptote-Labs",
       "linkedin": "https://www.linkedin.com/company/asymptotelabs/"
     },
-    "content": "© 2025 Asymptote"
+    "links": [
+      {
+        "title": "Product",
+        "items": [
+          { "label": "Platform", "href": "https://asymptotelabs.ai/" },
+          { "label": "Security", "href": "https://trust.asymptotelabs.ai/" },
+          { "label": "Pricing", "href": "https://asymptotelabs.ai/" }
+        ]
+      },
+      {
+        "title": "Company",
+        "items": [
+          { "label": "About", "href": "https://asymptotelabs.ai/" },
+          { "label": "Blog", "href": "https://asymptotelabs.ai/" },
+          { "label": "Careers", "href": "https://asymptotelabs.ai/" },
+          { "label": "Status", "href": "https://status.asymptotelabs.ai/" },
+          { "label": "Contact", "href": "mailto:support@asymptotelabs.ai" }
+        ]
+      },
+      {
+        "title": "Legal",
+        "items": [
+          { "label": "Privacy Policy", "href": "https://asymptotelabs.ai/privacy" },
+          { "label": "Terms of Service", "href": "https://asymptotelabs.ai/terms" },
+          { "label": "Trust Center", "href": "https://trust.asymptotelabs.ai/" }
+        ]
+      }
+    ],
+    "content": "© 2025 Asymptote Labs Inc. All rights reserved."
   },
   "appearance": {
     "hidePoweredBy": true

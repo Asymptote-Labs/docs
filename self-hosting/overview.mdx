@@ -9,61 +9,6 @@ description: "You can self-host Asymptote on your own infrastructure."
 
 **Use Self-Hosted** if you need data sovereignty, air-gapped environments, or custom LLM providers.
 
-For self-hosted, choose based on team size:
-
-- **Docker Compose**: Up to 100 developers. Single VM, simpler operations.
-- **Kubernetes**: 100+ developers. Horizontal scaling, high availability.
-
-## Self-Hosted: Docker Compose
-
-Runs all services on a single Linux VM using Docker Compose.
-
-### Two Setup Paths
-
-**AWS with Terraform** — If you're on AWS and want automated provisioning:
-
-- Terraform creates VPC, EC2, RDS PostgreSQL, ElastiCache Redis
-- Bootstraps the EC2 with Docker Compose and starts Asymptote
-- Single `terraform apply` gets you running
-- [Go to AWS Terraform guide →](/self-hosting/docker-compose)
-
-**Manual Setup** — For other clouds or on-prem:
-
-- Provision your own VM, PostgreSQL, and Redis
-- Run Docker Compose with provided configuration
-- [Go to Manual Setup guide →](/self-hosting/docker-compose#manual-setup)
-
-## Self-Hosted: Kubernetes
-
-<Info>
-Kubernetes deployment guide coming soon. [Contact us](mailto:founders@asymptotelabs.ai) for early access.
-</Info>
-
-For large-scale deployments with high availability requirements:
-
-- Helm charts for easy deployment
-- Horizontal pod autoscaling
-- Multi-region support
-- Managed database integrations
-
-## Requirements
-
-| Component | Docker Compose | Kubernetes |
-|-----------|---------------|------------|
-| CPU | 4+ cores | 8+ cores total |
-| RAM | 16GB+ | 32GB+ total |
-| Storage | 100GB SSD | 200GB+ SSD |
-| PostgreSQL | 14+ | 14+ |
-| Redis | 6+ | 6+ |
-
-## Source Code Management
-
-| Platform | Setup Required |
-|----------|----------------|
-| GitHub / GitHub Enterprise | GitHub App with webhook URL |
-| GitLab | OAuth app configuration |
-| Perforce | P4USER, P4PASSWD, P4PORT, P4CLIENT env vars |
-
 ## Container Registry
 
 Access to Asymptote's Docker images. [Contact Asymptote](mailto:founders@asymptotelabs.ai) for registry credentials.
