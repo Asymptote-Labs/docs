@@ -5,7 +5,7 @@ description: "Commands, examples & usage guide for the Asymptote CLI"
 
 # Asymptote CLI Reference
 
-This reference documents every command and flag available in Asymptote's command-line interface.
+The `asym` CLI connects Asymptote to your coding agents and manages your account from the terminal.
 
 <Card
   title="Install the CLI"
@@ -13,64 +13,113 @@ This reference documents every command and flag available in Asymptote's command
   href="/cli/installation"
   horizontal
 >
-  Get started by installing the Asymptote CLI.
+  Get started by installing the Asymptote CLI via Homebrew.
 </Card>
 
 ## What you can do
 
 With the Asymptote CLI, you can:
 
-- Scan code for security vulnerabilities in real-time
-- Monitor AI coding sessions for policy violations
-- Configure security guardrails and rules
-- View detailed reports about detected issues
+- Connect Asymptote to coding agents like Cursor, Claude Code, GitHub Copilot, and Factory
+- Log in, log out, and inspect your current session
+- Upgrade agent hooks to the latest version
+- List connected agents and their status
 
 ## Command Overview
 
+```bash
+$ asym --help
+
+Asymptote CLI provides tools for integrating with the Asymptote
+security platform for AI-driven development.
+
+Use 'asym init' for guided setup, or 'asym login' to authenticate.
+
+Usage:
+  asym [command]
+
+Available Commands:
+  claude      Manage Claude Code integration
+  completion  Generate the autocompletion script for the specified shell
+  copilot     Manage GitHub Copilot integration
+  cursor      Manage Cursor IDE integration
+  factory     Manage Factory (Droid) integration
+  help        Help about any command
+  init        Set up Asymptote: login and install platform hooks
+  list        List resources
+  login       Log in to Asymptote
+  logout      Log out of Asymptote
+  upgrade     Update hooks binary for all installed platforms
+  version     Display the version of the Asymptote CLI
+  whoami      Display the current logged in user
+
+Flags:
+  -h, --help      help for asym
+  -v, --version   Print the version number
+```
+
+## Setup
+
 <Columns cols={2}>
-  <Card
-    title="Getting Started"
-    icon="rocket"
-    href="/cli/installation"
-  >
-    Installation and authentication setup.
+  <Card title="Installation" icon="download" href="/cli/installation">
+    Install the CLI via Homebrew.
   </Card>
-  <Card
-    title="Scanning"
-    icon="magnifying-glass"
-    href="/cli/scan"
-  >
-    Scan code for vulnerabilities.
+  <Card title="asym init" icon="rocket" href="/cli/init">
+    First-time setup: log in and connect your agents.
   </Card>
-  <Card
-    title="Monitoring"
-    icon="eye"
-    href="/cli/monitor"
-  >
-    Real-time AI coding session monitoring.
+</Columns>
+
+## Authentication
+
+<Columns cols={3}>
+  <Card title="asym login" icon="key" href="/cli/login">
+    Log in to Asymptote.
   </Card>
-  <Card
-    title="Configuration"
-    icon="gear"
-    href="/cli/policies"
-  >
-    Policies and allowlist management.
+  <Card title="asym logout" icon="arrow-right-from-bracket" href="/cli/logout">
+    End your current session.
+  </Card>
+  <Card title="asym whoami" icon="user" href="/cli/whoami">
+    Check the current account.
+  </Card>
+</Columns>
+
+## Agent Integrations
+
+<Columns cols={2}>
+  <Card title="asym cursor" icon="computer-mouse" href="/cli/cursor">
+    Manage Cursor IDE integration.
+  </Card>
+  <Card title="asym claude" icon="robot" href="/cli/claude">
+    Manage Claude Code integration.
+  </Card>
+  <Card title="asym copilot" icon="github" href="/cli/copilot">
+    Manage GitHub Copilot integration.
+  </Card>
+  <Card title="asym factory" icon="industry" href="/cli/factory">
+    Manage Factory (Droid) integration.
+  </Card>
+</Columns>
+
+## Utilities
+
+<Columns cols={2}>
+  <Card title="asym list" icon="list" href="/cli/list">
+    List connected agents and their status.
+  </Card>
+  <Card title="asym upgrade" icon="arrow-up" href="/cli/upgrade">
+    Upgrade hooks for all connected agents.
+  </Card>
+  <Card title="asym version" icon="tag" href="/cli/version">
+    Display the CLI version.
+  </Card>
+  <Card title="asym completion" icon="terminal" href="/cli/completion">
+    Generate shell autocompletion scripts.
   </Card>
 </Columns>
 
 ## Global Flags
 
-The Asymptote CLI supports these flags for every command:
-
-| Flag | Type | Description |
-|------|------|-------------|
-| `--api-host <host>` | string | Override the API host |
-| `--api-key <key>` | string | Override the API key |
-| `--config <path>` | string | Path to config file (default: `~/.asymptote/config.yml`) |
-| `--json` | bool | Output in JSON format |
-| `--no-color` | bool | Disable colored output |
-| `-v, --verbose` | bool | Enable verbose logging |
-| `--quiet` | bool | Suppress non-essential output |
-| `-h, --help` | bool | Show help for any command |
-
-
+| Flag | Description |
+|------|-------------|
+| `-h, --help` | Show help for any command |
+| `-v, --version` | Print the version number |

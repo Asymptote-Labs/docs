@@ -1,0 +1,127 @@
+---
+title: "asym list"
+description: "List connected GitHub repositories and available security policy packs"
+---
+
+# asym list
+
+List resources from your Asymptote account. Has two subcommands: `repos` and `policy-packs`.
+
+```bash
+asym list [command]
+```
+
+<Accordion title="asym list --help">
+```bash
+$ asym list --help
+
+List various resources from Asymptote.
+
+Available subcommands:
+  repos         List connected GitHub repositories
+  policy-packs  List available security policy packs
+
+Usage:
+  asym list [command]
+
+Available Commands:
+  policy-packs List available security policy packs
+  repos        List connected GitHub repositories
+
+Flags:
+  -h, --help   help for list
+
+Use "asym list [command] --help" for more information about a command.
+```
+</Accordion>
+
+## repos
+
+List all GitHub repositories connected to your Asymptote account via the GitHub App integration.
+
+```bash
+asym list repos
+```
+
+<Accordion title="asym list repos --help">
+```bash
+$ asym list repos --help
+
+List all GitHub repositories connected to your Asymptote account.
+
+Shows repositories that have been connected via the GitHub App integration.
+
+Usage:
+  asym list repos [flags]
+
+Examples:
+  # List repos as a table
+  asym list repos
+
+  # List repos as JSON
+  asym list repos --json
+
+Flags:
+  -h, --help   help for repos
+      --json   Output as JSON
+```
+</Accordion>
+
+| Flag | Description |
+|------|-------------|
+| `--json` | Output as JSON |
+| `-h, --help` | Help for repos |
+
+## policy-packs
+
+List all available security policy packs, including the number of policies and enrolled repositories. Can also be referenced by the alias `packs`.
+
+```bash
+asym list policy-packs
+```
+
+<Accordion title="asym list policy-packs --help">
+```bash
+$ asym list policy-packs --help
+
+List all available security policy packs.
+
+Shows policy packs with the number of policies and enrolled repositories.
+
+Usage:
+  asym list policy-packs [flags]
+
+Aliases:
+  policy-packs, packs
+
+Examples:
+  # List policy packs as a table
+  asym list policy-packs
+
+  # List policy packs as JSON
+  asym list policy-packs --json
+
+  # Using the alias
+  asym list packs
+
+Flags:
+  -h, --help   help for policy-packs
+      --json   Output as JSON
+```
+</Accordion>
+
+| Flag | Description |
+|------|-------------|
+| `--json` | Output as JSON |
+| `-h, --help` | Help for policy-packs |
+
+## Related
+
+<Columns cols={2}>
+  <Card title="asym upgrade" icon="arrow-up" href="/cli/upgrade">
+    Upgrade hooks for all connected agents.
+  </Card>
+  <Card title="asym init" icon="rocket" href="/cli/init">
+    Connect agents to Asymptote.
+  </Card>
+</Columns>

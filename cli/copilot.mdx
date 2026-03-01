@@ -1,0 +1,133 @@
+---
+title: "asym copilot"
+description: "Manage the Asymptote integration for GitHub Copilot in VS Code"
+---
+
+# asym copilot
+
+Install and uninstall Asymptote's security hooks for GitHub Copilot in VS Code.
+
+```bash
+asym copilot [command]
+```
+
+<Warning>
+Copilot hooks are **project-level only**. You must run `asym copilot install` from the root of the git repository where you want hooks active. Run the command once per repository.
+</Warning>
+
+<Accordion title="asym copilot --help">
+```bash
+$ asym copilot --help
+
+Manage Asymptote integration with GitHub Copilot in VS Code.
+
+Use 'asym copilot install' to set up automatic security evaluation
+for AI-assisted code changes in GitHub Copilot.
+
+Usage:
+  asym copilot [command]
+
+Available Commands:
+  install     Install Copilot hooks for Asymptote security evaluation
+  uninstall   Remove Copilot hooks for Asymptote
+
+Flags:
+  -h, --help   help for copilot
+
+Use "asym copilot [command] --help" for more information about a command.
+```
+</Accordion>
+
+## install
+
+Install Asymptote hooks for GitHub Copilot in the current repository.
+
+```bash
+cd /path/to/your/repo
+asym copilot install
+```
+
+<Accordion title="asym copilot install --help">
+```bash
+$ asym copilot install --help
+
+Install Asymptote hooks for GitHub Copilot in VS Code.
+
+This command sets up automatic security evaluation for AI-assisted code changes.
+After installation, every file edit by Copilot will be evaluated against
+your security policies.
+
+IMPORTANT: This installs hooks in the CURRENT DIRECTORY. You must run this
+command from the root of the git repository where you want Copilot hooks.
+
+The hooks binary is installed to ~/.asymptote/copilot/ and the hook
+configuration is written to .github/hooks/hooks.json in the current repo.
+
+Prerequisites:
+  - You must be logged in (run 'asym login' first)
+  - Must be run from the root of a git repository
+
+Usage:
+  asym copilot install [flags]
+
+Examples:
+  # Install Copilot hooks in current project
+  cd /path/to/your/repo
+  asym copilot install
+
+Flags:
+  -h, --help   help for install
+```
+</Accordion>
+
+| Flag | Description |
+|------|-------------|
+| `-h, --help` | Help for install |
+
+Hooks are written to `.github/hooks/hooks.json` in the current repository. The hooks binary is installed to `~/.asymptote/copilot/`.
+
+## uninstall
+
+Remove Asymptote hooks from the current repository. Must be run from the same project directory where hooks were installed.
+
+```bash
+asym copilot uninstall
+```
+
+<Accordion title="asym copilot uninstall --help">
+```bash
+$ asym copilot uninstall --help
+
+Remove Asymptote hooks from GitHub Copilot in VS Code.
+
+This removes the hook configuration from .github/hooks/hooks.json and
+cleans up the hooks binary. Other hooks in hooks.json are preserved.
+
+Must be run from the same project directory where hooks were installed.
+
+Usage:
+  asym copilot uninstall [flags]
+
+Examples:
+  # Remove Copilot hooks from current project
+  asym copilot uninstall
+
+Flags:
+  -h, --help   help for uninstall
+```
+</Accordion>
+
+| Flag | Description |
+|------|-------------|
+| `-h, --help` | Help for uninstall |
+
+## Related
+
+<Columns cols={2}>
+  <Card title="asym cursor" icon="computer-mouse" href="/cli/cursor">
+    Manage Cursor IDE integration.
+  </Card>
+  <Card title="asym upgrade" icon="arrow-up" href="/cli/upgrade">
+    Upgrade hooks for all connected agents.
+  </Card>
+</Columns>
