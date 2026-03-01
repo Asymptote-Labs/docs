@@ -1,0 +1,62 @@
+---
+title: "Configuring Guardrails"
+description: "Set up security policy packs and guardrails for your repositories."
+---
+
+## Overview
+
+Guardrails are the security policy packs Asymptote enforces across your entire SDLC. You can start with Asymptote's built-in policy packs or write custom policy packs in natural language tailored to your team's standards.
+
+## Built-in Policy Packs
+
+Asymptote ships with policy packs aligned to widely adopted security standards. Browse and enable them from the **Policy Packs** tab on the dashboard homepage.
+
+| Category | Policy Pack | Description |
+|----------|-------------|-------------|
+| **Web Security** | OWASP Top 10 | Catches the most common and dangerous web security mistakes, like SQL injection, broken authentication, and exposed sensitive data |
+| **Web Security** | OWASP API Security Top 10 | Covers the most common ways APIs get compromised, including broken access control, excessive data exposure, and missing rate limiting |
+| **Compliance** | GDPR / Privacy Compliance | Flags code that could expose or mishandle personal data, helping you stay compliant with GDPR and other privacy laws |
+| **Compliance** | HIPAA Compliance | Detects patterns in code that could expose patient health information or violate HIPAA requirements |
+| **Compliance** | PCI DSS Compliance | Catches code that could put payment card data at risk, keeping you aligned with PCI DSS v4.0 |
+| **Compliance** | SOC 2 Type II Compliance | Helps enforce the secure coding practices expected for SOC 2 audits, covering security, availability, and data integrity |
+| **Infrastructure** | Infrastructure as Code Security | Spots misconfigurations in your Terraform, Kubernetes, and other IaC files before they become live vulnerabilities |
+| **Infrastructure** | Supply Chain Security | Detects risky dependencies, suspicious packages, and container image issues that could introduce third-party vulnerabilities |
+| **Secure Coding** | Security Design Flaw Prevention | Catches fundamental security mistakes like missing input validation, hardcoded secrets, and insecure coding patterns |
+
+## Custom Policy Packs
+
+You can define your own guardrails in plain English. Asymptote translates them into enforceable rules that run across your entire SDLC: at code generation, pull requests, async scans, and more.
+
+<Steps>
+  <Step title="Open the Policy Packs Page">
+    From the dashboard homepage, navigate to **Policy Packs** and click **New Policy Pack**.
+  </Step>
+  <Step title="Name and describe the pack">
+    Give the pack a **Pack Name** (e.g. "Custom Security Rules") and an optional **Description** summarizing what it covers.
+  </Step>
+  <Step title="Add policies">
+    Click **+ Add Policy** to add at least one policy to the pack. For each policy, provide:
+
+    - **Name** — a short label for the rule (e.g. "No string concatenation in queries")
+    - **Category** — the type of vulnerability it targets (e.g. "injection", "secrets")
+    - **Enforcement** — how Asymptote responds when a violation is detected:
+      - **Block** — prevent the PR from merging until the issue is resolved
+      - **Warn** — flag the issue in the PR review without blocking merge
+      - **Monitor** — silently log the violation for visibility without any PR action
+  </Step>
+  <Step title="Create the pack">
+    Click **Create Pack** to save. The policy pack will be available to assign to repositories from the Policy Packs tab.
+  </Step>
+</Steps>
+
+## Reviewing Guardrail Findings
+
+All policy pack violations are surfaced directly in GitHub pull request reviews and in the Asymptote **Dashboard**. From the dashboard you can:
+
+- See a breakdown of violations by policy pack and repository
+- Review the specific code change that triggered each guardrail
+- Track remediation status over time
+
+<Info icon="circle-question" title="Need Help?">
+  Need help writing policy packs? Contact us at [support@asymptotelabs.ai](mailto:support@asymptotelabs.ai) — we're happy to help you get started.
+</Info>

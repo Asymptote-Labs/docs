@@ -1,0 +1,66 @@
+---
+title: Changelog
+description: Latest updates and improvements to the Asymptote platform
+---
+
+# Changelog
+
+Stay up to date with the latest changes across the Asymptote platform.
+
+---
+
+## March 2026
+
+### Benchmarks
+- **AI Benchmarks** — Evaluate the quality and security posture of AI-generated code at scale, with a dedicated dashboard for viewing results over time
+
+### Vulnerability Management
+- **Default severity threshold raised to High** — New organizations now block High severity and above by default, reducing alert noise from day one
+- **False positive handling improved** — Severity overrides on false positives are now correctly preserved after re-scans
+- Findings are no longer shown until analysis fully completes, eliminating partial or misleading results mid-scan
+
+---
+
+## February 2026
+
+### CLI
+- **`asym init`** — Sets up your entire Asymptote environment in a single step — authentication, agent integration, and configuration all in one
+- **`asym upgrade`** — Update the CLI to the latest version without reinstalling manually
+
+### Integrations
+- **GitHub Copilot** — Asymptote now monitors AI-generated code from GitHub Copilot in VS Code, alongside Cursor and Claude Code
+- **VS Code + Claude Code** — Added VS Code and Claude Code as fully supported monitored coding agents
+- **GitHub Actions** — Asymptote now posts AI-suggested security fixes directly in pull request comments, with severity filtering and links back to your IDE
+- **Factory** — Asymptote now integrates with Factory as a supported coding agent
+### Security Analytics
+- **Redesigned dashboard** — Richer filtering by surface area and severity, a visual pipeline view of your vulnerability funnel, and repo-level drill-down
+- **Dark mode** — The Asymptote dashboard now fully supports dark mode
+- Risk level filtering and assessment improvements throughout the dashboard
+- Pagination added to all list views
+
+### Vulnerability Management
+- **Chat with your vulnerabilities** — Ask questions about any finding directly from the vulnerability detail page
+- **Auto-resolution** — Vulnerabilities are automatically resolved when the underlying issue is remediated, including in CI
+- **"Send to" actions** — Route any finding to an external tool or ticketing system directly from the vulnerability page
+- Vulnerability detail pages redesigned with richer context: code diffs, PR links, and repository links surfaced by scan type
+- Duplicate findings across scans are now deduplicated automatically
+- CI violation comments are now linked back to the vulnerability record
+
+### Policy & Rules
+- **Custom security policies** — Create and manage your own security rules from the dashboard, beyond the built-in policy packs
+- Bulk enroll or unenroll repositories for a policy pack in one click
+- Search bar added to the policies page
+- Repo search added to the new scan flow
+
+---
+
+## January 2026
+
+### CLI
+- **CLI launched** — The Asymptote CLI (`asym`) is now available via Homebrew. Get started with `brew install Asymptote-Labs/tap/asym`
+
+### Integrations
+- **Cursor monitoring** — The CLI ships with real-time monitoring of your Cursor coding sessions out of the box
+
+### Platform
+- Stability improvements to session tracking and API key management

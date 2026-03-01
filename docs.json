@@ -15,7 +15,7 @@
         "tab": "Docs",
         "groups": [
           {
-            "group": "Introduction",
+            "group": "Getting Started",
             "icon": "book-open",
             "pages": [
               "index",
@@ -25,21 +25,34 @@
             ]
           },
           {
-            "group": "Coding Agent Integrations",
-            "icon": "plug",
+            "group": "Onboarding",
+            "icon": "rocket",
             "pages": [
-              "integrations/cursor",
-              "integrations/claude-code",
-              "integrations/github-copilot",
-              "integrations/factory"
+              "onboarding/connecting-github",
+              "onboarding/install-cli",
+              "onboarding/inviting-teammates",
+              "onboarding/configuring-guardrails"
             ]
           },
           {
-            "group": "MCP Server",
-            "icon": "server",
+            "group": "Secure SDLC",
+            "icon": "shield-check",
             "pages": [
-              "ai-tools/mcp-server",
-              "ai-tools/tools"
+              "ai-tools/overview",
+              "ai-tools/code-generation",
+              "ai-tools/ci-time",
+              "ai-tools/pre-production",
+              "ai-tools/async-scans"
+            ]
+          },
+          {
+            "group": "Coding Agent Integrations",
+            "icon": "plug",
+            "pages": [
+              "integrations/claude-code",
+              "integrations/cursor",
+              "integrations/github-copilot",
+              "integrations/factory"
             ]
           },
           {
@@ -74,7 +87,8 @@
             "group": "CLI Reference",
             "icon": "terminal",
             "pages": [
-              "cli/index"
+              "cli/index",
+              "changelog"
             ]
           },
           {
@@ -123,7 +137,7 @@
             "group": "Changelog",
             "icon": "clock",
             "pages": [
-              "changelog"
+              "product-changelog"
             ]
           }
         ]
