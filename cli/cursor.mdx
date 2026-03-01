@@ -1,0 +1,150 @@
+---
+title: "asym cursor"
+description: "Manage the Asymptote integration for Cursor IDE"
+---
+
+# asym cursor
+
+Install and uninstall Asymptote's security hooks for Cursor IDE.
+
+```bash
+asym cursor [command]
+```
+
+<Accordion title="asym cursor --help">
+```bash
+$ asym cursor --help
+
+Manage Asymptote integration with Cursor IDE.
+
+Use 'asym cursor install' to set up automatic security evaluation
+for AI-assisted code changes in Cursor.
+
+Usage:
+  asym cursor [command]
+
+Available Commands:
+  install     Install Cursor hooks for Asymptote security evaluation
+  uninstall   Remove Cursor hooks for Asymptote
+
+Flags:
+  -h, --help   help for cursor
+
+Use "asym cursor [command] --help" for more information about a command.
+```
+</Accordion>
+
+## install
+
+Install Asymptote hooks for Cursor IDE. By default, hooks are installed at the user level (`~/.cursor`), which applies to all projects.
+
+```bash
+asym cursor install
+```
+
+<Accordion title="asym cursor install --help">
+```bash
+$ asym cursor install --help
+
+Install Asymptote hooks into Cursor IDE.
+
+This command sets up automatic security evaluation for AI-assisted code changes.
+After installation, every file edit by the AI agent will be evaluated against
+your security policies.
+
+By default, hooks are installed at the user level (~/.cursor), which applies
+to all projects. Use --project to install only for the current project.
+
+Prerequisites:
+  - You must be logged in (run 'asym login' first)
+  - Restart Cursor after installation to activate hooks
+
+The following files will be created:
+  - hooks.json - Hook configuration pointing to the Go binary
+  - ~/.asymptote/cursor/asym-hooks - Security evaluation binary
+
+Usage:
+  asym cursor install [flags]
+
+Examples:
+  # Install for all projects (user level)
+  asym cursor install
+
+  # Install for all projects (explicit)
+  asym cursor install --user
+
+  # Install for current project only
+  asym cursor install --project
+
+Flags:
+  -h, --help      help for install
+      --project   Install at project level (./.cursor) - applies only to current project
+      --user      Install at user level (~/.cursor) - applies to all projects (default)
+```
+</Accordion>
+
+| Flag | Description |
+|------|-------------|
+| `--user` | Install at user level (`~/.cursor`) — applies to all projects (default) |
+| `--project` | Install at project level (`./.cursor`) — applies only to the current project |
+| `-h, --help` | Help for install |
+
+<Note>
+Restart Cursor after installation to activate the hooks.
+</Note>
+
+## uninstall
+
+Remove Asymptote hooks from Cursor IDE.
+
+```bash
+asym cursor uninstall
+```
+
+<Accordion title="asym cursor uninstall --help">
+```bash
+$ asym cursor uninstall --help
+
+Remove Asymptote hooks from Cursor IDE.
+
+This removes the hooks binary, any legacy scripts, and updates hooks.json
+to remove Asymptote entries. Other hooks in hooks.json are preserved.
+
+By default, removes hooks from the user level (~/.cursor). Use --project
+to remove from the current project only.
+
+After uninstalling, restart Cursor to deactivate the hooks.
+
+Usage:
+  asym cursor uninstall [flags]
+
+Examples:
+  # Remove user-level hooks
+  asym cursor uninstall
+
+  # Remove project-level hooks
+  asym cursor uninstall --project
+
+Flags:
+  -h, --help      help for uninstall
+      --project   Remove from project level (./.cursor)
+      --user      Remove from user level (~/.cursor) (default)
+```
+</Accordion>
+
+| Flag | Description |
+|------|-------------|
+| `--user` | Remove from user level (`~/.cursor`) (default) |
+| `--project` | Remove from project level (`./.cursor`) |
+| `-h, --help` | Help for uninstall |
+
+## Related
+
+<Columns cols={2}>
+  <Card title="asym claude" icon="robot" href="/cli/claude">
+    Manage Claude Code integration.
+  </Card>
+  <Card title="asym upgrade" icon="arrow-up" href="/cli/upgrade">
+    Upgrade hooks for all connected agents.
+  </Card>
+</Columns>

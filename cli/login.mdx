@@ -1,0 +1,47 @@
+---
+title: "asym login"
+description: "Log in to Asymptote"
+---
+
+# asym login
+
+Authenticate the CLI with your Asymptote account. Opens a browser window to complete authorization.
+
+```bash
+asym login
+```
+
+<Accordion title="Example output">
+```bash
+$ asym login
+
+  Open the authorization page in your browser?  Yes
+
+  Complete authorization at https://asymptotelabs.ai/cli/authorize/abc123
+
+✓ Opened login window in browser
+
+⡿  Waiting...
+
+✓ Successfully authenticated as justin@acme.com
+```
+</Accordion>
+
+Session data is stored in `~/.asymptote/config.yml`.
+
+## Flags
+
+| Flag | Description |
+|------|-------------|
+| `-h, --help` | Help for login |
+
+## Related
+
+<Columns cols={2}>
+  <Card title="asym logout" icon="arrow-right-from-bracket" href="/cli/logout">
+    End your current session.
+  </Card>
+  <Card title="asym whoami" icon="user" href="/cli/whoami">
+    Check which account is authenticated.
+  </Card>
+</Columns>

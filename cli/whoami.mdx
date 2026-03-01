@@ -1,0 +1,40 @@
+---
+title: "asym whoami"
+description: "Display the current logged in user"
+---
+
+# asym whoami
+
+Display information about the currently authenticated account and session.
+
+```bash
+asym whoami
+```
+
+<Accordion title="Example output">
+```bash
+$ asym whoami
+
+Email:         you@example.com
+User ID:       73de6cbf-7f16-48d2-b869-19a6051927f7
+Organization:  Acme Corp
+Token:         ask_live_****
+```
+</Accordion>
+
+## Flags
+
+| Flag | Description |
+|------|-------------|
+| `-h, --help` | Help for whoami |
+
+## Related
+
+<Columns cols={2}>
+  <Card title="asym login" icon="key" href="/cli/login">
+    Log in to Asymptote.
+  </Card>
+  <Card title="asym logout" icon="arrow-right-from-bracket" href="/cli/logout">
+    End your current session.
+  </Card>
+</Columns>

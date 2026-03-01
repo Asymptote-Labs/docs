@@ -1,0 +1,67 @@
+---
+title: "asym upgrade"
+description: "Update the hooks binary for all installed platforms"
+---
+
+# asym upgrade
+
+Update the embedded hooks binary for all platforms that have been previously installed (Claude Code, Cursor, Copilot, Factory).
+
+```bash
+asym upgrade
+```
+
+This detects which platforms have an `asym-hooks` binary installed and replaces each one with the version embedded in the current CLI build. Typically run automatically after `brew upgrade asymptote-cli`, but can also be run manually at any time.
+
+To upgrade the CLI binary and hooks in one step:
+
+```bash
+brew upgrade asymptote-cli && asym upgrade
+```
+
+<Accordion title="asym upgrade --help">
+```bash
+$ asym upgrade --help
+
+Update the embedded hooks binary for all platforms that have been
+previously installed (Claude, Cursor, Copilot, Factory).
+
+This command detects which platforms have an asym-hooks binary installed
+and replaces each one with the version embedded in this CLI build.
+
+Typically run automatically after 'brew upgrade asymptote-cli', but can
+also be run manually at any time.
+
+Usage:
+  asym upgrade [flags]
+
+Examples:
+  # Update all installed platform hooks
+  asym upgrade
+
+  # Quiet mode (for automated scripts)
+  asym upgrade --quiet
+
+Flags:
+  -h, --help    help for upgrade
+  -q, --quiet   Suppress informational output (for automated scripts)
+```
+</Accordion>
+
+## Flags
+
+| Flag | Description |
+|------|-------------|
+| `-q, --quiet` | Suppress informational output (for use in automated scripts) |
+| `-h, --help` | Help for upgrade |
+
+## Related
+
+<Columns cols={2}>
+  <Card title="asym list" icon="list" href="/cli/list">
+    View connected repositories and policy packs.
+  </Card>
+  <Card title="asym version" icon="tag" href="/cli/version">
+    Check the current CLI version.
+  </Card>
+</Columns>

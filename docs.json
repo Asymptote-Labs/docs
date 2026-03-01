@@ -68,36 +68,40 @@
             ]
           },
           {
-            "group": "Getting Started",
+            "group": "Setup",
             "icon": "play",
             "pages": [
               "cli/installation",
-              "cli/authentication"
+              "cli/init"
             ]
           },
           {
-            "group": "Commands",
-            "icon": "code",
+            "group": "Authentication",
+            "icon": "key",
             "pages": [
-              "cli/scan",
-              "cli/watch",
-              "cli/monitor"
+              "cli/login",
+              "cli/logout",
+              "cli/whoami"
             ]
           },
           {
-            "group": "Configuration",
-            "icon": "gear",
+            "group": "Agent Integrations",
+            "icon": "plug",
             "pages": [
-              "cli/policies",
-              "cli/allowlist"
+              "cli/cursor",
+              "cli/claude",
+              "cli/copilot",
+              "cli/factory"
             ]
           },
           {
-            "group": "Reports & Info",
-            "icon": "chart-bar",
+            "group": "Utilities",
+            "icon": "wrench",
             "pages": [
-              "cli/reports",
-              "cli/support"
+              "cli/list",
+              "cli/upgrade",
+              "cli/version",
+              "cli/completion"
             ]
           }
         ]

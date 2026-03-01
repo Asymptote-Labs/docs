@@ -1,0 +1,172 @@
+---
+title: "asym claude"
+description: "Manage the Asymptote integration for Claude Code"
+---
+
+# asym claude
+
+Install and uninstall Asymptote's security plugin for Claude Code.
+
+```bash
+asym claude [command]
+```
+
+<Accordion title="asym claude --help">
+```bash
+$ asym claude --help
+
+Manage Asymptote integration with Claude Code.
+
+Set up automatic security evaluation for AI-assisted code changes:
+
+  Terminal (Claude Code CLI):
+    asym claude install
+
+  VS Code (Claude Code extension):
+    asym claude install --vscode
+
+Usage:
+  asym claude [command]
+
+Available Commands:
+  install     Install Asymptote security evaluation (use --vscode for VS Code)
+  uninstall   Remove Claude Code plugin for Asymptote
+
+Flags:
+  -h, --help   help for claude
+
+Use "asym claude [command] --help" for more information about a command.
+```
+</Accordion>
+
+## install
+
+Install the Asymptote security plugin for Claude Code. By default, the plugin is installed at the user level, applying to all projects. Use `--vscode` when running Claude Code inside VS Code.
+
+```bash
+asym claude install
+```
+
+<Accordion title="asym claude install --help">
+```bash
+$ asym claude install --help
+
+Install Asymptote security plugin for Claude Code.
+
+This command sets up automatic security evaluation for AI-assisted code changes.
+After installation, every file edit by Claude will be evaluated against
+your security policies.
+
+By default, the plugin is installed at the user level, which applies
+to all projects. Use --project to install only for the current project.
+
+Use --vscode to install hooks for Claude Code in VS Code (which uses
+settings.json hooks instead of the plugin system).
+
+Prerequisites:
+  - You must be logged in (run 'asym login' first)
+  - Claude Code CLI must be installed (unless using --vscode)
+
+The plugin will be registered via Claude's plugin system and includes:
+  - SessionStart hook - Initializes session and cleanup
+  - PostToolUse hook - Submits diffs for async security evaluation
+  - Stop hook - Polls results and re-prompts on violations
+  - SessionEnd hook - Final cleanup
+
+Usage:
+  asym claude install [flags]
+
+Examples:
+  # Install for all projects (user level)
+  asym claude install
+
+  # Install for all projects (explicit)
+  asym claude install --user
+
+  # Install for current project only
+  asym claude install --project
+
+  # Install for Claude Code in VS Code (user level)
+  asym claude install --vscode
+
+  # Install for Claude Code in VS Code (project level)
+  asym claude install --vscode --project
+
+Flags:
+  -h, --help      help for install
+      --project   Install at project level - applies only to current project
+      --user      Install at user level - applies to all projects (default)
+      --vscode    Install hooks for Claude Code in VS Code (uses settings.json instead of plugin system)
+```
+</Accordion>
+
+| Flag | Description |
+|------|-------------|
+| `--user` | Install at user level — applies to all projects (default) |
+| `--project` | Install at project level — applies only to the current project |
+| `--vscode` | Install for Claude Code in VS Code (uses `settings.json` instead of the plugin system) |
+| `-h, --help` | Help for install |
+
+## uninstall
+
+Remove the Asymptote security plugin from Claude Code.
+
+```bash
+asym claude uninstall
+```
+
+<Accordion title="asym claude uninstall --help">
+```bash
+$ asym claude uninstall --help
+
+Remove Asymptote security plugin from Claude Code.
+
+This removes the plugin from Claude's plugin system and cleans up
+the plugin files.
+
+By default, removes the plugin from the user level. Use --project
+to remove from the current project only.
+
+Use --vscode to remove hooks installed for Claude Code in VS Code.
+
+Usage:
+  asym claude uninstall [flags]
+
+Examples:
+  # Remove user-level plugin
+  asym claude uninstall
+
+  # Remove project-level plugin
+  asym claude uninstall --project
+
+  # Remove VS Code hooks (user level)
+  asym claude uninstall --vscode
+
+  # Remove VS Code hooks (project level)
+  asym claude uninstall --vscode --project
+
+Flags:
+  -h, --help      help for uninstall
+      --project   Remove from project level
+      --user      Remove from user level (default)
+      --vscode    Remove hooks installed for Claude Code in VS Code
+```
+</Accordion>
+
+| Flag | Description |
+|------|-------------|
+| `--user` | Remove from user level (default) |
+| `--project` | Remove from project level |
+| `--vscode` | Remove hooks installed for Claude Code in VS Code |
+| `-h, --help` | Help for uninstall |
+
+## Related
+
+<Columns cols={2}>
+  <Card title="asym cursor" icon="computer-mouse" href="/cli/cursor">
+    Manage Cursor IDE integration.
+  </Card>
+  <Card title="asym upgrade" icon="arrow-up" href="/cli/upgrade">
+    Upgrade hooks for all connected agents.
+  </Card>
+</Columns>

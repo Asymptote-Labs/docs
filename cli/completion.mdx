@@ -1,0 +1,98 @@
+---
+title: "asym completion"
+description: "Generate shell autocompletion scripts for asym"
+---
+
+# asym completion
+
+Generate an autocompletion script for `asym` in your shell of choice. Supported shells: `bash`, `zsh`, `fish`, and `powershell`.
+
+```bash
+asym completion [shell]
+```
+
+<Accordion title="asym completion --help">
+```bash
+$ asym completion --help
+
+Generate the autocompletion script for asym for the specified shell.
+See each sub-command's help for details on how to use the generated script.
+
+Usage:
+  asym completion [command]
+
+Available Commands:
+  bash        Generate the autocompletion script for bash
+  fish        Generate the autocompletion script for fish
+  powershell  Generate the autocompletion script for powershell
+  zsh         Generate the autocompletion script for zsh
+
+Flags:
+  -h, --help   help for completion
+```
+</Accordion>
+
+## bash
+
+```bash
+asym completion bash > /etc/bash_completion.d/asym
+```
+
+Or for a single session:
+
+```bash
+source <(asym completion bash)
+```
+
+<Accordion title="Example output">
+```bash
+$ asym completion bash
+
+# bash completion for asym                                 -*- shell-script -*-
+
+__asym_debug()
+{
+    if [[ -n ${BASH_COMP_DEBUG_FILE:-} ]]; then
+        echo "$*" >> "${BASH_COMP_DEBUG_FILE}"
+    fi
+}
+
+# ...
+```
+</Accordion>
+
+## zsh
+
+```bash
+asym completion zsh > "${fpath[1]}/_asym"
+```
+
+Or for a single session:
+
+```bash
+source <(asym completion zsh)
+```
+
+## fish
+
+```bash
+asym completion fish | source
+```
+
+To persist across sessions:
+
+```bash
+asym completion fish > ~/.config/fish/completions/asym.fish
+```
+
+## powershell
+
+```powershell
+asym completion powershell | Out-String | Invoke-Expression
+```
+
+## Flags
+
+| Flag | Description |
+|------|-------------|
+| `-h, --help` | Help for completion |

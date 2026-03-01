@@ -1,0 +1,151 @@
+---
+title: "asym factory"
+description: "Manage the Asymptote integration for Factory (Droid)"
+---
+
+# asym factory
+
+Install and uninstall Asymptote's security hooks for Factory's Droid agent.
+
+```bash
+asym factory [command]
+```
+
+<Accordion title="asym factory --help">
+```bash
+$ asym factory --help
+
+Manage Asymptote integration with Factory (Droid).
+
+Set up automatic security evaluation for AI-assisted code changes:
+
+  User level (all projects):
+    asym factory install
+
+  Project level (current project only):
+    asym factory install --project
+
+Usage:
+  asym factory [command]
+
+Available Commands:
+  install     Install Asymptote security evaluation for Factory
+  uninstall   Remove Factory hooks for Asymptote
+
+Flags:
+  -h, --help   help for factory
+
+Use "asym factory [command] --help" for more information about a command.
+```
+</Accordion>
+
+## install
+
+Install Asymptote hooks for Factory. By default, hooks are installed at the user level (`~/.factory/settings.json`), applying to all projects.
+
+```bash
+asym factory install
+```
+
+<Accordion title="asym factory install --help">
+```bash
+$ asym factory install --help
+
+Install Asymptote security hooks for Factory (Droid).
+
+This command sets up automatic security evaluation for AI-assisted code changes.
+After installation, every file edit by Factory will be evaluated against
+your security policies.
+
+By default, hooks are installed at the user level (~/.factory/settings.json),
+which applies to all projects. Use --project to install only for the current
+project (.factory/settings.json).
+
+Prerequisites:
+  - You must be logged in (run 'asym login' first)
+
+The hooks will be registered in Factory's settings.json and include:
+  - SessionStart hook - Initializes session and cleanup
+  - PostToolUse hook - Submits diffs for async security evaluation
+  - Stop hook - Polls results and re-prompts on violations
+  - SessionEnd hook - Final cleanup
+
+Usage:
+  asym factory install [flags]
+
+Examples:
+  # Install for all projects (user level)
+  asym factory install
+
+  # Install for all projects (explicit)
+  asym factory install --user
+
+  # Install for current project only
+  asym factory install --project
+
+Flags:
+  -h, --help      help for install
+      --project   Install at project level - applies only to current project
+      --user      Install at user level - applies to all projects (default)
+```
+</Accordion>
+
+| Flag | Description |
+|------|-------------|
+| `--user` | Install at user level (`~/.factory/settings.json`) — applies to all projects (default) |
+| `--project` | Install at project level (`.factory/settings.json`) — applies only to the current project |
+| `-h, --help` | Help for install |
+
+## uninstall
+
+Remove Asymptote hooks from Factory.
+
+```bash
+asym factory uninstall
+```
+
+<Accordion title="asym factory uninstall --help">
+```bash
+$ asym factory uninstall --help
+
+Remove Asymptote security hooks from Factory (Droid).
+
+This removes the hook entries from Factory's settings.json and cleans up
+the hooks binary.
+
+By default, removes hooks from the user level. Use --project to remove
+from the current project only.
+
+Usage:
+  asym factory uninstall [flags]
+
+Examples:
+  # Remove user-level hooks
+  asym factory uninstall
+
+  # Remove project-level hooks
+  asym factory uninstall --project
+
+Flags:
+  -h, --help      help for uninstall
+      --project   Remove from project level
+      --user      Remove from user level (default)
+```
+</Accordion>
+
+| Flag | Description |
+|------|-------------|
+| `--user` | Remove from user level (default) |
+| `--project` | Remove from project level |
+| `-h, --help` | Help for uninstall |
+
+## Related
+
+<Columns cols={2}>
+  <Card title="asym cursor" icon="computer-mouse" href="/cli/cursor">
+    Manage Cursor IDE integration.
+  </Card>
+  <Card title="asym upgrade" icon="arrow-up" href="/cli/upgrade">
+    Upgrade hooks for all connected agents.
+  </Card>
+</Columns>

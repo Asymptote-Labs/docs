@@ -1,0 +1,80 @@
+---
+title: "asym init"
+description: "Set up Asymptote: log in and install platform hooks for your coding agents"
+---
+
+# asym init
+
+`asym init` is the fastest way to get started. It logs you in, auto-detects your installed coding agents, and installs Asymptote hooks for each selected agent — all in a single command.
+
+```bash
+asym init
+```
+
+## What it does
+
+1. Logs in to your Asymptote account (skipped if already logged in)
+2. Auto-detects installed AI coding platforms
+3. Lets you choose which platforms to set up
+4. Installs security hooks for each selected platform
+
+**Supported platforms:** Claude Code, Cursor, Factory
+
+<Note>
+GitHub Copilot is not handled by `asym init`. Copilot requires per-project setup — run `asym copilot install` from the root of each repository where you want Copilot hooks active.
+</Note>
+
+## Usage
+
+```bash
+brew install asymptote-cli && asym init
+```
+
+Running `asym init` on its own after the CLI is already installed re-runs the setup flow and can be used to add new agents.
+
+<Accordion title="asym init --help">
+```bash
+$ asym init --help
+
+Initialize Asymptote with a single command.
+
+This guided setup will:
+  1. Log in to your Asymptote account (skipped if already logged in)
+  2. Auto-detect installed AI coding platforms
+  3. Let you choose which platforms to set up
+  4. Install security hooks for selected platforms
+
+Supported platforms: Claude Code, Cursor, Factory.
+GitHub Copilot requires per-project setup via 'asym copilot install'.
+
+All hooks are installed at the user level by default.
+For project-level installs, use the individual commands instead.
+
+Usage:
+  asym init [flags]
+
+Flags:
+  -h, --help   help for init
+```
+</Accordion>
+
+<Note>
+After setup, restart your coding agent or IDE for the changes to take effect.
+</Note>
+
+## Flags
+
+| Flag | Description |
+|------|-------------|
+| `-h, --help` | Help for init |
+
+## Related
+
+<Columns cols={2}>
+  <Card title="asym login" icon="key" href="/cli/login">
+    Log in without running full setup.
+  </Card>
+  <Card title="asym copilot" icon="github" href="/cli/copilot">
+    Set up Copilot hooks per repository.
+  </Card>
+</Columns>
