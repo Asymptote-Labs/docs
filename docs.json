@@ -181,15 +181,15 @@
         "items": [
           { "label": "Platform", "href": "https://asymptotelabs.ai/" },
           { "label": "Security", "href": "https://trust.asymptotelabs.ai/" },
-          { "label": "Pricing", "href": "https://asymptotelabs.ai/" }
+          { "label": "Pricing", "href": "https://asymptotelabs.ai/pricing" }
         ]
       },
       {
         "title": "Company",
         "items": [
-          { "label": "About", "href": "https://asymptotelabs.ai/" },
-          { "label": "Blog", "href": "https://asymptotelabs.ai/" },
-          { "label": "Careers", "href": "https://asymptotelabs.ai/" },
+          { "label": "About", "href": "https://asymptotelabs.ai/about" },
+          { "label": "Blog", "href": "https://asymptotelabs.ai/blog" },
+          { "label": "Careers", "href": "https://asymptotelabs.ai/careers" },
           { "label": "Status", "href": "https://status.asymptotelabs.ai/" },
           { "label": "Contact", "href": "mailto:support@asymptotelabs.ai" }
         ]
