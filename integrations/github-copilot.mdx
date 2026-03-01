@@ -1,0 +1,91 @@
+---
+title: "GitHub Copilot"
+description: "Integrate Asymptote with GitHub Copilot in VS Code for real-time security guardrails on AI-assisted code changes."
+icon: "github"
+---
+
+Asymptote hooks into GitHub Copilot in VS Code to automatically evaluate every file edit against your security policies.
+
+## Prerequisites
+
+- [Asymptote CLI](/cli/installation) installed (`asym` command)
+- GitHub Copilot extension installed in VS Code
+- Logged in to your Asymptote account (`asym login`)
+- A git repository (hooks are project-level only)
+
+<Warning>
+Copilot hooks are **project-level only**. You must run `asym copilot install` from the root of the git repository where you want hooks active. Run the command once per repository.
+</Warning>
+
+## Setup
+
+<Steps>
+  <Step title="Install the Asymptote CLI">
+    Install the CLI via Homebrew:
+
+    ```bash
+    brew install asymptote-cli
+    ```
+
+    Then log in:
+
+    ```bash
+    asym login
+    ```
+  </Step>
+
+  <Step title="Navigate to your repository root">
+    Hooks must be installed from the root of your git repository:
+
+    ```bash
+    cd /path/to/your/repo
+    ```
+  </Step>
+
+  <Step title="Install the Asymptote hooks">
+    Run the install command:
+
+    ```bash
+    asym copilot install
+    ```
+
+    This writes the hook configuration to `.github/hooks/hooks.json` in your repository and installs the hooks binary to `~/.asymptote/copilot/`.
+  </Step>
+
+  <Step title="Open the project in VS Code">
+    Open the repository in VS Code. Asymptote will now evaluate every file edit made by Copilot against your security policies automatically.
+  </Step>
+</Steps>
+
+## How it works
+
+Once installed, Asymptote registers hooks in `.github/hooks/hooks.json`. For every file edit Copilot makes, Asymptote captures the diff, evaluates it against your security policies, and guides Copilot to remediate any violations.
+
+Other existing hooks in `hooks.json` are preserved.
+
+## Uninstalling
+
+To remove the Asymptote hooks from the current repository, run from the same project directory:
+
+```bash
+asym copilot uninstall
+```
+
+This removes the Asymptote entries from `.github/hooks/hooks.json` and cleans up the hooks binary. Other hooks in the file are preserved.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Cursor" icon="computer-mouse" href="/integrations/cursor">
+    Set up Asymptote for Cursor IDE.
+  </Card>
+  <Card title="Claude Code" icon="robot" href="/integrations/claude-code">
+    Set up Asymptote for the Claude Code CLI.
+  </Card>
+  <Card title="Factory" icon="industry" href="/integrations/factory">
+    Set up Asymptote for Factory's Droid agent.
+  </Card>
+  <Card title="CLI reference" icon="terminal" href="/cli/copilot">
+    Full reference for the `asym copilot` command.
+  </Card>
+</CardGroup>

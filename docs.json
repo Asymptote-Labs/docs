@@ -25,6 +25,16 @@
             ]
           },
           {
+            "group": "Coding Agent Integrations",
+            "icon": "plug",
+            "pages": [
+              "integrations/cursor",
+              "integrations/claude-code",
+              "integrations/github-copilot",
+              "integrations/factory"
+            ]
+          },
+          {
             "group": "MCP Server",
             "icon": "server",
             "pages": [
@@ -85,7 +95,7 @@
             ]
           },
           {
-            "group": "Agent Integrations",
+            "group": "Coding Agent Integrations",
             "icon": "plug",
             "pages": [
               "cli/cursor",

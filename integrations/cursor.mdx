@@ -1,0 +1,92 @@
+---
+title: "Cursor"
+description: "Integrate Asymptote with Cursor for real-time security guardrails on AI-assisted code changes."
+icon: "/images/cursor-logo.svg"
+---
+
+Asymptote hooks into Cursor's agent to automatically evaluate every file edit against your security policies—before code is written to disk.
+
+## Prerequisites
+
+- [Asymptote CLI](/cli/installation) installed (`asym` command)
+- A Cursor editor with agent mode enabled
+- Logged in to your Asymptote account (`asym login`)
+
+## Setup
+
+<Steps>
+  <Step title="Install the Asymptote CLI">
+    Install the CLI via Homebrew:
+
+    ```bash
+    brew install asymptote-cli
+    ```
+
+    Then log in:
+
+    ```bash
+    asym login
+    ```
+  </Step>
+
+  <Step title="Install hooks for Cursor">
+    Run the install command from any directory. By default, hooks are installed at the user level and apply to all projects:
+
+    ```bash
+    asym cursor install
+    ```
+
+    To install only for the current project, use the `--project` flag:
+
+    ```bash
+    asym cursor install --project
+    ```
+  </Step>
+
+  <Step title="Restart Cursor">
+    Restart Cursor to activate the hooks. Asymptote will now evaluate every file edit made by Cursor's AI agent against your security policies automatically.
+  </Step>
+</Steps>
+
+## How it works
+
+Once installed, Asymptote registers hooks in Cursor's `hooks.json`. For every file edit the AI agent makes, Asymptote:
+
+1. Captures the diff
+2. Evaluates it against your security policies
+3. Re-prompts the agent to remediate any violations before writing to disk
+
+No changes to your Cursor workflow are required.
+
+## Uninstalling
+
+To remove the Asymptote hooks from Cursor:
+
+```bash
+asym cursor uninstall
+```
+
+To remove project-level hooks only:
+
+```bash
+asym cursor uninstall --project
+```
+
+Restart Cursor after uninstalling to deactivate the hooks.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Claude Code" icon="robot" href="/integrations/claude-code">
+    Set up Asymptote for the Claude Code CLI.
+  </Card>
+  <Card title="GitHub Copilot" icon="github" href="/integrations/github-copilot">
+    Set up Asymptote for GitHub Copilot in VS Code.
+  </Card>
+  <Card title="Factory" icon="industry" href="/integrations/factory">
+    Set up Asymptote for Factory's Droid agent.
+  </Card>
+  <Card title="CLI reference" icon="terminal" href="/cli/cursor">
+    Full reference for the `asym cursor` command.
+  </Card>
+</CardGroup>
