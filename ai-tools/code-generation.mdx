@@ -1,0 +1,45 @@
+---
+title: "Code Generation"
+description: "Catch security issues in real time as AI agents and developers write code, before anything is committed."
+---
+
+## Overview
+
+The earliest and cheapest place to catch a vulnerability is at the moment the code is written. Asymptote integrates directly with your AI coding agent via hooks so that every code change, tool call, and dependency update is evaluated against your security policies in real time.
+
+## How It Works
+
+Asymptote runs via hooks inside your coding environment. When your AI agent writes or modifies code, Asymptote intercepts the change and:
+
+1. **Scans the diff** for known vulnerability patterns, insecure coding practices, and policy violations
+2. **Checks dependencies** for supply chain risks such as malicious packages, typosquatting, and known CVEs
+3. **Detects secrets** including API keys, tokens, and credentials before they can be committed
+4. **Enforces org policies** defined in natural language and blocks or warns on violations
+5. **Proposes safer alternatives** so the agent can remediate the issue without leaving the IDE
+
+## Supported Coding Agents
+
+<CardGroup cols={2}>
+  <Card title="Cursor" icon="/images/cursor-logo.svg" href="/integrations/cursor">
+    Set up Asymptote in Cursor
+  </Card>
+  <Card title="Claude Code" icon="/images/claude-logo.svg" href="/integrations/claude-code">
+    Set up Asymptote in Claude Code
+  </Card>
+  <Card title="GitHub Copilot" icon="github" href="/integrations/github-copilot">
+    Set up Asymptote with GitHub Copilot
+  </Card>
+  <Card title="Factory" icon="/images/factory-logo.svg" href="/integrations/factory">
+    Set up Asymptote with Factory
+  </Card>
+</CardGroup>
+
+## Setup
+
+Run `asym init` to automatically detect and configure hooks for supported coding agents on your machine:
+
+```bash
+asym init
+```
+
+You can also configure hooks manually for each agent. See the integration guides above for agent-specific instructions.

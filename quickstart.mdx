@@ -1,6 +1,6 @@
 ---
 title: "Quickstart"
-description: "Get started with Asymptote by connecting your GitHub repositories and configuring our security MCP server with your favorite AI coding tools."
+description: "Get started with Asymptote by connecting your GitHub repositories and configuring security hooks with your favorite AI coding tools."
 ---
 
 ## Prerequisites
@@ -45,19 +45,33 @@ Your account includes access to the Asymptote dashboard, where you can:
   </Step>
 </Steps>
 
-### Step 3: Create a new Secret Key
+### Step 3: Install the CLI
 
-Navigate to the **API Keys** tab in the Asymptote Dashboard.
+Install the Asymptote CLI using Homebrew:
 
-<img src="/public/secret_key_tab.png" alt="Asymptote Secret Key Tab" style={{ maxWidth: '700px' }} />
+```bash
+brew install asymptote-cli
+```
 
-Create a new secret key, apply the relevant scopes, and set a desired expiration (optional).
+<Accordion title="Example output">
+```bash
+$ brew install asymptote-cli
 
-<img src="/public/secret_key_configuration.png" alt="Asymptote Secret Key Configuration" style={{ maxWidth: '400px', display: 'block', margin: '0 auto' }} />
+==> Downloading asymptote-cli...
+==> Installing asymptote-cli...
+✓ Installed asym v0.5.0
+```
+</Accordion>
 
-### Step 4: Connect Asymptote MCP to Coding Tools
+### Step 4: Run `asym init`
 
-Follow the [setup instructions](https://docs.asymptotelabs.ai/ai-tools/mcp-server#mcp-client-integrations) specific to your AI coding tool of choice.
+Run the init command to authenticate and connect your AI coding agents:
+
+```bash
+asym init
+```
+
+This will log you into your Asymptote account and automatically configure Asymptote hooks for any supported coding agents detected on your machine (Cursor, Claude Code, GitHub Copilot, and more).
 
 <Info icon="circle-question" title="Need Help?">
   Need assistance getting set up? Our team can help with configuration and onboarding. Contact [support@asymptotelabs.ai](mailto:support@asymptotelabs.ai).

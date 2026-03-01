@@ -1,0 +1,63 @@
+---
+title: "Install CLI"
+description: "Install the Asymptote CLI to connect your coding agents and run security checks locally."
+---
+
+## Overview
+
+The Asymptote CLI (`asym`) lets you connect AI coding agents like Cursor, Claude Code, and GitHub Copilot to Asymptote's security layer directly from your local environment.
+
+## Install
+
+```bash
+brew install asymptote-cli
+```
+
+<Accordion title="Example output">
+```bash
+$ brew install asymptote-cli
+
+==> Downloading asymptote-cli...
+==> Installing asymptote-cli...
+✓ Installed asym v0.5.0
+```
+</Accordion>
+
+## Initialize
+
+After installing, run `asym init` to log in and connect your coding agents:
+
+```bash
+asym init
+```
+
+This will:
+- Authenticate your Asymptote account
+- Detect installed coding agents (Cursor, Claude Code, GitHub Copilot, etc.)
+- Configure Asymptote hooks for each detected agent
+
+## Verify Installation
+
+```bash
+asym version
+```
+
+<Accordion title="Example output">
+```bash
+$ asym version
+
+asym version v0.5.0
+```
+</Accordion>
+
+## Upgrading
+
+To upgrade the CLI and refresh hooks for all connected agents:
+
+```bash
+brew upgrade asymptote-cli && asym upgrade
+```
+
+<Info icon="circle-info" title="Full CLI Reference">
+  See the [CLI Reference](/cli/index) for a complete list of commands and options.
+</Info>

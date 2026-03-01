@@ -1,0 +1,44 @@
+---
+title: "CI / Pull Requests"
+description: "Automatically review every pull request for security issues and block merges that violate your policies."
+---
+
+## Overview
+
+When a developer or AI agent opens a pull request, Asymptote performs a full security review of the diff. Findings are posted as inline PR comments and check statuses, so your team sees exactly what was flagged and why — without leaving GitHub.
+
+## How It Works
+
+Asymptote integrates with GitHub via a native app and GitHub Actions. On every pull request open or update:
+
+1. **Reviews the full diff** against your configured security policies
+2. **Flags vulnerabilities** including insecure patterns, risky dependency changes, and exposed secrets
+3. **Posts inline comments** on the specific lines of code that triggered a finding
+4. **Sets a check status** (pass or fail) that can be required to merge via branch protection rules
+5. **Links each finding** to the relevant policy so developers understand what to fix and why
+
+## Enforcing at Merge Time
+
+To require Asymptote's check before a PR can merge:
+
+1. Go to your repository's **Settings → Branches**
+2. Add or edit a branch protection rule for your default branch
+3. Enable **Require status checks to pass before merging**
+4. Search for and select the **Asymptote Security Review** check
+
+Any PR that fails Asymptote's policy review will be blocked from merging until the finding is resolved or explicitly dismissed.
+
+## What Gets Checked
+
+- **Code vulnerabilities** — injection patterns, insecure APIs, unsafe deserialization, and more
+- **Secret detection** — API keys, tokens, passwords, and private keys in diffs
+- **Dependency changes** — new or updated packages with known CVEs, typosquatting, or supply chain risk
+- **Policy violations** — any custom or built-in policy defined in your Asymptote dashboard
+
+## Setup
+
+See the [GitHub Actions deployment guide](/deployment/ci-github-actions) for full setup instructions.
+
+<Info icon="circle-question" title="Need Help?">
+  Questions about CI integration? Contact us at [support@asymptotelabs.ai](mailto:support@asymptotelabs.ai).
+</Info>

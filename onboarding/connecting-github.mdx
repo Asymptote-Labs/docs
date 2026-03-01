@@ -1,0 +1,42 @@
+---
+title: "Connecting GitHub"
+description: "Connect your GitHub account and repositories to Asymptote."
+---
+
+## Prerequisites
+
+- An Asymptote account — [sign up here](https://asymptotelabs.ai/login)
+- Admin access to the GitHub repositories you want to connect
+
+## Overview
+
+Connecting your GitHub account gives Asymptote visibility into your repositories so it can review pull requests, enforce security policies, and detect vulnerabilities before they reach production.
+
+## Steps
+
+<Steps>
+  <Step title="Sign into GitHub">
+    <img src="/public/asymptote_github_connection.png" alt="Asymptote GitHub Connection" style={{ maxWidth: '400px' }} />
+  </Step>
+  <Step title="Authorize GitHub Integration">
+    You'll be redirected to GitHub to authorize Asymptote's access to your repositories. Asymptote requires the following permissions:
+
+    - **Read access** to repository code and metadata
+    - **Webhook access** to receive real-time repository updates
+    - **Read and write access** to checks and commit statuses, issues and pull requests, and repository webhooks
+
+    <img src="/public/asymptote_permissions.png" alt="Asymptote Permissions" style={{ maxWidth: '400px' }} />
+  </Step>
+  <Step title="Select Repositories">
+    Select which repositories you want Asymptote to connect to. You can:
+
+    - Grant access to all repositories in your organization, or
+    - Select specific repositories now
+
+    You can add more repositories later from the Asymptote dashboard if needed.
+  </Step>
+</Steps>
+
+<Info icon="circle-question" title="Need Help?">
+  Having trouble connecting GitHub? Contact us at [support@asymptotelabs.ai](mailto:support@asymptotelabs.ai).
+</Info>

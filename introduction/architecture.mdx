@@ -23,7 +23,7 @@ Let's walk through how Asymptote evaluates code as it's generated in Claude Code
 
 1. **Codegen-time invocation:** As your AI coding agents draft or edit code, Asymptote is invoked through a mix of rules and hooks in Claude Code and Cursor. This means analysis happens while code is being produced, not after the PR is opened.
 
-2. **MCP request creation:** The client sends an MCP request containing the proposed change. The request can include the generated diff, files touched, repository metadata, and the active security policy profile.
+2. **Request creation:** The hook invokes the Asymptote server with the proposed change, including the generated diff, files touched, repository metadata, and the active security policy profile.
 
 3. **Change understanding and context collection:** Asymptote expands the change into the context needed to judge risk. Asymptote identifies the functions and endpoints affected, tracks dependency and configuration changes, and pulls surrounding code needed to understand intent and data flow.
 
