@@ -1,0 +1,93 @@
+---
+title: "Factory"
+description: "Integrate Asymptote with Factory's Droid agent for real-time security guardrails on AI-assisted code changes."
+icon: "/images/factory-logo.svg"
+---
+
+Asymptote hooks into Factory's Droid agent to automatically evaluate every file edit against your security policies as Droid works.
+
+## Prerequisites
+
+- [Asymptote CLI](/cli/installation) installed (`asym` command)
+- A Factory account with Droid configured
+- Logged in to your Asymptote account (`asym login`)
+
+## Setup
+
+<Steps>
+  <Step title="Install the Asymptote CLI">
+    Install the CLI via Homebrew:
+
+    ```bash
+    brew install asymptote-cli
+    ```
+
+    Then log in:
+
+    ```bash
+    asym login
+    ```
+  </Step>
+
+  <Step title="Install hooks for Factory">
+    Run the install command. By default, hooks are installed at the user level (`~/.factory/settings.json`) and apply to all projects:
+
+    ```bash
+    asym factory install
+    ```
+
+    To install only for the current project:
+
+    ```bash
+    asym factory install --project
+    ```
+  </Step>
+
+  <Step title="Run Droid">
+    Start a Factory Droid session as normal. Asymptote will evaluate every file edit against your security policies automatically—no changes to your workflow are required.
+  </Step>
+</Steps>
+
+## How it works
+
+Once installed, Asymptote registers four hooks in Factory's `settings.json`:
+
+| Hook | Purpose |
+|------|---------|
+| `SessionStart` | Initializes the session and performs cleanup |
+| `PostToolUse` | Submits diffs for async security evaluation |
+| `Stop` | Polls results and re-prompts Droid on violations |
+| `SessionEnd` | Final cleanup |
+
+Droid will automatically remediate any policy violations before finishing its response.
+
+## Uninstalling
+
+To remove the Asymptote hooks from Factory:
+
+```bash
+asym factory uninstall
+```
+
+To remove project-level hooks only:
+
+```bash
+asym factory uninstall --project
+```
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Cursor" icon="computer-mouse" href="/integrations/cursor">
+    Set up Asymptote for Cursor IDE.
+  </Card>
+  <Card title="Claude Code" icon="robot" href="/integrations/claude-code">
+    Set up Asymptote for the Claude Code CLI.
+  </Card>
+  <Card title="GitHub Copilot" icon="github" href="/integrations/github-copilot">
+    Set up Asymptote for GitHub Copilot in VS Code.
+  </Card>
+  <Card title="CLI reference" icon="terminal" href="/cli/factory">
+    Full reference for the `asym factory` command.
+  </Card>
+</CardGroup>

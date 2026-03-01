@@ -1,0 +1,105 @@
+---
+title: "Claude Code"
+description: "Integrate Asymptote with Claude Code for real-time security guardrails on AI-assisted code changes."
+icon: "/images/claude-logo.svg"
+---
+
+Asymptote hooks into the Claude Code CLI (and the Claude Code extension in VS Code) to automatically evaluate every file edit against your security policies as Claude works.
+
+## Prerequisites
+
+- [Asymptote CLI](/cli/installation) installed (`asym` command)
+- [Claude Code](https://claude.ai/code) installed (`claude` command), or the Claude Code VS Code extension
+- Logged in to your Asymptote account (`asym login`)
+
+## Setup
+
+<Steps>
+  <Step title="Install the Asymptote CLI">
+    Install the CLI via Homebrew:
+
+    ```bash
+    brew install asymptote-cli
+    ```
+
+    Then log in:
+
+    ```bash
+    asym login
+    ```
+  </Step>
+
+  <Step title="Install the Asymptote plugin for Claude Code">
+    Run the install command. By default, the plugin is installed at the user level and applies to all projects:
+
+    ```bash
+    asym claude install
+    ```
+
+    To install for the current project only:
+
+    ```bash
+    asym claude install --project
+    ```
+
+    If you're running Claude Code **inside VS Code**, use the `--vscode` flag instead:
+
+    ```bash
+    asym claude install --vscode
+    ```
+  </Step>
+
+  <Step title="Start Claude Code">
+    Run `claude` as normal. Asymptote will evaluate every file edit against your security policies automatically—no changes to your workflow are required.
+  </Step>
+</Steps>
+
+## How it works
+
+Once installed, Asymptote registers four hooks via Claude's plugin system:
+
+| Hook | Purpose |
+|------|---------|
+| `SessionStart` | Initializes the session and performs cleanup |
+| `PostToolUse` | Submits diffs for async security evaluation |
+| `Stop` | Polls results and re-prompts Claude on violations |
+| `SessionEnd` | Final cleanup |
+
+Claude will automatically remediate any policy violations before finishing its response.
+
+## Uninstalling
+
+To remove the Asymptote plugin from Claude Code:
+
+```bash
+asym claude uninstall
+```
+
+To remove project-level only:
+
+```bash
+asym claude uninstall --project
+```
+
+To remove hooks installed for Claude Code in VS Code:
+
+```bash
+asym claude uninstall --vscode
+```
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Cursor" icon="computer-mouse" href="/integrations/cursor">
+    Set up Asymptote for Cursor IDE.
+  </Card>
+  <Card title="GitHub Copilot" icon="github" href="/integrations/github-copilot">
+    Set up Asymptote for GitHub Copilot in VS Code.
+  </Card>
+  <Card title="Factory" icon="industry" href="/integrations/factory">
+    Set up Asymptote for Factory's Droid agent.
+  </Card>
+  <Card title="CLI reference" icon="terminal" href="/cli/claude">
+    Full reference for the `asym claude` command.
+  </Card>
+</CardGroup>
