@@ -31,7 +31,8 @@
               "onboarding/connecting-github",
               "onboarding/install-cli",
               "onboarding/inviting-teammates",
-              "onboarding/configuring-guardrails"
+              "onboarding/configuring-guardrails",
+              "deployment/ci-github-actions"
             ]
           },
           {
@@ -57,9 +58,9 @@
           },
           {
             "group": "Other Integrations",
-            "icon": "rocket",
+            "icon": "puzzle-piece",
             "pages": [
-              "deployment/ci-github-actions"
+              "deployment/github"
             ]
           },
           {
