@@ -56,10 +56,9 @@
             ]
           },
           {
-            "group": "Deployment",
+            "group": "Other Integrations",
             "icon": "rocket",
             "pages": [
-              "deployment/overview",
               "deployment/ci-github-actions"
             ]
           },
