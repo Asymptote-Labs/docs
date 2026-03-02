@@ -1,11 +1,13 @@
 ---
-title: "CI / GitHub Actions"
+title: "GitHub"
 description: "Integrate Asymptote security scanning into your GitHub Actions workflows."
 ---
 
 ## Overview
 
-Asymptote integrates with GitHub Actions to run security analysis as part of your CI pipeline. When connected, Asymptote scans pull requests, enforces security policies, and blocks deployments based on configurable severity thresholds — all without leaving your existing workflow.
+Asymptote integrates with GitHub Actions to run security analysis as part of your CI pipeline. When connected, Asymptote scans pull requests, enforces security policies, and blocks deployments based on configurable severity thresholds, all without leaving your existing workflow.
+
+The Asymptote Security Scan action is available on the [GitHub Marketplace](https://github.com/marketplace/actions/asymptote-security-scan).
 
 ## Required GitHub Permissions
 
@@ -29,46 +31,13 @@ When you install the Asymptote GitHub App, the following permissions are request
     In your GitHub repository, go to **Settings → Secrets and variables → Actions** and add a new secret named `ASYMPTOTE_API_KEY` with your Asymptote API key.
   </Step>
   <Step title="Add the workflow">
-    Create a workflow file in your repository to trigger Asymptote scans on pull requests.
+    Asymptote automatically adds a workflow file to your repository to trigger security scans on pull requests.
   </Step>
 </Steps>
-
-## Example Workflow
-
-```yaml
-name: Asymptote Security Scan
-
-on:
-  pull_request:
-    branches: [main, master]
-
-jobs:
-  security-scan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run Asymptote Security Scan
-        env:
-          ASYMPTOTE_API_KEY: ${{ secrets.ASYMPTOTE_API_KEY }}
-        run: |
-          npx asymptote scan --repo ${{ github.repository }} --pr ${{ github.event.pull_request.number }}
-```
 
 ## Status Checks
 
 Once connected, Asymptote posts status checks directly on your pull requests. You can configure branch protection rules to require these checks to pass before merging.
-
-### Severity Thresholds
-
-| Setting | Behavior |
-|---|---|
-| **Strict** | Fails on Medium severity and above |
-| **Standard** | Fails on High severity and above (default) |
-| **Relaxed** | Fails only on Critical severity |
-
-To adjust the threshold, go to **Project Settings → GitHub** in the Asymptote dashboard.
 
 ## Troubleshooting
 
