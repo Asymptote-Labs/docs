@@ -29,6 +29,35 @@ description: "Solutions for common issues when setting up and using Asymptote."
   <Accordion title="How do I disconnect all repositories?">
     In GitHub: **Organization → Settings → GitHub Apps → Asymptote Security**, then suspend or uninstall the app.
   </Accordion>
+  <Accordion title="How do I remove agent hooks from my local machine?">
+    Use the uninstall command for whichever agent you set up:
+
+    **Cursor**
+    ```bash
+    asym cursor uninstall          # user-level (all projects)
+    asym cursor uninstall --project  # current project only
+    ```
+
+    **Claude Code**
+    ```bash
+    asym claude uninstall          # user-level (all projects)
+    asym claude uninstall --project  # current project only
+    asym claude uninstall --vscode   # VS Code extension
+    ```
+
+    **GitHub Copilot** (project-level only — run from the repo root)
+    ```bash
+    asym copilot uninstall
+    ```
+
+    **Factory**
+    ```bash
+    asym factory uninstall           # user-level (all projects)
+    asym factory uninstall --project  # current project only
+    ```
+
+    After uninstalling Cursor hooks, restart Cursor to fully deactivate them. See the [integrations docs](/integrations/cursor) for your specific tool.
+  </Accordion>
 </AccordionGroup>
 
 <Info icon="circle-question" title="Still stuck?">
