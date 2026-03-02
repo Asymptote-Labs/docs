@@ -1,7 +1,16 @@
 ---
 title: "GitHub"
+sidebarTitle: "GitHub Security PR Reviews"
 description: "Integrate Asymptote security scanning into your GitHub Actions workflows."
 ---
+
+## Prerequisites
+
+- An Asymptote account — [sign up here](https://asymptotelabs.ai/login)
+- GitHub connected to Asymptote — see [Connecting GitHub](/onboarding/connecting-github) for setup steps
+- Admin access to the GitHub repositories you want to scan
+
+For a full list of permissions Asymptote requests from GitHub, see the [GitHub integration page](/deployment/github).
 
 ## Overview
 
@@ -9,29 +18,44 @@ Asymptote integrates with GitHub Actions to run security analysis as part of you
 
 The Asymptote Security Scan action is available on the [GitHub Marketplace](https://github.com/marketplace/actions/asymptote-security-scan).
 
-## Required GitHub Permissions
-
-When you install the Asymptote GitHub App, the following permissions are requested:
-
-| Permission | Access | Reason |
-|---|---|---|
-| Administration, Issues, Metadata | Read | Enables Asymptote to monitor repository creation or deletion events, and access repository metadata. |
-| Actions, Checks, Pull Requests, Webhooks, Workflows | Read & Write | Enables Asymptote to trigger workflows, create and update PR checks, create and update pull requests, and modify workflow files. |
-| Contents | Read & Write | Enables Asymptote to detect vulnerabilities in code and open remediation PRs in a new branch. |
-| Members | Read | Enables Asymptote to list and map teams and membership. |
-| Deployments | Read & Write | Enables Asymptote to run security requirements on new deployments and block deployments based on security findings. |
-
 ## Connecting GitHub Actions
 
+Add the Asymptote Security Scan GitHub Action to your CI pipeline. This evaluates pull request code changes against your security policies, posts inline review comments with AI-generated fix suggestions, and creates check runs with annotations.
+
 <Steps>
-  <Step title="Install the GitHub App">
-    From the Asymptote dashboard, navigate to **Settings → GitHub** and click **Install GitHub App**. Select your GitHub organization and choose which repositories to grant access to.
-  </Step>
-  <Step title="Add your API key">
-    In your GitHub repository, go to **Settings → Secrets and variables → Actions** and add a new secret named `ASYMPTOTE_API_KEY` with your Asymptote API key.
-  </Step>
   <Step title="Add the workflow">
-    Asymptote automatically adds a workflow file to your repository to trigger security scans on pull requests.
+    Add this workflow file to your repository:
+
+    ```yaml .github/workflows/security-scan.yml
+    name: Security Scan
+
+    on:
+      pull_request:
+        branches: [main]
+
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: write
+
+    jobs:
+      security-scan:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
+
+          - name: Asymptote Security Scan
+            uses: Asymptote-Labs/asymptote-security-action@v1
+            with:
+              asymptote_api_key: ${{ secrets.ASYMPTOTE_API_KEY }}
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    ```
+  </Step>
+  <Step title="Create an API key">
+    Create a CI API key from the **Settings** page in the dashboard.
+
+    Once the API key is created, go to your GitHub repository and navigate to **Settings → Secrets and variables → Actions → New repository secret**. Create a secret named `ASYMPTOTE_API_KEY` and paste the key value.
   </Step>
 </Steps>
 

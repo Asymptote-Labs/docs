@@ -1,0 +1,41 @@
+---
+title: "GitHub"
+description: "Connect Asymptote to GitHub to scan pull requests, enforce security policies, and block vulnerable code before it ships."
+---
+
+## Overview
+
+Asymptote's GitHub integration gives you visibility into your repositories so it can review pull requests, enforce security policies, and detect vulnerabilities before they reach production.
+
+Once connected, Asymptote automatically scans incoming pull requests and surfaces findings as inline review comments with AI-generated fix suggestions.
+
+## Required Permissions
+
+When you install the Asymptote GitHub App, the following permissions are requested:
+
+| Permission | Reason |
+|---|---|
+| Read access to administration, issues, and metadata | Enables Asymptote to monitor repository creation or deletion events, and access repository metadata. |
+| Read and write access to actions, checks, pull requests, webhooks, and workflows | Enables Asymptote to trigger workflows, create and update PR checks, create and update pull requests, and modify workflow files. |
+| Read and write access to contents | Enables Asymptote to detect vulnerabilities in code and open remediation PRs in a new branch. |
+| Read access to members | Enables Asymptote to list and map teams and membership. |
+| Read and write access to deployments | Enables Asymptote to run security requirements on new deployments and block deployments based on security findings. |
+
+## Connecting GitHub
+
+<Steps>
+  <Step title="Install the GitHub App">
+    From the Asymptote dashboard, navigate to **Settings → GitHub** and click **Install GitHub App**. Select your GitHub organization and choose which repositories to grant access to.
+  </Step>
+  <Step title="Select repositories">
+    Choose which repositories Asymptote should have access to. You can grant access to all repositories in your organization or select specific ones. You can update this at any time from the dashboard.
+  </Step>
+</Steps>
+
+## Next Steps
+
+- [Set up GitHub Security PR Reviews](/deployment/ci-github-actions) to add Asymptote to your CI pipeline as a GitHub Action
+
+<Info icon="circle-question" title="Need Help?">
+  Having trouble connecting GitHub? Contact us at [support@asymptotelabs.ai](mailto:support@asymptotelabs.ai).
+</Info>
