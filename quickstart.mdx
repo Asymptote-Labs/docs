@@ -73,6 +73,49 @@ asym init
 
 This will log you into your Asymptote account and automatically configure Asymptote hooks for any supported coding agents detected on your machine (Cursor, Claude Code, GitHub Copilot, and more).
 
+### Step 5: Configure GitHub Security PR Reviews
+
+Add Asymptote to your CI pipeline to automatically scan pull requests and enforce security policies before code is merged.
+
+<Steps>
+  <Step title="Add the workflow file">
+    Add this workflow file to your repository:
+
+    ```yaml .github/workflows/security-scan.yml
+    name: Security Scan
+
+    on:
+      pull_request:
+        branches: [main]
+
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: write
+
+    jobs:
+      security-scan:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
+
+          - name: Asymptote Security Scan
+            uses: Asymptote-Labs/asymptote-security-action@v1
+            with:
+              asymptote_api_key: ${{ secrets.ASYMPTOTE_API_KEY }}
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    ```
+  </Step>
+  <Step title="Create an API key">
+    Create a CI API key from the **Settings** page in the Asymptote dashboard.
+
+    Then, in your GitHub repository, navigate to **Settings → Secrets and variables → Actions → New repository secret**. Create a secret named `ASYMPTOTE_API_KEY` and paste the key value.
+  </Step>
+</Steps>
+
+Once connected, Asymptote will post inline review comments with AI-generated fix suggestions on every pull request. You can configure branch protection rules to require Asymptote checks to pass before merging.
+
 <Info icon="circle-question" title="Need Help?">
   Need assistance getting set up? Our team can help with configuration and onboarding. Contact [support@asymptotelabs.ai](mailto:support@asymptotelabs.ai).
 </Info>
