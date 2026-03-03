@@ -1,0 +1,68 @@
+---
+title: "Core Concepts"
+description: "Key terms and concepts to understand how Asymptote works."
+---
+
+## Account & Setup
+
+### API Keys
+
+**API keys** are credentials used to authenticate with Asymptote programmatically. They can be used to integrate Asymptote into CI pipelines and other automated workflows, and are stored as secrets in the systems that use them.
+
+### Repository
+
+A **repository** is a connected GitHub repository that Asymptote monitors. Each repository has its own [policy](#policy) configuration and [vulnerability](#vulnerability) history. You can connect additional repositories at any time from the Asymptote dashboard.
+
+## Security Policies
+
+### Policy
+
+A **policy** is a single security rule that defines something Asymptote should detect or enforce. Policies are expressed in natural language (e.g. "no hardcoded secrets") and Asymptote translates them into enforceable rules automatically. Each policy has an [enforcement type](#enforcement-type) and can be written from scratch or selected from Asymptote's built-in library.
+
+### Policy Pack
+
+A **policy pack** is a collection of related [policies](#policy) grouped around a specific risk category or compliance standard, like OWASP Top 10 or HIPAA. Policy packs can be enabled or disabled per [repository](#repository). Asymptote ships with built-in packs covering common standards, and you can create custom ones tailored to your team.
+
+### Enforcement Type
+
+An **enforcement type** defines how Asymptote responds when a [policy](#policy) is violated. Each policy is assigned one of three types: **Block** prevents the pull request from merging, **Warn** flags the issue without blocking, and **Monitor** silently logs the [vulnerability](#vulnerability) for review.
+
+## Code Generation
+
+### Coding Agent
+
+A **coding agent** is an AI-powered tool that writes or modifies code on your behalf. Asymptote integrates with popular coding agents including Cursor, Claude Code, GitHub Copilot, and Factory to enforce security policies in real time as code is generated.
+
+### Guardrails
+
+**Guardrails** are real-time security checks that run inside your [coding agent](#coding-agent) as code is being written, before it reaches a pull request. They surface violations inline in the IDE and can re-prompt the agent to generate safer code automatically. Guardrails are configured through [hooks](#hooks) set up via the Asymptote CLI.
+
+### Hooks
+
+**Hooks** are integration points in your coding tools that trigger Asymptote analysis during code generation. When an agent produces code, the hook sends the diff to Asymptote for evaluation against your active [policies](#policy) and returns the result inline.
+
+## Pull Request Security
+
+### PR Reviews
+
+**PR Reviews** are automated security scans triggered when a pull request is opened. Asymptote analyzes the full diff against your active [policy packs](#policy-pack), posts inline review comments with AI-generated fix suggestions, and creates a [check run](#checks) that can be required to pass before merging.
+
+PR reviews are powered by the [Asymptote GitHub Action](/deployment/ci-github-actions).
+
+### Checks
+
+**Checks** are pass/fail status indicators posted on GitHub pull requests after a security scan completes. You can configure branch protection rules in GitHub to require Asymptote checks to pass before merging.
+
+## Vulnerabilities & Scans
+
+### Scan
+
+A **scan** is an on-demand security analysis run against a [repository](#repository). Each scan evaluates your code against your active [policy packs](#policy-pack) and may surface zero or more [vulnerabilities](#vulnerability) depending on what is found. Asymptote supports three scan types:
+
+- **Static Analysis**: AI-native SAST that goes beyond pattern matching to reason about data flow, taint propagation, and exploit paths across your codebase.
+- **Penetration Test**: Deploys a swarm of AI agents that simulate attacks against your application to find exploitable vulnerabilities.
+- **Software Composition Analysis**: Scans dependencies for known vulnerabilities and license compliance issues.
+
+### Vulnerability
+
+A **vulnerability** is a security issue in your code that could be exploited or cause harm. Each vulnerability includes the affected code location, severity, exploit path, and an AI-generated fix suggestion. Severity levels prioritize which vulnerabilities to address first and determine whether a pull request can be merged.
