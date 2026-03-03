@@ -21,7 +21,8 @@
               "index",
               "introduction/what-is-asymptote",
               "introduction/architecture",
-              "quickstart"
+              "quickstart",
+              "introduction/core-concepts"
             ]
           },
           {
