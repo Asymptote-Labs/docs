@@ -24,6 +24,8 @@ Your account includes access to the Asymptote dashboard, where you can:
 ### Step 2: Connect Your GitHub Account <span style={{ color: '#6b7280', fontSize: '0.8em', fontWeight: 'normal' }}>· ~1 min</span>
 <Steps>
   <Step title="Sign into GitHub">
+    Visit [this link](https://github.com/apps/asymptote-security/installations/select_target) to install the Asymptote GitHub App.
+
     <img src="/public/asymptote_github_connection.png" alt="Asymptote GitHub Connection" style={{ maxWidth: '400px' }} />
   </Step>
   <Step title="Authorize GitHub Integration">
@@ -81,15 +83,15 @@ Add Asymptote to your CI pipeline to automatically scan pull requests and enforc
   <Step title="Add the workflow file">
     Add this workflow file to your repository:
 
-    ```yaml .github/workflows/security-scan.yml
-    name: Security Scan
+    ```yaml .github/workflows/asymptote-security-scan.yml
+    name: Asymptote Security Scan
 
     on:
       pull_request:
         branches: [main]
 
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
       checks: write
 
