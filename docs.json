@@ -75,14 +75,6 @@
             ]
           },
           {
-            "group": "Self-hosting",
-            "icon": "cloud",
-            "pages": [
-              "self-hosting/overview",
-              "self-hosting/docker-compose"
-            ]
-          },
-          {
             "group": "Troubleshooting",
             "icon": "wrench",
             "pages": [
