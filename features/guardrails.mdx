@@ -1,0 +1,29 @@
+---
+title: "Guardrails"
+description: "Catch security issues in real time as AI agents write code, before anything is committed."
+---
+
+Guardrails are real-time security checks that run inside your AI coding agent as code is being written. They stop vulnerabilities at the source, before any code reaches a pull request or gets committed.
+
+## How It Works
+
+When your coding agent writes or modifies code, Asymptote intercepts the change via a [hook](/introduction/core-concepts#hooks) and evaluates it against your active [policy packs](/introduction/core-concepts#policy-pack):
+
+1. The agent generates a code change
+2. The hook sends the diff to Asymptote for evaluation
+3. Asymptote scans for vulnerabilities, insecure patterns, exposed secrets, and policy violations
+4. If a violation is found, feedback is returned inline and the agent can remediate immediately
+5. The interaction is logged in [Coding Sessions](/introduction/core-concepts#coding-sessions) for audit
+
+## What Guardrails Catch
+
+- Insecure coding patterns (injection risks, unsafe APIs, hardcoded secrets)
+- Dependency additions with known CVEs or supply chain risks
+- Custom policy violations defined in natural language
+- Agent-specific failure modes like prompt injection and over-privileged tool calls
+
+## Setup
+
+Guardrails are configured via the Asymptote CLI. Run `asym init` to connect your coding agent and apply your active policy packs.
+
+See the [Quickstart](/quickstart) for full setup instructions, or go to **Config > Policy Packs** in the dashboard to manage which policies are active.

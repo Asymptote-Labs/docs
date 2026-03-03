@@ -1,0 +1,28 @@
+---
+title: "Scans"
+description: "Run on-demand security analysis across your repositories to surface vulnerabilities in your codebase."
+---
+
+Scans let you run security analysis against a [repository](/introduction/core-concepts#repository) on demand, independent of your CI pipeline or coding agent. A single scan can surface zero or more [vulnerabilities](/introduction/core-concepts#vulnerability) depending on what is found.
+
+## Scan Types
+
+Each scan can include one or more of the following analysis types:
+
+- **Static Analysis**: AI-native SAST that goes beyond pattern matching to reason about data flow, taint propagation, and exploit paths across your codebase.
+- **Penetration Test**: Deploys a swarm of AI agents that simulate attacks against your application to find exploitable vulnerabilities.
+- **Software Composition Analysis**: Scans dependencies for known vulnerabilities and license compliance issues.
+
+## Running a Scan
+
+1. Go to **Scans** in the dashboard, or use the **New Scan** quick action
+2. Select one or more repositories to scan
+3. Choose your scan types
+4. Trigger the scan. Results appear in the **Scans** and **Vulnerabilities** views as they come in.
+
+## When to Use Scans
+
+- After connecting a new repository to establish a security baseline
+- Before a major release to catch issues that accumulated across PRs
+- After updating policy packs to find existing violations in older code
+- On a recurring basis to maintain visibility into your security posture

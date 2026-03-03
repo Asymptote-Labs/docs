@@ -27,13 +27,23 @@
           },
           {
             "group": "Onboarding",
-            "icon": "rocket",
+            "icon": "building",
             "pages": [
               "onboarding/connecting-github",
               "onboarding/install-cli",
               "onboarding/inviting-teammates",
               "onboarding/configuring-guardrails",
               "deployment/ci-github-actions"
+            ]
+          },
+          {
+            "group": "Coding Agent Integrations",
+            "icon": "plug",
+            "pages": [
+              "integrations/claude-code",
+              "integrations/cursor",
+              "integrations/github-copilot",
+              "integrations/factory"
             ]
           },
           {
@@ -48,13 +58,13 @@
             ]
           },
           {
-            "group": "Coding Agent Integrations",
-            "icon": "plug",
+            "group": "Platform Features",
+            "icon": "layer-group",
             "pages": [
-              "integrations/claude-code",
-              "integrations/cursor",
-              "integrations/github-copilot",
-              "integrations/factory"
+              "features/guardrails",
+              "features/pr-reviews",
+              "features/scans",
+              "features/vulnerabilities"
             ]
           },
           {
