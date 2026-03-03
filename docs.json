@@ -68,7 +68,7 @@
             ]
           },
           {
-            "group": "Other Integrations",
+            "group": "Platform Integrations",
             "icon": "puzzle-piece",
             "pages": [
               "deployment/github"
