@@ -69,4 +69,14 @@ A **scan** is an on-demand security analysis run against a [repository](#reposit
 
 ### Vulnerability
 
-A **vulnerability** is a security issue in your code that could be exploited or cause harm. Each vulnerability includes the affected code location, severity, exploit path, and an AI-generated fix suggestion. Severity levels prioritize which vulnerabilities to address first and determine whether a pull request can be merged.
+A **vulnerability** is a security issue in your code that could be exploited or cause harm. Each vulnerability includes the affected code location, [severity](#severity), exploit path, and an AI-generated fix suggestion.
+
+### Severity
+
+**Severity** indicates how critical a vulnerability is. It is used to prioritize which issues to address first and determines whether a pull request can be merged based on your [enforcement type](#enforcement-type) settings. By default, Asymptote blocks on Critical and High severity vulnerabilities. Asymptote uses five severity levels:
+
+- **Critical**: Immediate risk of exploitation with significant impact. Should be resolved before merging.
+- **High**: Serious vulnerability that is likely exploitable and should be prioritized.
+- **Medium**: Moderate risk that warrants attention but may not block a merge.
+- **Low**: Minor issue with limited exploitability or impact.
+- **Informational**: No direct risk, but flagged for awareness or best practice guidance.
