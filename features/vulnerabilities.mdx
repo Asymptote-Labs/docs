@@ -1,0 +1,32 @@
+---
+title: "Vulnerabilities"
+description: "Track, triage, and remediate security issues found across your repositories."
+---
+
+The **Vulnerabilities** view is your central place to track every security issue Asymptote has found, whether from a [scan](/introduction/core-concepts#scan), a [PR review](/features/pr-reviews), or a [guardrail](/features/guardrails) violation during code generation.
+
+## What a Vulnerability Includes
+
+- The affected repository and code location
+- Severity level
+- A description of the exploit path and potential impact
+- An AI-generated fix suggestion
+- The [policy](/introduction/core-concepts#policy) that triggered it
+- The source (scan, PR review, or guardrail)
+
+## Severity
+
+Severity prioritizes which issues to address first. Higher severity vulnerabilities can be configured to block pull requests from merging via your [enforcement type](/introduction/core-concepts#enforcement-type) settings.
+
+## Triaging
+
+From the **Vulnerabilities** view you can:
+
+- Filter by repository, severity, scan type, or source
+- Review the full context of each finding
+- Mark findings as resolved once fixed
+- Dismiss false positives with a justification
+
+## Tracking Progress
+
+The **Security Analytics** view tracks vulnerability trends across your repositories so you can measure remediation progress and spot which areas need the most attention.

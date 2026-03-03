@@ -1,0 +1,28 @@
+---
+title: "PR Reviews"
+description: "Automatically review every pull request for security issues and block merges that violate your policies."
+---
+
+PR Reviews run automated security analysis on every pull request. When a PR is opened, Asymptote reviews the full diff, posts inline comments with AI-generated fix suggestions, and sets a check status that can be required to pass before merging.
+
+## How It Works
+
+1. A pull request is opened or updated on GitHub
+2. Asymptote analyzes the full diff against your active [policy packs](/introduction/core-concepts#policy-pack)
+3. [Vulnerabilities](/introduction/core-concepts#vulnerability) are posted as inline comments at the exact lines of concern
+4. A [check run](/introduction/core-concepts#checks) is created (pass or fail) visible directly on the PR
+5. If configured to block, the PR cannot be merged until violations are resolved or dismissed
+
+## Enforcement
+
+Each [policy](/introduction/core-concepts#policy) has an [enforcement type](/introduction/core-concepts#enforcement-type) that controls what happens when it fires:
+
+- **Block**: The PR cannot merge until the issue is resolved
+- **Warn**: A comment is posted but merging is not blocked
+- **Monitor**: The finding is logged silently without surfacing to the developer
+
+To require Asymptote checks before merge, enable **Require status checks to pass** in your GitHub branch protection rules and select the Asymptote Security Review check.
+
+## Setup
+
+See the [GitHub Security PR Reviews](/deployment/ci-github-actions) guide to add the Asymptote GitHub Action to your CI pipeline.
