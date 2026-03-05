@@ -1,0 +1,46 @@
+---
+title: "Coding Sessions"
+description: "Security analysis of your AI coding assistant sessions."
+---
+
+Coding Sessions gives you visibility into every AI coding assistant session running in your organization. Each session is evaluated in real time for security violations, letting you monitor risk across users, repositories, and platforms from a single view.
+
+You can access it from **Coding Sessions** in the dashboard sidebar under **AI Observability**.
+
+## Session list
+
+The session list shows all recent AI coding assistant activity across your organization. You can filter by:
+
+- **Platform:** the coding assistant used (e.g. Claude Code, Cursor, GitHub Copilot)
+- **Repository:** the repo the session was associated with
+- **User:** the developer who ran the session
+- **Sort:** order by newest or oldest
+
+Use the time range selector to narrow results to the **last 5 minutes**, **last hour**, **last day**, **last week**, or **last month**.
+
+## Session columns
+
+| Column | Description |
+|--------|-------------|
+| **Platform** | The AI coding assistant used in the session |
+| **Repository** | The GitHub repository linked to the session, if any |
+| **User** | The developer who ran the session |
+| **Evals** | Number of security evaluations run during the session |
+| **Violations** | Number of policy violations detected |
+| **Severity** | Breakdown of violations by severity (critical, high, medium, low, info) |
+| **Transcript** | Whether a session transcript is available to review |
+| **Last Activity** | Timestamp of the most recent activity in the session |
+
+## Session details
+
+Click any session to open the detail view. From there you can:
+
+- Review the full session transcript
+- Inspect individual violations with context
+- See which guardrails were triggered and why
+
+## Related
+
+- [Security Copilot](/features/security-copilot)
+- [Guardrails](/features/guardrails)
+- [Vulnerabilities](/features/vulnerabilities)
