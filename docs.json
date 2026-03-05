@@ -65,7 +65,13 @@
               "features/pr-reviews",
               "features/scans",
               "features/vulnerabilities",
-              "features/security-copilot",
+              {
+                "group": "AI Observability",
+                "pages": [
+                  "features/coding-sessions",
+                  "features/security-copilot"
+                ]
+              },
               "features/settings"
             ]
           },
