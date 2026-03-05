@@ -65,6 +65,7 @@
               "features/pr-reviews",
               "features/scans",
               "features/vulnerabilities",
+              "features/security-copilot",
               "features/settings"
             ]
           },

@@ -1,0 +1,48 @@
+---
+title: "Security Copilot"
+description: "An AI-powered chat assistant that answers questions about your organization's security posture."
+---
+
+Security Copilot is an AI chat interface built into the Asymptote dashboard. It lets you ask natural-language questions about your vulnerabilities, scans, and assets and get answers grounded in your organization's actual security data.
+
+You can access it from **Security Copilot** in the dashboard sidebar under **AI Observability**.
+
+## Starting a conversation
+
+When you open Security Copilot, you can either type a question directly or choose from suggested prompts to get started quickly:
+
+- **Security overview:** Get a high-level summary of your organization's current security posture.
+- **Critical vulnerabilities:** See your open critical and high severity vulnerabilities.
+- **Recent scans:** Review the results of your most recent security scans.
+
+All responses are based on your organization's security data only.
+
+## What you can ask
+
+Security Copilot can answer questions about:
+
+- Open vulnerabilities by severity, repository, or type
+- Scan history and results
+- External assets and attack surface exposure
+- Summaries of your overall security posture
+
+## Chat history
+
+Previous conversations are saved and accessible from the left panel. You can:
+
+- Browse past chats by name
+- Search through chat history
+- Start a new chat at any time
+
+## Access
+
+Security Copilot is available to all members of your organization.
+
+Each query is executed in a strictly isolated context. Responses are generated using only data belonging to your organization, and the model has no access to data from any other tenant. This isolation is enforced at the data layer, not just the application layer, so there is no risk of cross-tenant data leakage.
+
+Chat sessions are private and only visible to the user who created them. Other members of your organization, including admins, cannot view your chat history.
+
+## Related
+
+- [Codebase Scans](/features/scans)
+- [Vulnerabilities](/features/vulnerabilities)
