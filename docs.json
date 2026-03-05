@@ -64,7 +64,8 @@
               "features/guardrails",
               "features/pr-reviews",
               "features/scans",
-              "features/vulnerabilities"
+              "features/vulnerabilities",
+              "features/settings"
             ]
           },
           {
