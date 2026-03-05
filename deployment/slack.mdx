@@ -1,0 +1,42 @@
+---
+title: "Slack"
+description: "Send security alerts and vulnerability notifications to Slack."
+icon: "slack"
+iconType: "brands"
+---
+
+The Slack integration lets Asymptote post notifications directly to a Slack channel. Once connected, you can receive alerts when security scans complete so your team stays informed without having to check the dashboard.
+
+You can configure the integration from **Integrations** in the dashboard sidebar under **Admin**.
+
+## Connecting Slack
+
+<Steps>
+  <Step title="Create an incoming webhook in Slack">
+    In Slack, go to **Apps** and search for **Incoming Webhooks**. Select the channel you want Asymptote to post to and click **Add Incoming Webhooks Integration**. Copy the webhook URL that is generated.
+
+    You can also follow the in-app link **How to create a Slack webhook** on the Integrations page for step-by-step guidance.
+  </Step>
+  <Step title="Enter the webhook URL">
+    In the Asymptote dashboard, open **Integrations** and paste your webhook URL into the **Webhook URL** field under Slack.
+  </Step>
+  <Step title="Configure alerts">
+    Enable **Scan completion alerts** to receive a notification each time a security scan finishes.
+  </Step>
+  <Step title="Save and test">
+    Click **Save & Test**. Asymptote will send a test message to your Slack channel to confirm the connection is working.
+  </Step>
+</Steps>
+
+## Disconnecting Slack
+
+To remove the integration, click **Disconnect** on the Integrations page. This immediately stops all notifications and removes the saved webhook URL.
+
+## Access
+
+The Integrations page is restricted to organization admins.
+
+## Related
+
+- [Codebase Scans](/features/scans)
+- [Admin Settings](/features/settings)

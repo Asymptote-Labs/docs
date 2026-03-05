@@ -73,7 +73,8 @@
             "group": "Platform Integrations",
             "icon": "puzzle-piece",
             "pages": [
-              "deployment/github"
+              "deployment/github",
+              "deployment/slack"
             ]
           },
           {
