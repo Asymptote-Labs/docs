@@ -1,0 +1,94 @@
+---
+title: "asym config"
+description: "View and modify Asymptote CLI configuration settings"
+---
+
+# asym config
+
+View and modify Asymptote CLI configuration settings.
+
+```bash
+asym config [command]
+```
+
+<Accordion title="asym config --help">
+```bash
+$ asym config --help
+
+View and modify Asymptote CLI configuration settings.
+
+Available settings:
+  secure-by-design   Enable/disable proactive security policy injection for Claude Code (default: off)
+
+Usage:
+  asym config [command]
+
+Available Commands:
+  get         Get configuration value(s)
+  set         Set a configuration value
+
+Flags:
+  -h, --help   help for config
+
+Use "asym config [command] --help" for more information about a command.
+```
+</Accordion>
+
+## get
+
+Get the current value of a configuration setting.
+
+```bash
+asym config get [setting]
+```
+
+### Examples
+
+```bash
+# Get a specific setting
+asym config get secure-by-design
+
+# Get all settings
+asym config get
+```
+
+## set
+
+Set a configuration value.
+
+```bash
+asym config set [setting] [value]
+```
+
+### Examples
+
+```bash
+# Enable secure-by-design
+asym config set secure-by-design true
+
+# Disable secure-by-design
+asym config set secure-by-design false
+```
+
+## Settings
+
+### secure-by-design
+
+Enables proactive security policy injection for [Claude Code](/integrations/claude-code). When enabled, Asymptote injects your active security [policies](/introduction/core-concepts#policy) into Claude's context at the start of each session, so Claude is aware of your organization's security requirements before writing any code.
+
+**Default:** `false`
+
+```bash
+asym config set secure-by-design true
+```
+
+## Related
+
+<Columns cols={2}>
+  <Card title="asym init" icon="rocket" href="/cli/init">
+    First-time setup: log in and connect your agents.
+  </Card>
+  <Card title="Claude Code" icon="robot" href="/integrations/claude-code">
+    Set up Asymptote for Claude Code.
+  </Card>
+</Columns>

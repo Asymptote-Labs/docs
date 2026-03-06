@@ -136,6 +136,7 @@
             "group": "Utilities",
             "icon": "wrench",
             "pages": [
+              "cli/config",
               "cli/list",
               "cli/upgrade",
               "cli/version",

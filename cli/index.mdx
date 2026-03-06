@@ -24,6 +24,7 @@ With the Asymptote CLI, you can:
 - Log in, log out, and inspect your current session
 - Upgrade agent hooks to the latest version
 - List connected agents and their status
+- Configure CLI settings like secure-by-design mode
 
 ## Command Overview
 
@@ -41,6 +42,7 @@ Usage:
 Available Commands:
   claude      Manage Claude Code integration
   completion  Generate the autocompletion script for the specified shell
+  config      View and modify CLI configuration settings
   copilot     Manage GitHub Copilot integration
   cursor      Manage Cursor IDE integration
   factory     Manage Factory (Droid) integration
@@ -103,6 +105,9 @@ Flags:
 ## Utilities
 
 <Columns cols={2}>
+  <Card title="asym config" icon="gear" href="/cli/config">
+    View and modify CLI configuration settings.
+  </Card>
   <Card title="asym list" icon="list" href="/cli/list">
     List connected agents and their status.
   </Card>
