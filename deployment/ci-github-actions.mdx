@@ -6,21 +6,21 @@ description: "Integrate Asymptote security scanning into your GitHub Actions wor
 
 ## Prerequisites
 
-- An Asymptote account — [sign up here](https://asymptotelabs.ai/login)
-- GitHub connected to Asymptote — see [Connecting GitHub](/onboarding/connecting-github) for setup steps
+- An Asymptote account ([sign up here](https://asymptotelabs.ai/login))
+- GitHub connected to Asymptote. See [Connecting GitHub](/onboarding/connecting-github) for setup steps.
 - Admin access to the GitHub repositories you want to scan
 
 For a full list of permissions Asymptote requests from GitHub, see the [GitHub integration page](/deployment/github).
 
 ## Overview
 
-Asymptote integrates with GitHub Actions to run security analysis as part of your CI pipeline. When connected, Asymptote scans pull requests, enforces security policies, and blocks deployments based on configurable severity thresholds, all without leaving your existing workflow.
+Asymptote integrates with GitHub Actions to run security analysis as part of your CI pipeline. When connected, Asymptote scans pull requests, enforces security [policies](/introduction/core-concepts#policy), and blocks deployments based on configurable [severity](/introduction/core-concepts#severity) thresholds, all without leaving your existing workflow.
 
 The Asymptote Security Scan action is available on the [GitHub Marketplace](https://github.com/marketplace/actions/asymptote-security-scan).
 
 ## Connecting GitHub Actions
 
-Add the Asymptote Security Scan GitHub Action to your CI pipeline. This evaluates pull request code changes against your security policies, posts inline review comments with AI-generated fix suggestions, and creates check runs with annotations.
+Add the Asymptote Security Scan GitHub Action to your CI pipeline. This evaluates pull request code changes against your security [policies](/introduction/core-concepts#policy), posts inline review comments with AI-generated fix suggestions, and creates [check](/introduction/core-concepts#checks) runs with annotations.
 
 <Steps>
   <Step title="Add the workflow">

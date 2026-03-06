@@ -5,15 +5,15 @@ description: "Whitebox agentic pentesting and asynchronous codebase scans before
 
 ## Overview
 
-Even with guardrails at code generation and CI time, pre-production testing provides a final security gate before changes reach your live environment. Asymptote uses whitebox agentic pentesting to actively probe your codebase for exploitable vulnerabilities — going beyond static analysis to simulate how an attacker would reason about and exploit weaknesses.
+Even with [guardrails](/features/guardrails) at code generation and CI time, pre-production testing provides a final security gate before changes reach your live environment. Asymptote uses whitebox agentic [penetration testing](/introduction/core-concepts#penetration-test) to actively probe your codebase for exploitable [vulnerabilities](/introduction/core-concepts#vulnerability), going beyond [static analysis](/introduction/core-concepts#static-analysis) to simulate how an attacker would reason about and exploit weaknesses.
 
 ## Whitebox Agentic Pentesting
 
 Asymptote's agentic pentesting has full access to your source code and reasons across the entire codebase to find vulnerabilities that diff-level or file-level tools miss.
 
-- **Exploitability-focused** — prioritizes findings that are actually reachable and exploitable, not just theoretical
-- **Full codebase context** — traces data flows, identifies trust boundaries, and finds chained vulnerabilities
-- **AI-driven reasoning** — the agent reasons across your entire codebase, not just individual files or diffs
+- **Exploitability-focused:** prioritizes findings that are actually reachable and exploitable, not just theoretical
+- **Full codebase context:** traces data flows, identifies trust boundaries, and finds chained vulnerabilities
+- **AI-driven reasoning:** the agent reasons across your entire codebase, not just individual files or diffs
 
 ## Audit and Reporting
 

@@ -5,11 +5,11 @@ description: "Set up security policy packs and guardrails for your repositories.
 
 ## Overview
 
-Guardrails are the security policy packs Asymptote enforces across your entire SDLC. You can start with Asymptote's built-in policy packs or write custom policy packs in natural language tailored to your team's standards.
+[Guardrails](/features/guardrails) are the security [policy packs](/introduction/core-concepts#policy-pack) Asymptote enforces across your entire SDLC. You can start with Asymptote's built-in policy packs or write custom policy packs in natural language tailored to your team's standards.
 
 ## Built-in Policy Packs
 
-Asymptote ships with policy packs aligned to widely adopted security standards. Browse and enable them from the **Policy Packs** tab on the dashboard homepage.
+Asymptote ships with [policy packs](/introduction/core-concepts#policy-pack) aligned to widely adopted security standards. Browse and enable them from the **Policy Packs** tab on the dashboard homepage.
 
 | Category | Policy Pack | Description |
 |----------|-------------|-------------|
@@ -37,12 +37,12 @@ You can define your own guardrails in plain English. Asymptote translates them i
   <Step title="Add policies">
     Click **+ Add Policy** to add at least one policy to the pack. For each policy, provide:
 
-    - **Name** — a short label for the rule (e.g. "No string concatenation in queries")
-    - **Category** — the type of vulnerability it targets (e.g. "injection", "secrets")
-    - **Enforcement** — how Asymptote responds when a violation is detected:
-      - **Block** — prevent the PR from merging until the issue is resolved
-      - **Warn** — flag the issue in the PR review without blocking merge
-      - **Monitor** — silently log the violation for visibility without any PR action
+    - **Name:** a short label for the rule (e.g. "No string concatenation in queries")
+    - **Category:** the type of vulnerability it targets (e.g. "injection", "secrets")
+    - **Enforcement:** how Asymptote responds when a violation is detected:
+      - **Block:** prevent the PR from merging until the issue is resolved
+      - **Warn:** flag the issue in the PR review without blocking merge
+      - **Monitor:** silently log the violation for visibility without any PR action
   </Step>
   <Step title="Create the pack">
     Click **Create Pack** to save. The policy pack will be available to assign to repositories from the Policy Packs tab.
@@ -58,5 +58,5 @@ All policy pack violations are surfaced directly in GitHub pull request reviews 
 - Track remediation status over time
 
 <Info icon="circle-question" title="Need Help?">
-  Need help writing policy packs? Contact us at [support@asymptotelabs.ai](mailto:support@asymptotelabs.ai) — we're happy to help you get started.
+  Need help writing policy packs? Contact us at [support@asymptotelabs.ai](mailto:support@asymptotelabs.ai). We're happy to help you get started.
 </Info>

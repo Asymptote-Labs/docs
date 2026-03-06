@@ -7,7 +7,7 @@ Guardrails are real-time security checks that run inside your AI coding agent as
 
 ## How It Works
 
-When your coding agent writes or modifies code, Asymptote intercepts the change via a [hook](/introduction/core-concepts#hooks) and evaluates it against your active [policy packs](/introduction/core-concepts#policy-pack):
+When your [coding agent](/introduction/core-concepts#coding-agent) writes or modifies code, Asymptote intercepts the change via a [hook](/introduction/core-concepts#hooks) and evaluates it against your active [policy packs](/introduction/core-concepts#policy-pack):
 
 1. The agent generates a code change
 2. The hook sends the diff to Asymptote for evaluation

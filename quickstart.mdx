@@ -17,8 +17,8 @@ Visit [Asymptote](https://asymptotelabs.ai/login) to create a new account. You c
 
 Your account includes access to the Asymptote dashboard, where you can:
 
-- **Define and manage security policies** that match your team's standards
-- **Review detected vulnerabilities**, including what was fixed automatically and what still needs action
+- **Define and manage security [policies](/introduction/core-concepts#policy)** that match your team's standards
+- **Review detected [vulnerabilities](/introduction/core-concepts#vulnerability)**, including what was fixed automatically and what still needs action
 - **Track product security and remediation trends** over time with clear metrics and reporting
 
 ### Step 2: Connect Your GitHub Account <span style={{ color: '#6b7280', fontSize: '0.8em', fontWeight: 'normal' }}>· ~1 min</span>
@@ -73,11 +73,11 @@ Run the init command to authenticate and connect your AI coding agents:
 asym init
 ```
 
-This will log you into your Asymptote account, automatically detect supported coding agents on your machine (Cursor, Claude Code, GitHub Copilot, and more), and allow you to choose which ones to configure Asymptote hooks for.
+This will log you into your Asymptote account, automatically detect supported [coding agents](/introduction/core-concepts#coding-agent) on your machine (Cursor, Claude Code, GitHub Copilot, and more), and allow you to choose which ones to configure Asymptote [hooks](/introduction/core-concepts#hooks) for.
 
 ### Step 5: Configure GitHub Security PR Reviews <span style={{ color: '#6b7280', fontSize: '0.8em', fontWeight: 'normal' }}>· ~1 min</span>
 
-Add Asymptote to your CI pipeline to automatically scan pull requests and enforce security policies before code is merged.
+Add Asymptote to your CI pipeline to automatically scan pull requests and enforce security [policies](/introduction/core-concepts#policy) before code is merged.
 
 <Steps>
   <Step title="Add the workflow file">
@@ -116,7 +116,7 @@ Add Asymptote to your CI pipeline to automatically scan pull requests and enforc
   </Step>
 </Steps>
 
-Once connected, Asymptote will post inline review comments with AI-generated fix suggestions on every pull request. You can configure branch protection rules to require Asymptote checks to pass before merging.
+Once connected, Asymptote will post inline review comments with AI-generated fix suggestions on every pull request. You can configure branch protection rules to require Asymptote [checks](/introduction/core-concepts#checks) to pass before merging.
 
 <Info icon="circle-question" title="Need Help?">
   Need assistance getting set up? Our team can help with configuration and onboarding. Contact [support@asymptotelabs.ai](mailto:support@asymptotelabs.ai).
