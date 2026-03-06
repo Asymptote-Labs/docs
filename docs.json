@@ -61,6 +61,7 @@
             "group": "Platform Features",
             "icon": "layer-group",
             "pages": [
+              "features/security-analytics",
               "features/guardrails",
               "features/pr-reviews",
               "features/scans",

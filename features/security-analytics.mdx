@@ -1,0 +1,83 @@
+---
+title: "Security Analytics"
+description: "Track vulnerability trends, remediation performance, and AI coding activity across your organization."
+---
+
+The **Security Analytics** dashboard gives security and engineering leaders a real-time view of their organization's security posture. It surfaces the metrics needed to understand where vulnerabilities are being introduced, how quickly they are being resolved, and how effectively [AI coding agents](/introduction/core-concepts#coding-agent) are being kept in check.
+
+The dashboard has two views: **Vulnerabilities** and **Coding Sessions**. Both support filtering by [repository](/introduction/core-concepts#repository), [severity](/introduction/core-concepts#severity), and surface so you can drill into the data that matters most.
+
+## Vulnerabilities View
+
+The Vulnerabilities view tracks [vulnerability findings](/features/vulnerabilities) across your repositories, from detection through resolution.
+
+### Summary Metrics
+
+| Metric | Description |
+|---|---|
+| **Total Vulnerabilities** | All vulnerability findings ever detected across your repositories |
+| **Open** | Findings that require attention and have not been resolved or dismissed |
+| **Critical & High** | Open findings at the highest [severity](/introduction/core-concepts#severity) levels |
+| **Resolved** | Findings that have been remediated or overridden |
+| **Median MTTR** | Median time from detection to fix for Critical and High findings |
+| **Auto-Remediation Rate** | Percentage of Critical and High findings auto-fixed by Asymptote |
+| **Fix Rate** | Percentage of Critical and High findings resolved by any method |
+
+### Security Pipeline
+
+The **Security Pipeline** chart shows where vulnerability findings are caught across the development lifecycle, broken down by [severity](/introduction/core-concepts#severity):
+
+- **Codegen:** findings caught by [guardrails](/features/guardrails) during AI-assisted code generation, before code reaches a PR
+- **CI:** findings caught during [PR reviews](/features/pr-reviews) and CI checks
+
+A higher proportion of findings caught at the Codegen stage indicates that security is being shifted further left, reducing the cost and risk of late-stage remediation.
+
+### Questions You Can Answer
+
+- How many open Critical and High vulnerabilities require attention right now?
+- How long does it take my team to fix high-priority issues once detected?
+- What percentage of vulnerabilities is Asymptote resolving automatically?
+- Are most issues being caught early in code generation or later in CI?
+- Which repositories have the most unresolved findings?
+
+## Coding Sessions View
+
+The Coding Sessions view tracks [AI coding agent](/introduction/core-concepts#coding-agent) activity and security evaluation volume across your organization.
+
+### Summary Metrics
+
+| Metric | Description |
+|---|---|
+| **Total Sessions** | All [coding sessions](/features/coding-sessions) logged across all agents |
+| **Sessions by Agent** | Breakdown of sessions by agent ([Claude Code](/integrations/claude-code), [Cursor](/integrations/cursor), [Copilot](/integrations/github-copilot), [Factory](/integrations/factory)) |
+| **Total Evaluations** | Number of code generation reviews run by Asymptote across all sessions |
+
+### Charts
+
+- **Coding Sessions Over Time:** session volume over 7, 14, or 30 days, broken down by agent
+- **Sessions by Platform:** share of total sessions per coding agent
+- **Code Generation Reviews by Platform:** share of total evaluations per coding agent
+
+### Questions You Can Answer
+
+- How actively are developers using AI coding agents?
+- Which coding agents are most widely used across my organization?
+- Is Asymptote actively evaluating AI-generated code, or are agents operating without oversight?
+- How has AI coding activity trended over the past month?
+
+## Filters
+
+Both views support filtering by:
+
+- **Repository:** scope metrics to one or more connected [repositories](/introduction/core-concepts#repository)
+- **Severity:** focus on a specific [severity level](/introduction/core-concepts#severity)
+- **Surface:** filter by where findings were detected (Codegen or CI)
+
+## Related
+
+- [Vulnerability Findings](/features/vulnerabilities)
+- [Codebase Scans](/features/scans)
+- [PR Reviews](/features/pr-reviews)
+- [Guardrails](/features/guardrails)
+- [Coding Sessions](/features/coding-sessions)
+- [Severity](/introduction/core-concepts#severity)
