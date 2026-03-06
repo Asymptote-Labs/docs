@@ -6,10 +6,11 @@ description: "Asymptote enforces security at every stage of your software develo
 
 ## SDLC Stages
 
-Asymptote integrates into four stages of your [Software Development Lifecycle](https://en.wikipedia.org/wiki/Systems_development_life_cycle) (SDLC) to catch vulnerabilities before they reach production: code generation, CI/pull requests, pre-production testing, and asynchronous codebase scans.
+Asymptote integrates into five stages of your [Software Development Lifecycle](https://en.wikipedia.org/wiki/Systems_development_life_cycle) (SDLC) to catch vulnerabilities before they reach production: design, code generation, CI/pull requests, pre-production testing, and asynchronous codebase scans.
 
 | Stage | When | What Asymptote Does |
 |-------|------|---------------------|
+| [**Secure by Design**](/ai-tools/design) | Before code is written | Injects security policies into the agent's context at session start |
 | [**Code Generation**](/ai-tools/code-generation) | As code is written in your IDE | Scans diffs in real time, flags risky patterns, and enforces policies on every AI tool call |
 | [**CI / Pull Requests**](/ai-tools/ci-time) | When a PR is opened or updated | Reviews the full diff, posts inline findings, and blocks merge on policy violations |
 | [**Pre-production Testing**](/ai-tools/pre-production) | Before deploying to staging or production | Whitebox agentic pentesting |

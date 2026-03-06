@@ -1,0 +1,57 @@
+---
+title: "Secure by Design"
+description: "Inject security context into AI coding agents at session start, before any code is written."
+---
+
+## Overview
+
+The earliest a vulnerability can be prevented is before code is written at all. Asymptote's Secure by Design mode injects your organization's active security [policies](/introduction/core-concepts#policy) into your [AI coding agent's](/introduction/core-concepts#coding-agent) context at the start of every session, so the agent is security-aware from the first prompt.
+
+Rather than waiting to catch insecure code after it's generated, Secure by Design shapes what gets generated in the first place.
+
+## How It Works
+
+When `secure-by-design` is enabled via the [Asymptote CLI config](/cli/config#settings), Asymptote injects your active security policies into [Claude Code's](/integrations/claude-code) context during the `SessionStart` [hook](/introduction/core-concepts#hooks). This means:
+
+1. Claude receives your organization's security requirements before writing any code
+2. Policy-aware generation reduces the number of violations that need to be caught and remediated downstream
+3. Guardrails at code generation time have more context to work with, improving signal quality
+
+## Enabling Secure by Design
+
+Use the [`asym config`](/cli/config) command to enable the setting:
+
+```bash
+asym config set secure-by-design true
+```
+
+To check the current value:
+
+```bash
+asym config get secure-by-design
+```
+
+See the [CLI config reference](/cli/config#settings) for full details on the `secure-by-design` setting.
+
+## Supported Agents
+
+Secure by Design currently works with [Claude Code](/integrations/claude-code). Support is scoped to agents that expose a `SessionStart` hook, which allows Asymptote to inject context before the agent begins processing.
+
+## Relationship to Other SDLC Stages
+
+Secure by Design is the earliest point in the pipeline. Policies injected at the design stage complement the enforcement that happens downstream:
+
+| Stage | When | What Asymptote Does |
+|---|---|---|
+| **Secure by Design** | Before code is written | Injects security policies into the agent's context at session start |
+| [**Code Generation**](/ai-tools/code-generation) | As code is written | Scans diffs in real time and flags violations |
+| [**CI / Pull Requests**](/ai-tools/ci-time) | When a PR is opened | Reviews the full diff and blocks merge on violations |
+| [**Pre-production Testing**](/ai-tools/pre-production) | Before deploying | Whitebox agentic pentesting |
+| [**Async Scans**](/ai-tools/async-scans) | On demand or scheduled | Full policy sweep across the codebase |
+
+## Related
+
+- [CLI Config Reference](/cli/config)
+- [Code Generation Guardrails](/ai-tools/code-generation)
+- [Claude Code Integration](/integrations/claude-code)
+- [Policies](/introduction/core-concepts#policy)
