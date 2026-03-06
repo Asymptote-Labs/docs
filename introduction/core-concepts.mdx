@@ -61,11 +61,19 @@ PR reviews are powered by the [Asymptote GitHub Action](/deployment/ci-github-ac
 
 ### Scan
 
-A **scan** is an on-demand security analysis run against a [repository](#repository). Each scan evaluates your code against your active [policy packs](#policy-pack) and may surface zero or more [vulnerabilities](#vulnerability) depending on what is found. Asymptote supports three scan types:
+A **scan** is an on-demand security analysis run against a [repository](#repository). Each scan evaluates your code against your active [policy packs](#policy-pack) and may surface zero or more [vulnerabilities](#vulnerability) depending on what is found. Asymptote supports three scan types: [Static Analysis](#static-analysis), [Penetration Test](#penetration-test), and [Software Composition Analysis](#software-composition-analysis).
 
-- **Static Analysis**: AI-native SAST that goes beyond pattern matching to reason about data flow, taint propagation, and exploit paths across your codebase.
-- **Penetration Test**: Deploys a swarm of AI agents that simulate attacks against your application to find exploitable vulnerabilities.
-- **Software Composition Analysis**: Scans dependencies for known vulnerabilities and license compliance issues.
+### Static Analysis
+
+**Static Analysis** is Asymptote's AI-native SAST scan. Unlike traditional static analysis tools that rely on pattern matching, Asymptote reasons about data flow, taint propagation, and full exploit paths across your codebase to surface issues that rule-based scanners miss. It also evaluates any custom [OpenGrep rules](/features/opengrep-rules) you have enabled, combining deterministic rule matching with AI-powered reasoning in a single pass.
+
+### Penetration Test
+
+Asymptote's **Penetration Test** goes beyond automated scanning by deploying a swarm of AI agents that actively simulate attacks against your application. Rather than flagging theoretical weaknesses, the agents attempt to find and chain together exploitable vulnerabilities the way a human attacker would, surfacing issues that only become visible under adversarial conditions.
+
+### Software Composition Analysis
+
+**Software Composition Analysis (SCA)** scans your dependencies for known vulnerabilities and license compliance issues. Asymptote correlates findings against your active [policies](#policy) so SCA results are triaged and prioritized alongside the rest of your [vulnerability findings](/features/vulnerabilities), rather than appearing in a separate tool.
 
 ### Vulnerability
 
@@ -73,10 +81,24 @@ A **vulnerability** is a security issue in your code that could be exploited or 
 
 ### Severity
 
-**Severity** indicates how critical a vulnerability is. It is used to prioritize which issues to address first and determines whether a pull request can be merged based on your [enforcement type](#enforcement-type) settings. By default, Asymptote blocks on Critical and High severity vulnerabilities. Asymptote uses five severity levels:
+**Severity** indicates how critical a vulnerability is. It is used to prioritize which issues to address first and determines whether a pull request can be merged based on your [enforcement type](#enforcement-type) settings. By default, Asymptote blocks on [Critical](#critical) and [High](#high) severity vulnerabilities. Asymptote uses five severity levels: [Critical](#critical), [High](#high), [Medium](#medium), [Low](#low), and [Informational](#informational).
 
-- **Critical**: Immediate risk of exploitation with significant impact. Should be resolved before merging.
-- **High**: Serious vulnerability that is likely exploitable and should be prioritized.
-- **Medium**: Moderate risk that warrants attention but may not block a merge.
-- **Low**: Minor issue with limited exploitability or impact.
-- **Informational**: No direct risk, but flagged for awareness or best practice guidance.
+### Critical
+
+A **Critical** vulnerability represents an immediate risk of exploitation with significant impact. Critical findings should be resolved before merging and will block pull requests under the default [enforcement type](#enforcement-type) settings.
+
+### High
+
+A **High** vulnerability is a serious issue that is likely exploitable and should be prioritized. High findings block pull requests by default alongside [Critical](#critical).
+
+### Medium
+
+A **Medium** vulnerability represents a moderate risk that warrants attention but does not block merging by default. Teams can configure [enforcement type](#enforcement-type) settings to block on Medium if their security posture requires it.
+
+### Low
+
+A **Low** vulnerability is a minor issue with limited exploitability or impact. Low findings are surfaced for awareness but do not block merging by default.
+
+### Informational
+
+An **Informational** finding carries no direct risk but is flagged for awareness or best practice guidance. Informational findings can be filtered out via [severity thresholds](/features/settings#severity-thresholds) if they add noise for your team.
