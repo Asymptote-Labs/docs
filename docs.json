@@ -51,6 +51,7 @@
             "icon": "shield-check",
             "pages": [
               "ai-tools/overview",
+              "ai-tools/design",
               "ai-tools/code-generation",
               "ai-tools/ci-time",
               "ai-tools/pre-production",
