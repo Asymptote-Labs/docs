@@ -1,0 +1,53 @@
+---
+title: "OpenGrep Rules"
+description: "Write and manage custom static analysis rules using the OpenGrep rule format."
+---
+
+[OpenGrep](https://www.opengrep.dev/) is an open-source static analysis engine that Asymptote uses to evaluate custom rules during [static analysis scans](/features/scans#scan-types). Rules are written in a simple YAML format and run directly against your source code to detect patterns, enforce security standards, and surface [vulnerability findings](/features/vulnerabilities).
+
+## Rule Portability
+
+OpenGrep rules are fully compatible with the Semgrep rule format, meaning any existing Semgrep rules your team has written or sourced from public registries can be used in Asymptote without modification. This makes it easy to bring your organization's existing rule library into the platform.
+
+## Rule Format
+
+Rules are written in YAML and require the following fields:
+
+```yaml
+rules:
+  - id: my-custom-rule
+    pattern: $FUNC(...)
+    message: "Describe the security issue found"
+    languages: [python]
+    severity: WARNING
+```
+
+| Field | Description |
+|---|---|
+| `id` | Unique identifier for the rule |
+| `pattern` | The code pattern to match using OpenGrep syntax |
+| `message` | Description of the issue shown in scan results |
+| `languages` | List of languages to apply the rule to. Leave empty to apply to all supported languages. |
+| `severity` | One of `ERROR`, `WARNING`, or `INFO` |
+
+## How Rules Apply to Scans
+
+Custom OpenGrep rules run as part of the **Static Analysis** scan type. When a [scan](/features/scans) is triggered (either on demand or on a [schedule](/features/settings#scan-schedules)), Asymptote evaluates all enabled rules against your repository. Any matches are surfaced as [vulnerability findings](/features/vulnerabilities) with the rule's message and the affected code location.
+
+Rules can be enabled or disabled individually, so you can manage which checks are active without deleting rules.
+
+## Managing Rules
+
+From the **Rules** page in the dashboard you can:
+
+- Create new rules using the rule editor
+- Search rules by name, description, or language
+- Enable or disable individual rules
+- Edit or delete existing rules
+
+## Related
+
+- [Codebase Scans](/features/scans)
+- [Vulnerability Findings](/features/vulnerabilities)
+- [Policies](/introduction/core-concepts#policy)
+- [Severity](/introduction/core-concepts#severity)
