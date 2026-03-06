@@ -69,7 +69,7 @@ Claude will automatically remediate any policy violations before finishing its r
 
 ## Secure by Design
 
-Asymptote includes an optional [Secure by Design](/ai-tools/design) mode for Claude Code. When enabled, Asymptote injects your active security [policies](/introduction/core-concepts#policy) into Claude's context during the `SessionStart` hook, before any code is written. This makes Claude security-aware from the first prompt rather than catching violations after they're generated.
+Asymptote includes an optional [Secure by Design](/ai-tools/design) mode for Claude Code. When enabled, Asymptote injects your active security [policies](/introduction/core-concepts#policy) into Claude's context during the `UserPromptSubmit` hook, before any code is written. This makes Claude security-aware from the first prompt rather than catching violations after they're generated.
 
 To enable it:
 
