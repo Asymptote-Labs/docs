@@ -11,7 +11,7 @@ Rather than waiting to catch insecure code after it's generated, Secure by Desig
 
 ## How It Works
 
-When `secure-by-design` is enabled via the [Asymptote CLI config](/cli/config#settings), Asymptote injects your active security policies into [Claude Code's](/integrations/claude-code) context during the `SessionStart` [hook](/introduction/core-concepts#hooks). This means:
+When `secure-by-design` is enabled via the [Asymptote CLI config](/cli/config#settings), Asymptote injects your active security policies into [Claude Code's](/integrations/claude-code) context during the `UserPromptSubmit` [hook](/introduction/core-concepts#hooks). This means:
 
 1. Claude receives your organization's security requirements before writing any code
 2. Policy-aware generation reduces the number of violations that need to be caught and remediated downstream
@@ -35,7 +35,7 @@ See the [CLI config reference](/cli/config#settings) for full details on the `se
 
 ## Supported Agents
 
-Secure by Design currently works with [Claude Code](/integrations/claude-code). Support is scoped to agents that expose a `SessionStart` hook, which allows Asymptote to inject context before the agent begins processing.
+Secure by Design currently works with [Claude Code](/integrations/claude-code). Support is scoped to agents that expose a `UserPromptSubmit` hook, which allows Asymptote to inject context before the agent begins processing.
 
 ## Relationship to Other SDLC Stages
 
