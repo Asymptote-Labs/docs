@@ -5,21 +5,21 @@ description: "Run full policy sweeps across your entire codebase on demand or on
 
 ## Overview
 
-Asynchronous codebase scans give you continuous, broad security coverage across your entire repository — not just the lines changed in a given PR or deployment. Scans run independently of your deployment pipeline, on demand or on a configured schedule.
+Asynchronous codebase [scans](/introduction/core-concepts#scan) give you continuous, broad security coverage across your entire [repository](/introduction/core-concepts#repository), not just the lines changed in a given PR or deployment. Scans run independently of your deployment pipeline, on demand or on a configured schedule.
 
 ## How It Works
 
 1. **Trigger a scan** manually from the Asymptote dashboard or CLI, or configure a recurring schedule
-2. **Asymptote sweeps the full codebase** against all active security policies
-3. **Findings are prioritized** and surfaced in the dashboard with context, severity, and recommended remediations
+2. **Asymptote sweeps the full codebase** against all active security [policies](/introduction/core-concepts#policy)
+3. **Findings are prioritized** and surfaced in the dashboard with context, [severity](/introduction/core-concepts#severity), and recommended remediations
 4. **A timestamped report** is generated for audit and compliance purposes
 
 ## What Gets Scanned
 
-- **Code vulnerabilities** — insecure patterns, injection risks, unsafe APIs, and policy violations across the entire repo
-- **Secrets** — API keys, tokens, passwords, and credentials committed anywhere in the codebase
-- **Dependencies** — supply chain risks, known CVEs, typosquatting, and dependency confusion in package manifests
-- **Custom policies** — any natural language policies defined in your Asymptote dashboard
+- **Code [vulnerabilities](/introduction/core-concepts#vulnerability):** insecure patterns, injection risks, unsafe APIs, and [policy](/introduction/core-concepts#policy) violations across the entire repo
+- **Secrets:** API keys, tokens, passwords, and credentials committed anywhere in the codebase
+- **Dependencies:** supply chain risks, known CVEs, typosquatting, and dependency confusion in package manifests
+- **Custom policies:** any natural language policies defined in your Asymptote dashboard
 
 ## When to Use Async Scans
 

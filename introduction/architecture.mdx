@@ -17,11 +17,11 @@ Asymptote is architected to:
 
 ## How Asymptote Works in the Coding Loop
 
-Let's walk through how Asymptote evaluates code as it's generated in Claude Code and Cursor, then flags vulnerabilities before the change reaches a pull request.
+Let's walk through how Asymptote evaluates code as it's generated in [Claude Code](/integrations/claude-code) and [Cursor](/integrations/cursor), then flags [vulnerabilities](/introduction/core-concepts#vulnerability) before the change reaches a pull request.
 
 <img src="/public/system_architecture.png" alt="Asymptote System Architecture" />
 
-1. **Codegen-time invocation:** As your AI coding agents draft or edit code, Asymptote is invoked through a mix of rules and hooks in Claude Code and Cursor. This means analysis happens while code is being produced, not after the PR is opened.
+1. **Codegen-time invocation:** As your [AI coding agents](/introduction/core-concepts#coding-agent) draft or edit code, Asymptote is invoked through a mix of rules and [hooks](/introduction/core-concepts#hooks) in Claude Code and Cursor. This means analysis happens while code is being produced, not after the PR is opened.
 
 2. **Request creation:** The hook invokes the Asymptote server with the proposed change, including the generated diff, files touched, repository metadata, and the active security policy profile.
 
@@ -37,7 +37,7 @@ Let's walk through how Asymptote evaluates code as it's generated in Claude Code
 
 6. **Inline feedback and gating:** Asymptote returns structured findings immediately to the AI tool. Claude Code or Cursor can surface warnings inline, block unsafe suggestions, require a justification, or prompt the model to regenerate a safer alternative.
 
-7. **Downstream enforcement:** The same policies and detectors can run again in CI when a PR is opened, ensuring consistency between what was allowed during code generation and what is allowed to merge.
+7. **Downstream enforcement:** The same [policies](/introduction/core-concepts#policy) and detectors can run again in CI when a PR is opened, ensuring consistency between what was allowed during code generation and what is allowed to merge.
 
 8. **Traceability and logging:** Asymptote records what was analyzed and why decisions were made, including the signals used, key evidence, and outcomes. This supports debugging, incident response, and compliance without slowing down the developer loop.
 

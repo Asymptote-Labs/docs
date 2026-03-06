@@ -5,17 +5,17 @@ description: "Automatically review every pull request for security issues and bl
 
 ## Overview
 
-When a developer or AI agent opens a pull request, Asymptote performs a full security review of the diff. Findings are posted as inline PR comments and check statuses, so your team sees exactly what was flagged and why — without leaving GitHub.
+When a developer or AI agent opens a pull request, Asymptote performs a full security review of the diff. Findings are posted as inline PR comments and check statuses, so your team sees exactly what was flagged and why, without leaving GitHub.
 
 ## How It Works
 
 Asymptote integrates with GitHub via a native app and GitHub Actions. On every pull request open or update:
 
-1. **Reviews the full diff** against your configured security policies
-2. **Flags vulnerabilities** including insecure patterns, risky dependency changes, and exposed secrets
+1. **Reviews the full diff** against your configured security [policies](/introduction/core-concepts#policy)
+2. **Flags [vulnerabilities](/introduction/core-concepts#vulnerability)** including insecure patterns, risky dependency changes, and exposed secrets
 3. **Posts inline comments** on the specific lines of code that triggered a finding
-4. **Sets a check status** (pass or fail) that can be required to merge via branch protection rules
-5. **Links each finding** to the relevant policy so developers understand what to fix and why
+4. **Sets a [check](/introduction/core-concepts#checks) status** (pass or fail) that can be required to merge via branch protection rules
+5. **Links each finding** to the relevant [policy](/introduction/core-concepts#policy) so developers understand what to fix and why
 
 ## Enforcing at Merge Time
 
@@ -30,10 +30,10 @@ Any PR that fails Asymptote's policy review will be blocked from merging until t
 
 ## What Gets Checked
 
-- **Code vulnerabilities** — injection patterns, insecure APIs, unsafe deserialization, and more
-- **Secret detection** — API keys, tokens, passwords, and private keys in diffs
-- **Dependency changes** — new or updated packages with known CVEs, typosquatting, or supply chain risk
-- **Policy violations** — any custom or built-in policy defined in your Asymptote dashboard
+- **Code vulnerabilities:** injection patterns, insecure APIs, unsafe deserialization, and more
+- **Secret detection:** API keys, tokens, passwords, and private keys in diffs
+- **Dependency changes:** new or updated packages with known CVEs, typosquatting, or supply chain risk
+- **Policy violations:** any custom or built-in policy defined in your Asymptote dashboard
 
 ## Setup
 
