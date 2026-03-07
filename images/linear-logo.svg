@@ -7,6 +7,5 @@
   <path fill-rule="evenodd" clip-rule="evenodd" d="M24.4 33L67 75.6C65 76.7 62.9 77.5 60.7 78.2L21.8 39.3C22.5 37.1 23.3 35 24.4 33Z" fill="white"/>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M30.8 27.2L72.8 69.2C71.1 70.7 69.3 72 67.4 73.1L26.9 32.6C28 30.7 29.3 28.9 30.8 27.2Z" fill="white"/>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M39 23L77 61C75.4 63.3 73.4 65.4 71.2 67.2L32.8 28.8C34.6 26.6 36.7 24.6 39 23Z" fill="white"/>
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M49 20C56 20 62.4 22.5 67.4 26.7L26.7 67.4C22.5 62.4 20 56 20 49C20 33 33 20 49 20Z" fill="white" opacity="0"/>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M49 20C65 20 78 33 78 49C78 55.6 75.7 61.7 71.8 66.5L66.5 71.8C61.7 75.7 55.6 78 49 78V20Z" fill="white"/>
 </svg>
