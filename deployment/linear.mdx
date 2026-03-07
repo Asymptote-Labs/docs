@@ -1,0 +1,62 @@
+---
+title: "Linear"
+description: "Create Linear issues from security vulnerability findings with priority and label mapping."
+icon: "/images/linear-logo.svg"
+---
+
+The Linear integration lets you route [vulnerability findings](/features/vulnerabilities) from Asymptote directly into your Linear workspace as issues. Once connected, any finding can be sent to Linear with a single click, with [severity](/introduction/core-concepts#severity) automatically mapped to Linear priority and state changes synced back to the finding.
+
+You can configure the integration from **Integrations** in the dashboard sidebar under **Admin**.
+
+## Connecting Linear
+
+<Steps>
+  <Step title="Connect your Linear workspace">
+    In the Asymptote dashboard, open **Integrations** and click **Connect** under Linear. You will be redirected to Linear to authorize Asymptote's access to your workspace.
+  </Step>
+  <Step title="Select a default team">
+    Choose the Linear team that issues should be created under by default. This can be changed at any time from the integration settings.
+  </Step>
+  <Step title="Configure severity to priority mapping">
+    Map each Asymptote [severity level](/introduction/core-concepts#severity) to a Linear priority:
+
+    | Asymptote Severity | Default Linear Priority |
+    |---|---|
+    | [Critical](/introduction/core-concepts#critical) | Urgent |
+    | [High](/introduction/core-concepts#high) | High |
+    | [Medium](/introduction/core-concepts#medium) | Medium |
+    | [Low](/introduction/core-concepts#low) | Low |
+
+    Each mapping is configurable to match your team's workflow.
+  </Step>
+  <Step title="Configure state mapping">
+    Map Asymptote vulnerability states to Linear issue statuses:
+
+    | Asymptote State | Default Linear Status |
+    |---|---|
+    | Open | Todo |
+    | Dismissed | Canceled |
+    | Resolved | Done |
+  </Step>
+  <Step title="Save and test">
+    Click **Save Settings**, then **Test** to verify the connection. Use **Disconnect** to remove the integration at any time.
+  </Step>
+</Steps>
+
+## Creating Linear Issues
+
+Once connected, a **Create Linear Ticket** button appears on every vulnerability finding detail page. Clicking it creates a Linear issue in your configured team with the finding's title, summary, recommended fix, severity, and a link back to the finding in Asymptote.
+
+## State Sync
+
+The integration is a one-way sync from Asymptote to Linear. When a vulnerability finding's state changes in Asymptote (for example, from Open to Resolved), the corresponding Linear issue status is updated automatically based on your configured state mapping. Changes made directly in Linear are not reflected back in Asymptote.
+
+## Access
+
+The Integrations page is restricted to organization admins.
+
+## Related
+
+- [Vulnerability Findings](/features/vulnerabilities)
+- [Severity](/introduction/core-concepts#severity)
+- [Admin Settings](/features/settings)

@@ -83,7 +83,8 @@
             "icon": "puzzle-piece",
             "pages": [
               "deployment/github",
-              "deployment/slack"
+              "deployment/slack",
+              "deployment/linear"
             ]
           },
           {
