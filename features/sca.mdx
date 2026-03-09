@@ -45,7 +45,7 @@ Most SCA tools stop at matching your dependencies against a CVE database and ope
 
 - **Reachability analysis**: Instead of just flagging a vulnerable package, Asymptote traces whether the vulnerable code paths are actually reachable in your application. If your code never calls the affected function, that context is surfaced so you can prioritize accordingly.
 - **Grouped remediation PRs**: Rather than flooding your repository with one pull request per CVE, Asymptote groups related dependency patches across package references within the same service into a single PR. This keeps your review queue manageable and reduces CI churn.
-- **Unified security view**: SCA findings live alongside static analysis and pentest findings in one consolidated view, with the same triage and remediation workflow. There is no need to switch between tools or dashboards to get a complete picture of your security posture.
+- **Unified security view**: SCA findings live alongside static analysis in one consolidated view, with the same triage and remediation workflow. There is no need to switch between tools or dashboards to get a complete picture of your security posture.
 
 ## Automated Remediation
 
