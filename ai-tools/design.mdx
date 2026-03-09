@@ -9,6 +9,12 @@ The earliest a vulnerability can be prevented is before code is written at all. 
 
 Rather than waiting to catch insecure code after it's generated, Secure by Design shapes what gets generated in the first place.
 
+## Threat Models
+
+Asymptote generates a [threat model](/introduction/core-concepts#threat-model) for each connected repository by analyzing your codebase, architecture, and data flows. The resulting report documents your system's [attack surface](/introduction/core-concepts#attack-surface), [trust boundaries](/introduction/core-concepts#trust-boundary), ranked security findings by criticality, existing mitigations, and [attacker stories](/introduction/core-concepts#attacker-story) that trace realistic exploitation paths from initial access to impact.
+
+When Secure by Design is enabled, context from your threat model is injected into your AI coding agent at session start alongside your active security policies. The agent understands your system's specific risk profile before writing any code: which assets are sensitive, where trust boundaries exist, and which vulnerability classes are most consequential for your application.
+
 ## How It Works
 
 When `secure-by-design` is enabled via the [Asymptote CLI config](/cli/config#settings), Asymptote injects your active security policies into [Claude Code's](/integrations/claude-code) context during the `UserPromptSubmit` [hook](/introduction/core-concepts#hooks). This means:
@@ -55,3 +61,7 @@ Secure by Design is the earliest point in the pipeline. Policies injected at the
 - [Code Generation Guardrails](/ai-tools/code-generation)
 - [Claude Code Integration](/integrations/claude-code)
 - [Policies](/introduction/core-concepts#policy)
+- [Threat Model](/introduction/core-concepts#threat-model)
+- [Attack Surface](/introduction/core-concepts#attack-surface)
+- [Trust Boundary](/introduction/core-concepts#trust-boundary)
+- [Attacker Story](/introduction/core-concepts#attacker-story)
