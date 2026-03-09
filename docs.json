@@ -66,6 +66,7 @@
               "features/guardrails",
               "features/pr-reviews",
               "features/scans",
+              "features/sca",
               "features/opengrep-rules",
               "features/vulnerabilities",
               {
