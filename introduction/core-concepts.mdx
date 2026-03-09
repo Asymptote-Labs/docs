@@ -27,6 +27,24 @@ A **policy pack** is a collection of related [policies](#policy) grouped around 
 
 An **enforcement type** defines how Asymptote responds when a [policy](#policy) is violated. Each policy is assigned one of three types: **Block** prevents the pull request from merging, **Warn** flags the issue without blocking, and **Monitor** silently logs the [vulnerability](#vulnerability) for review.
 
+## Threat Modeling
+
+### Threat Model
+
+A **threat model** is a structured security analysis of a system that identifies assets worth protecting, [trust boundaries](#trust-boundary) between components, the [attack surface](#attack-surface) exposed to potential adversaries, and the ways those adversaries could exploit weaknesses. Asymptote generates threat models for your [repositories](#repository) by analyzing your codebase, architecture, and data flows. The resulting report documents potential [attacker stories](#attacker-story), ranked findings by criticality, and existing mitigations so your team has a clear picture of your security posture.
+
+### Attack Surface
+
+The **attack surface** is the set of entry points in a system where an attacker could interact with or attempt to compromise it. This includes API endpoints, webhook handlers, authentication flows, file upload paths, and any other interface that accepts untrusted input. A larger attack surface means more opportunities for exploitation; reducing it is one of the most effective ways to lower overall risk.
+
+### Trust Boundary
+
+A **trust boundary** is a point in a system where execution or data passes between components with different levels of trust, such as from a user-facing request to a database, or from an external service callback to an internal API. Each trust boundary requires explicit validation, authentication, or authorization. Failures at trust boundaries are among the most common sources of [vulnerabilities](#vulnerability).
+
+### Attacker Story
+
+An **attacker story** is a narrative scenario in a [threat model](#threat-model) that describes how a specific threat actor could exploit weaknesses in a system to achieve a malicious goal. Each story traces the attack path from initial access through to impact, identifies what currently prevents success, and informs prioritization of security fixes.
+
 ## Code Generation
 
 ### Coding Sessions
