@@ -1,0 +1,75 @@
+---
+title: "Software Composition Analysis"
+description: "Scan your dependencies for known vulnerabilities, generate an SBOM, and get AI-powered relevance analysis to focus on what matters."
+---
+
+**Software Composition Analysis (SCA)** generates a full software bill of materials (SBOM) for your repositories, scans every dependency for known vulnerabilities, and uses AI to assess whether each finding is actually relevant to your codebase. Results flow into the same [Vulnerabilities](/features/vulnerabilities) view as your other findings.
+
+## How It Works
+
+1. Trigger an SCA scan from the dashboard or as part of a [codebase scan](/features/scans)
+2. Asymptote parses your manifest and lock files to build a complete SBOM
+3. Dependencies are matched against vulnerability databases (CVE, GHSA)
+4. AI analyzes how each vulnerable dependency is actually used in your code
+5. Findings appear in the **Vulnerabilities** view, prioritized by severity and relevance
+
+## Supported Ecosystems
+
+| Ecosystem | Manifest Files |
+|-----------|---------------|
+| npm | `package.json`, `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` |
+| pip | `requirements.txt`, `Pipfile.lock`, `poetry.lock`, `pyproject.toml` |
+| Go | `go.mod`, `go.sum` |
+| Cargo | `Cargo.toml`, `Cargo.lock` |
+| Maven | `pom.xml` |
+| Gradle | `build.gradle`, `build.gradle.kts` |
+| RubyGems | `Gemfile`, `Gemfile.lock` |
+| NuGet | `*.csproj`, `packages.config` |
+
+## What an SCA Finding Includes
+
+- **Package name and version**: the specific dependency and version affected
+- **Severity and identifiers**: CVE/GHSA identifiers with CVSS score
+- **Affected manifest location**: which file introduced the dependency
+- **Fix version**: the minimum version that resolves the vulnerability, if available
+- **AI-generated data flow analysis**: how the vulnerable dependency is actually used in your codebase
+- **Ownership**: who introduced the dependency and when
+
+## AI-Powered Relevance Analysis
+
+Not every vulnerable dependency is equally dangerous. Asymptote uses AI to trace how each dependency is used in your codebase, whether the vulnerable code path is reachable, how data flows through it, and what the real-world impact would be. This helps your team focus on findings that actually matter rather than chasing low-risk upgrades.
+
+## Why Asymptote's SCA Is Different
+
+Most SCA tools stop at matching your dependencies against a CVE database and opening a PR for each one. Asymptote goes further in three key ways:
+
+- **Reachability analysis**: Instead of just flagging a vulnerable package, Asymptote traces whether the vulnerable code paths are actually reachable in your application. If your code never calls the affected function, that context is surfaced so you can prioritize accordingly.
+- **Grouped remediation PRs**: Rather than flooding your repository with one pull request per CVE, Asymptote groups related dependency patches across package references within the same service into a single PR. This keeps your review queue manageable and reduces CI churn.
+- **Unified security view**: SCA findings live alongside static analysis in one consolidated view, with the same triage and remediation workflow. There is no need to switch between tools or dashboards to get a complete picture of your security posture.
+
+## Automated Remediation
+
+When a fix version is available, Asymptote can auto-generate a pull request that updates the vulnerable dependency to a patched version. Related patches within the same service are grouped into a single PR so you are not overwhelmed with individual version bumps. Remediation PRs include the vulnerability context so reviewers understand why the change is being made.
+
+## Triaging Findings
+
+SCA findings follow the same triage workflow as all [vulnerabilities](/features/vulnerabilities):
+
+- Filter by repository, severity, or ecosystem
+- Review the full context of each finding, including AI relevance analysis
+- Mark findings as resolved once fixed
+- Dismiss false positives with a justification
+
+## Related
+
+<CardGroup cols={3}>
+  <Card title="Scans" icon="magnifying-glass" href="/features/scans">
+    Run on-demand security analysis across your repositories.
+  </Card>
+  <Card title="Vulnerabilities" icon="bug" href="/features/vulnerabilities">
+    Track, triage, and remediate security issues.
+  </Card>
+  <Card title="Security Analytics" icon="chart-line" href="/features/security-analytics">
+    Monitor vulnerability trends and remediation progress.
+  </Card>
+</CardGroup>
