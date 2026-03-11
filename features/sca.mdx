@@ -49,7 +49,7 @@ Most SCA tools stop at matching your dependencies against a CVE database and ope
 
 ## Automated Remediation
 
-When a fix version is available, Asymptote can auto-generate a pull request that updates the vulnerable dependency to a patched version. Related patches within the same service are grouped into a single PR so you are not overwhelmed with individual version bumps. Remediation PRs include the vulnerability context so reviewers understand why the change is being made.
+When a fix version is available, Asymptote can auto-generate a pull request that updates the vulnerable dependency to a patched version. Related patches within the same service are grouped into a single PR so you are not overwhelmed with individual version bumps. Remediation PRs include the vulnerability context so reviewers understand why the change is being made. Admins can control which repositories receive auto-generated PRs and at what severity threshold via the [auto-remediation settings](/features/settings#auto-remediation).
 
 ## Triaging Findings
 
