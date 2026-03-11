@@ -24,34 +24,6 @@ Vulnerability findings below the selected level are suppressed from results. For
 
 Thresholds are configured per organization and apply to all repositories within it.
 
-## Auto-Remediation
-
-Auto-remediation controls whether Asymptote automatically creates draft pull requests with security fixes for [SCA findings](/features/sca) and [codebase scans](/features/scans). Draft PRs are only created when a fix is available.
-
-### Organization-Level Threshold
-
-Admins can set a minimum severity level at which Asymptote automatically creates draft PRs:
-
-- **Critical**: only auto-remediate critical vulnerabilities
-- **High**: auto-remediate high and critical vulnerabilities
-- **Medium**: auto-remediate medium, high, and critical vulnerabilities
-- **Low**: auto-remediate all vulnerabilities
-- **Off**: disable auto-remediation entirely (fixes are stored but no PRs are created)
-
-### Per-Repository Overrides
-
-Below the org-level setting, admins can override the auto-remediation threshold for individual repositories. Each repository can be set to:
-
-- **Default**: inherits the organization-level threshold
-- **Off**: disables auto-remediation for that specific repo
-- **Critical / High / Medium / Low**: overrides with a repo-specific threshold
-
-This is useful when certain repositories need stricter or more relaxed auto-remediation policies than the rest of the organization.
-
-### Deferred Remediation PR Creation
-
-When auto-remediation is off, either at the org level or via a per-repo override, admins can still manually create remediation PRs from the dashboard if a fix is available.
-
 ## Scan Schedules
 
 Scan schedules let you enable daily automated [scans](/features/scans) for individual repositories. When enabled, a scan runs every day at **3:00 AM UTC** and includes the same scan types available when running a scan on demand.
