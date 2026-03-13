@@ -1,0 +1,30 @@
+---
+title: "Asymptote's Approach"
+description: "The three beliefs that shaped how we built Asymptote and why they matter for the future of software security."
+---
+
+Most security tools were designed for a world that no longer exists. They were built assuming humans write code, review code, and deploy code. That assumption is breaking down fast.
+
+Asymptote was built around three beliefs about where software is going. They shape every architectural decision we make.
+
+## 1. All software will be written by coding agents
+
+The [AI-native SDLC](/ai-tools/overview) is not a future state. It is the present. Developers are already using tools like [Claude Code](/integrations/claude-code), [Cursor](/integrations/cursor), [Copilot](/integrations/github-copilot), and [Factory](/integrations/factory) to generate, refactor, and ship code at a pace that manual security review cannot keep up with. As models improve, the ratio of human-written to agent-written code will continue shifting. Security tooling built around the assumption of a human typing in an IDE is already becoming obsolete.
+
+Asymptote is designed to operate inside this new development motion: [reviewing code as agents write it, blocking vulnerabilities before they are committed](/features/guardrails), and integrating into the agentic workflow rather than sitting outside it as an afterthought.
+
+## 2. All software being built will itself become agentic
+
+The applications being developed today are increasingly autonomous. They call external APIs, make decisions, take actions, and operate with minimal human oversight. The enterprise is being rebuilt around agents that orchestrate work, manage data, and interact with other systems. This is not a distant prediction. It is the direction every major technology company is already moving.
+
+Agentic software introduces a new class of security problems: prompt injection, tool misuse, privilege escalation across agent boundaries, and unvalidated actions taken on behalf of users. These risks do not map to traditional application security frameworks.
+
+## 3. The winning security platform solves both
+
+A security platform that handles application security but ignores agent security will leave teams exposed to the most important new attack surface. A platform that handles agent security but lacks a foundation in application security will miss the vulnerabilities that have always mattered.
+
+The platform that wins will solve both with a single [unified architecture](/introduction/architecture) and control plane, not two disconnected products bolted together.
+
+That platform is Asymptote.
+
+We built one system that secures the code your agents write and the agents your code becomes. Same [architecture](/introduction/architecture). Same control plane. No gaps.

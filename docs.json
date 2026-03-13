@@ -26,6 +26,15 @@
             ]
           },
           {
+            "group": "Asymptote's Advantage",
+            "icon": "trophy",
+            "pages": [
+              "asymptote-advantage/our-approach",
+              "asymptote-advantage/vs-semgrep",
+              "asymptote-advantage/vs-snyk"
+            ]
+          },
+          {
             "group": "Onboarding",
             "icon": "building",
             "pages": [
