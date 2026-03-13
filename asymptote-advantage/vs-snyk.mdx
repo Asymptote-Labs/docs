@@ -1,0 +1,34 @@
+---
+title: "Asymptote vs. Snyk"
+description: "See how Asymptote compares to Snyk across detection accuracy, context-awareness, and developer experience."
+---
+
+Snyk is well-known for dependency scanning and has expanded into code security with Snyk Code. It's a reasonable choice for teams that want SCA and some static analysis under one roof. But Snyk Code is still fundamentally a pattern-and-rule-based engine, and its PR experience tends toward volume over signal, surfacing a lot of findings and leaving triage to the developer.
+
+Asymptote is purpose-built for [AI-native code security](/introduction/architecture). It understands your code in context, integrates directly into [AI coding workflows](/ai-tools/overview), and gives developers clear, actionable feedback without the noise.
+
+## Head-to-Head Comparison
+
+Based on a controlled benchmark across various languages including Python, Java, Golang, and JavaScript.
+
+| Feature | Description | Asymptote | Snyk |
+|---|---|---|---|
+| **SQL Injection Detection** | Catches string interpolation in raw queries | Found | Found |
+| **Cross-Site Scripting (XSS)** | Detects unsafe use of `html_safe` and `raw` | Found | Found |
+| **Server-Side Request Forgery (SSRF)** | Identifies unvalidated external requests | Found | Found |
+| **Authorization Flaws (IDOR)** | Missing access control checks on resources | Found | Missed |
+| **User Enumeration** | Different error messages for valid vs. invalid users | Found | Missed |
+| **Insecure Token Generation** | Hardcoded or predictable authentication tokens | Found | Missed |
+| **[Context-Based Analysis](/introduction/architecture)** | Understands how code processes data, not just patterns | Yes | Limited (rule-based with some taint tracking) |
+| **[PR Scan Speed](/features/scans)** | Time to feedback in pull requests | Fast (seconds in PRs) | Moderate (scales with repo and rule complexity) |
+| **[Natural Language Policies](/features/guardrails)** | Define rules in plain English without a DSL | Yes (no syntax or YAML required) | No |
+| **Rule Maintenance** | Ongoing effort to keep detection current | Low (no custom rules needed to start seeing results) | Varies (custom rules and policy tuning required over time) |
+| **[Supports Pre-Production Testing](/ai-tools/pre-production)** | Whitebox agentic pentesting that actively probes your codebase for exploitable vulnerabilities before changes reach staging or production | Yes | No |
+| **[AI Code Generation Security](/features/guardrails)** | Security checks embedded directly into the coding agent workflow as code is written | Invisible experience, non-blocking | Blocks developers in IDE |
+| **[Codegen Scan Speed](/ai-tools/code-generation)** | Time from code change to security feedback | 100s of milliseconds | Multiple seconds (high latency) |
+
+## Why It Matters
+
+Snyk's strength is in dependency scanning, knowing which packages have known CVEs. But when it comes to application logic, Snyk Code faces the same limits as other rule-based SAST tools: it can only catch what it's been taught to look for. Authorization flaws, insecure design patterns, and context-dependent vulnerabilities regularly slip through.
+
+Asymptote covers both surfaces. Its [SCA](/features/sca) catches vulnerable dependencies, while its AI-native SAST understands how your application code actually works, not just whether a line matches a known bad pattern. The result is fewer missed findings and far less noise for your developers to sort through.

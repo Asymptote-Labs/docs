@@ -1,0 +1,34 @@
+---
+title: "Asymptote vs. Semgrep"
+description: "See how Asymptote compares to Semgrep across detection accuracy, context-awareness, and developer experience."
+---
+
+Semgrep is a widely-used static analysis tool that gives security teams a flexible, rule-based engine for finding vulnerabilities. It's powerful in the right hands, but that's the catch. Getting real value out of Semgrep requires writing and maintaining custom rules, tuning for noise, and accepting that pattern matching has limits when it comes to understanding how code actually behaves.
+
+Asymptote takes a different approach: [AI-native analysis](/introduction/architecture) that understands code in context, with no rule authoring required.
+
+## Head-to-Head Comparison
+
+Based on a controlled benchmark across various languages including Python, Java, Golang, and JavaScript.
+
+| Feature | Description | Asymptote | Semgrep |
+|---|---|---|---|
+| **SQL Injection Detection** | Catches string interpolation in raw queries | Found | Found |
+| **Cross-Site Scripting (XSS)** | Detects unsafe use of `html_safe` and `raw` | Found | Found |
+| **Server-Side Request Forgery (SSRF)** | Identifies unvalidated external requests | Found | Found |
+| **Authorization Flaws (IDOR)** | Missing access control checks on resources | Found | Missed |
+| **User Enumeration** | Different error messages for valid vs. invalid users | Found | Missed |
+| **Insecure Token Generation** | Hardcoded or predictable authentication tokens | Found | Missed |
+| **[Context-Based Analysis](/introduction/architecture)** | Understands how code processes data, not just patterns | Yes | Requires context-aware rules |
+| **[PR Scan Speed](/features/scans)** | Time to feedback in pull requests | Fast (seconds in PRs) | Depends (large rule sets slow processing) |
+| **[Natural Language Policies](/features/guardrails)** | Define rules in plain English without a DSL | Yes (no syntax or YAML required) | No (requires syntax, YAML, and pattern knowledge) |
+| **Rule Maintenance** | Ongoing effort to keep detection current | Low (no custom rules needed to start seeing results) | Varies (new risks require new rules; updated policies require rule updates) |
+| **[Supports Pre-Production Testing](/ai-tools/pre-production)** | Whitebox agentic pentesting that actively probes your codebase for exploitable vulnerabilities before changes reach staging or production | Yes | No |
+| **[AI Code Generation Security](/features/guardrails)** | Security checks embedded directly into the coding agent workflow as code is written | Invisible experience, non-blocking | Blocks developers in IDE |
+| **[Codegen Scan Speed](/ai-tools/code-generation)** | Time from code change to security feedback | 100s of milliseconds | Multiple seconds (high latency) |
+
+## Why It Matters
+
+Semgrep's pattern-matching model means it can only find what its rules are explicitly written to find. Authorization flaws, business logic issues, and context-dependent vulnerabilities (the kinds of bugs that cause real breaches) often don't fit neatly into a pattern. Writing rules for them is time-consuming, and keeping them accurate as the codebase evolves is an ongoing maintenance burden.
+
+Asymptote understands the intent of your code. It doesn't need a rule for every vulnerability class because it reasons about how data flows and how access is controlled, the same way a security engineer would during a manual review.
