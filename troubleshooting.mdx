@@ -6,13 +6,13 @@ description: "Solutions for common issues when setting up and using Asymptote."
 <AccordionGroup>
   <Accordion title="Scans aren't triggering on pull requests">
     - Verify the Asymptote GitHub App is installed on the target repository.
+    - Confirm the repository is linked in the Asymptote dashboard.
     - Check that webhook deliveries are succeeding under your GitHub App settings → **Recent Deliveries**.
-    - Confirm the `ASYMPTOTE_API_KEY` secret is set in your repository under **Settings → Secrets and variables → Actions**.
   </Accordion>
   <Accordion title="Status checks are stuck as pending">
-    - Confirm your `ASYMPTOTE_API_KEY` secret is correctly set and hasn't expired.
     - Large pull requests may take a few extra minutes to process.
-    - Check the Actions tab in your repository to see if the workflow is running.
+    - Re-link the repository from the Asymptote dashboard if it was originally connected through the legacy GitHub Action flow.
+    - Check that the repository still has access to the Asymptote GitHub App.
   </Accordion>
   <Accordion title="Permission errors on the GitHub App">
     Re-install the Asymptote GitHub App and ensure the correct repositories are selected. See the [GitHub integration page](/deployment/github) for a full list of required permissions.
@@ -25,6 +25,9 @@ description: "Solutions for common issues when setting up and using Asymptote."
   </Accordion>
   <Accordion title="How do I disconnect a repository?">
     In GitHub: **Repository → Settings → GitHub Apps → Asymptote Security**, then suspend or uninstall the app.
+  </Accordion>
+  <Accordion title="How do I migrate from the legacy GitHub Action to the GitHub App?">
+    In the Asymptote dashboard, remove the repository, then re-link it through the GitHub App flow. The GitHub App should be onboarded automatically when the repository is linked again.
   </Accordion>
   <Accordion title="How do I disconnect all repositories?">
     In GitHub: **Organization → Settings → GitHub Apps → Asymptote Security**, then suspend or uninstall the app.

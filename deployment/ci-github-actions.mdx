@@ -1,7 +1,7 @@
 ---
 title: "GitHub"
 sidebarTitle: "GitHub Security PR Reviews"
-description: "Integrate Asymptote security scanning into your GitHub Actions workflows."
+description: "Set up Asymptote GitHub App PR reviews to automatically review pull requests and block merges that violate your policies."
 ---
 
 ## Prerequisites
@@ -14,68 +14,66 @@ For a full list of permissions Asymptote requests from GitHub, see the [GitHub i
 
 ## Overview
 
-Asymptote integrates with GitHub Actions to run security analysis as part of your CI pipeline. When connected, Asymptote scans pull requests, enforces security [policies](/introduction/core-concepts#policy), and blocks deployments based on configurable [severity](/introduction/core-concepts#severity) thresholds, all without leaving your existing workflow.
+Asymptote now runs GitHub PR reviews through the Asymptote GitHub App. When connected, Asymptote scans pull requests, enforces security [policies](/introduction/core-concepts#policy), posts inline review comments, and updates a [check](/introduction/core-concepts#checks) run directly on the pull request.
 
-The Asymptote Security Scan action is available on the [GitHub Marketplace](https://github.com/marketplace/actions/asymptote-security-scan).
+## Connecting GitHub PR Reviews
 
-## Connecting GitHub Actions
-
-Add the Asymptote Security Scan GitHub Action to your CI pipeline. This evaluates pull request code changes against your security [policies](/introduction/core-concepts#policy), posts inline review comments with AI-generated fix suggestions, and creates [check](/introduction/core-concepts#checks) runs with annotations.
+Install and link the Asymptote GitHub App to the repositories you want reviewed. Once linked, pull request reviews are triggered automatically when a PR is opened or updated.
 
 <Steps>
-  <Step title="Add the workflow">
-    Add this workflow file to your repository:
+  <Step title="Install the GitHub App">
+    From the Asymptote dashboard, go to **Settings → GitHub** and click **Install GitHub App**.
 
-    ```yaml .github/workflows/asymptote-security-scan.yml
-    name: Asymptote Security Scan
-
-    on:
-      pull_request:
-        branches: [main]
-
-    permissions:
-      contents: write
-      pull-requests: write
-      checks: write
-
-    jobs:
-      security-scan:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v4
-
-          - name: Asymptote Security Scan
-            uses: Asymptote-Labs/asymptote-security-action@v1
-            with:
-              asymptote_api_key: ${{ secrets.ASYMPTOTE_API_KEY }}
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    ```
+    Select the GitHub organization or account you want to connect, then authorize the Asymptote GitHub App.
   </Step>
-  <Step title="Create an API key">
-    Create a CI API key from the **Settings** page in the dashboard.
+  <Step title="Select repositories">
+    Choose the repositories that Asymptote should review. You can grant access to all repositories in an organization or select specific repositories.
 
-    Once the API key is created, go to your GitHub repository and navigate to **Settings → Secrets and variables → Actions → New repository secret**. Create a secret named `ASYMPTOTE_API_KEY` and paste the key value.
+    Once the repository is linked in Asymptote, the GitHub App is onboarded automatically for PR reviews.
+  </Step>
+  <Step title="Open or update a pull request">
+    Asymptote automatically reviews pull requests for linked repositories. On each PR open or update, Asymptote:
+
+    - Reviews the full diff against your active security [policies](/introduction/core-concepts#policy)
+    - Posts inline review comments with remediation guidance
+    - Creates or updates the **Asymptote Security Review** check run
   </Step>
 </Steps>
 
 ## Status Checks
 
-Once connected, Asymptote posts status checks directly on your pull requests. You can configure branch protection rules to require these checks to pass before merging.
+Once connected, Asymptote posts status checks directly on your pull requests. You can configure branch protection rules to require the **Asymptote Security Review** check to pass before merging.
+
+## Migrating from the GitHub Action
+
+If your repository was previously configured with the legacy GitHub Action flow, migrate it to the GitHub App flow from the Asymptote dashboard:
+
+<Steps>
+  <Step title="Remove the repository in Asymptote">
+    In the Asymptote dashboard, remove the repository from your connected repositories list.
+  </Step>
+  <Step title="Re-link the repository">
+    Re-link the same repository through the GitHub App connection flow in the dashboard.
+  </Step>
+  <Step title="Verify automatic onboarding">
+    The GitHub App should be onboarded automatically when the repository is linked again. After migration, the old GitHub Action workflow and `ASYMPTOTE_API_KEY` secret are no longer required for PR reviews.
+  </Step>
+</Steps>
 
 ## Troubleshooting
 
 **Scans not triggering**
 - Verify the GitHub App is installed on the target repository.
+- Confirm the repository is linked in the Asymptote dashboard.
 - Check that webhook deliveries are succeeding under your GitHub App settings → **Recent Deliveries**.
 
 **Status checks stuck as pending**
-- Confirm your `ASYMPTOTE_API_KEY` secret is set correctly.
 - Large pull requests may take a few extra minutes to process.
+- Re-link the repository from the Asymptote dashboard if it was originally connected through the legacy GitHub Action flow.
 
 **Permission errors**
 - Re-install the GitHub App and ensure the correct repositories are selected.
 
 <Info icon="circle-question" title="Need Help?">
-  Having trouble with the GitHub Actions integration? Contact us at [support@asymptotelabs.ai](mailto:support@asymptotelabs.ai).
+  Having trouble with GitHub PR reviews? Contact us at [support@asymptotelabs.ai](mailto:support@asymptotelabs.ai).
 </Info>

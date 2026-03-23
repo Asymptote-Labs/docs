@@ -77,48 +77,22 @@ This will log you into your Asymptote account, automatically detect supported [c
 
 ### Step 5: Configure GitHub Security PR Reviews <span style={{ color: '#6b7280', fontSize: '0.8em', fontWeight: 'normal' }}>· ~1 min</span>
 
-Add Asymptote to your CI pipeline to automatically scan pull requests and enforce security [policies](/introduction/core-concepts#policy) before code is merged.
+Enable the Asymptote GitHub App to automatically scan pull requests and enforce security [policies](/introduction/core-concepts#policy) before code is merged.
 
 <Steps>
-  <Step title="Add the workflow file">
-    Add this workflow file to your repository:
-
-    ```yaml .github/workflows/asymptote-security-scan.yml
-    name: Asymptote Security Scan
-
-    on:
-      pull_request:
-        branches: [main]
-
-    permissions:
-      contents: write
-      pull-requests: write
-      checks: write
-
-    jobs:
-      security-scan:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v4
-
-          - name: Asymptote Security Scan
-            uses: Asymptote-Labs/asymptote-security-action@v1
-            with:
-              asymptote_api_key: ${{ secrets.ASYMPTOTE_API_KEY }}
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    ```
+  <Step title="Install the GitHub App">
+    From the Asymptote dashboard, open **Settings → GitHub** and click **Install GitHub App**.
   </Step>
-  <Step title="Create an API key">
-    Create a CI API key from the **Settings** page in the Asymptote dashboard.
-
-    Then, in your GitHub repository, navigate to **Settings → Secrets and variables → Actions → New repository secret**. Create a secret named `ASYMPTOTE_API_KEY` and paste the key value.
+  <Step title="Link your repositories">
+    Select the repositories you want Asymptote to review. The GitHub App is onboarded automatically for PR reviews when the repository is linked.
+  </Step>
+  <Step title="Require the check to merge">
+    In GitHub, enable **Require status checks to pass before merging** in your branch protection rules and select **Asymptote Security Review**.
   </Step>
 </Steps>
 
-Once connected, Asymptote will post inline review comments with AI-generated fix suggestions on every pull request. You can configure branch protection rules to require Asymptote [checks](/introduction/core-concepts#checks) to pass before merging.
+Once connected, Asymptote will post inline review comments with AI-generated fix suggestions on every pull request. For migration steps from the legacy GitHub Action flow, see the [GitHub Security PR Reviews](/deployment/ci-github-actions) guide.
 
 <Info icon="circle-question" title="Need Help?">
   Need assistance getting set up? Our team can help with configuration and onboarding. Contact [support@asymptotelabs.ai](mailto:support@asymptotelabs.ai).
 </Info>
-

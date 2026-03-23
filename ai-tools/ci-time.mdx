@@ -9,7 +9,7 @@ When a developer or AI agent opens a pull request, Asymptote performs a full sec
 
 ## How It Works
 
-Asymptote integrates with GitHub via a native app and GitHub Actions. On every pull request open or update:
+Asymptote integrates with GitHub through the Asymptote GitHub App. On every pull request open or update:
 
 1. **Reviews the full diff** against your configured security [policies](/introduction/core-concepts#policy)
 2. **Flags [vulnerabilities](/introduction/core-concepts#vulnerability)** including insecure patterns, risky dependency changes, and exposed secrets
@@ -37,7 +37,7 @@ Any PR that fails Asymptote's policy review will be blocked from merging until t
 
 ## Setup
 
-See the [GitHub Actions deployment guide](/deployment/ci-github-actions) for full setup instructions.
+See the [GitHub Security PR Reviews guide](/deployment/ci-github-actions) for full setup instructions.
 
 <Info icon="circle-question" title="Need Help?">
   Questions about CI integration? Contact us at [support@asymptotelabs.ai](mailto:support@asymptotelabs.ai).
